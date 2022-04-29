@@ -11,7 +11,10 @@ import SwiftUI
 struct SkiDaysApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView{
+                MainTabView()
+            }
         }
     }
 }
+ 
