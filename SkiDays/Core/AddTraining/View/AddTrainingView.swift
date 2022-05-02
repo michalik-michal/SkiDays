@@ -28,13 +28,16 @@ struct AddTrainingView: View {
     @State private var conditions: String = ""
     @State private var discipline: String = ""
     @State private var place: String = ""
-    @State private var runs: String = ""
-    @State private var gates: String = ""
+    @State private var runs: String = "0"
+    @State private var gates: String = "0"
     @State private var notes: String = ""
     
     @State var rowHeight : CGFloat = 0
     
-    
+    let buttons: [[DisciplineButtonViewModel]] = [
+        [.SL, .GS, .SG ],
+        [.DH, .FREE, .PARA]
+    ]
     
     var body: some View {
         ScrollView{
@@ -53,16 +56,27 @@ struct AddTrainingView: View {
                     .padding(.bottom, 20)
                 VStack(alignment: .leading,spacing: 20){
                     
-                    HStack{
-                            PickDisciplineButton(discipline: "SL")
-                            PickDisciplineButton(discipline: "GS")
-                            PickDisciplineButton(discipline: "SG")
+                    ForEach(buttons, id: \.self){ row in
+                        HStack{
+                            ForEach(row, id: \.self){item in
+                                Button {
+                                    discipline = item.rawValue
+                                    print(discipline)
+                                } label: {
+                                    Text(item.rawValue)
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 20)).bold()
+                                }
+                                .frame(height: 60)
+                                .frame(maxWidth: .infinity )
+                                .background(Color.darkerBlue)
+                                .cornerRadius(12)
+                                .shadow(color: Color.gray.opacity(0.5), radius: 10, x: 0, y: 0)
+
+                            }
+                        }
                     }
-                    HStack{
-                            PickDisciplineButton(discipline: "DH")
-                            PickDisciplineButton(discipline: "FREE")
-                            PickDisciplineButton(discipline: "PARA")
-                    }
+
                     VStack(spacing: 40){
                         CustomInputField(imageName: "mappin", placeholderText: "Place", text: $place)
                         CustomInputField(imageName: "snowflake", placeholderText: "Conditions", text: $conditions)
@@ -113,7 +127,6 @@ extension AddTrainingView{
                                     gates: Int(gates)!,
                                     notes: notes)
              
-            
          } label: {
              Text("Done")
                  .foregroundColor(.darkerBlue)

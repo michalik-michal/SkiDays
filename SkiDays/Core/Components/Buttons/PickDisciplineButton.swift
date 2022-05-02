@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PickDisciplineButton: View {
-    
+
         
         var discipline: String
     
