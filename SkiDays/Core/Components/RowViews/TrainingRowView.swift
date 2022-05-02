@@ -48,7 +48,7 @@ struct TrainingRowView: View {
                     .frame(width: 120)
                 
                     .font(.system(size: 20))
-                    .foregroundColor(hasVideo == true ? .white : .black)
+                    .foregroundColor(hasVideo == true ? .white : .clear)
                 Text(conditions)
                     .frame(width: 120)
                     .font(.system(size: 20))

@@ -26,6 +26,15 @@
 		22848DE9281C016700AF996F /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22848DE8281C016700AF996F /* MainTabView.swift */; };
 		22928AD8281C086B000FCEFA /* AddTrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AD7281C086B000FCEFA /* AddTrainingView.swift */; };
 		22928ADB281C0B1D000FCEFA /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928ADA281C0B1D000FCEFA /* StatsView.swift */; };
+		22928ADF281D1EE7000FCEFA /* DisciplineButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928ADE281D1EE7000FCEFA /* DisciplineButtonViewModel.swift */; };
+		22928AE1281D2291000FCEFA /* PickDisciplineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AE0281D2291000FCEFA /* PickDisciplineButton.swift */; };
+		22928AE5281D25EB000FCEFA /* ConditionsButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AE4281D25EB000FCEFA /* ConditionsButtonViewModel.swift */; };
+		22928AEA281FC5BA000FCEFA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22928AE9281FC5BA000FCEFA /* GoogleService-Info.plist */; };
+		22928AED281FC734000FCEFA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 22928AEC281FC734000FCEFA /* FirebaseAuth */; };
+		22928AEF281FC734000FCEFA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 22928AEE281FC734000FCEFA /* FirebaseFirestore */; };
+		22928AF1281FC734000FCEFA /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 22928AF0281FC734000FCEFA /* FirebaseFirestoreSwift-Beta */; };
+		22928AF3281FC734000FCEFA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 22928AF2281FC734000FCEFA /* FirebaseStorage */; };
+		22928AF5281FCD17000FCEFA /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AF4281FCD16000FCEFA /* AuthViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +58,11 @@
 		22848DE8281C016700AF996F /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		22928AD7281C086B000FCEFA /* AddTrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrainingView.swift; sourceTree = "<group>"; };
 		22928ADA281C0B1D000FCEFA /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		22928ADE281D1EE7000FCEFA /* DisciplineButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisciplineButtonViewModel.swift; sourceTree = "<group>"; };
+		22928AE0281D2291000FCEFA /* PickDisciplineButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickDisciplineButton.swift; sourceTree = "<group>"; };
+		22928AE4281D25EB000FCEFA /* ConditionsButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionsButtonViewModel.swift; sourceTree = "<group>"; };
+		22928AE9281FC5BA000FCEFA /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		22928AF4281FCD16000FCEFA /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +70,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22928AF1281FC734000FCEFA /* FirebaseFirestoreSwift-Beta in Frameworks */,
+				22928AF3281FC734000FCEFA /* FirebaseStorage in Frameworks */,
+				22928AED281FC734000FCEFA /* FirebaseAuth in Frameworks */,
+				22928AEF281FC734000FCEFA /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +103,7 @@
 				22848DB7281BDBBD00AF996F /* SkiDaysApp.swift */,
 				22848DB9281BDBBD00AF996F /* ContentView.swift */,
 				22848DBB281BDBC800AF996F /* Assets.xcassets */,
+				22928AE9281FC5BA000FCEFA /* GoogleService-Info.plist */,
 				22848DBD281BDBC800AF996F /* Preview Content */,
 			);
 			path = SkiDays;
@@ -117,10 +136,10 @@
 		22848DC6281BDCC700AF996F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				22928AE6281D3027000FCEFA /* TextFields */,
 				22848DE4281BF75A00AF996F /* RowViews */,
 				22848DD9281BEAA900AF996F /* Buttons */,
 				22848DD2281BDF9600AF996F /* RoundedShape.swift */,
-				22848DCE281BDF5E00AF996F /* CustomInputField.swift */,
 				22848DD0281BDF7100AF996F /* AuthenticationHeader.swift */,
 			);
 			path = Components;
@@ -138,6 +157,7 @@
 		22848DC8281BDCE600AF996F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				22928AF4281FCD16000FCEFA /* AuthViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -163,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				22848DDA281BEAC700AF996F /* DisciplineButtonView.swift */,
+				22928AE0281D2291000FCEFA /* PickDisciplineButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -203,7 +224,8 @@
 		22928AD6281C0855000FCEFA /* AddTraining */ = {
 			isa = PBXGroup;
 			children = (
-				22928AD7281C086B000FCEFA /* AddTrainingView.swift */,
+				22928ADD281D1EC3000FCEFA /* ViewModels */,
+				22928ADC281D1EBA000FCEFA /* View */,
 			);
 			path = AddTraining;
 			sourceTree = "<group>";
@@ -214,6 +236,31 @@
 				22928ADA281C0B1D000FCEFA /* StatsView.swift */,
 			);
 			path = Stats;
+			sourceTree = "<group>";
+		};
+		22928ADC281D1EBA000FCEFA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				22928AD7281C086B000FCEFA /* AddTrainingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		22928ADD281D1EC3000FCEFA /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				22928ADE281D1EE7000FCEFA /* DisciplineButtonViewModel.swift */,
+				22928AE4281D25EB000FCEFA /* ConditionsButtonViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		22928AE6281D3027000FCEFA /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				22848DCE281BDF5E00AF996F /* CustomInputField.swift */,
+			);
+			path = TextFields;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,6 +279,12 @@
 			dependencies = (
 			);
 			name = SkiDays;
+			packageProductDependencies = (
+				22928AEC281FC734000FCEFA /* FirebaseAuth */,
+				22928AEE281FC734000FCEFA /* FirebaseFirestore */,
+				22928AF0281FC734000FCEFA /* FirebaseFirestoreSwift-Beta */,
+				22928AF2281FC734000FCEFA /* FirebaseStorage */,
+			);
 			productName = SkiDays;
 			productReference = 22848DB4281BDBBD00AF996F /* SkiDays.app */;
 			productType = "com.apple.product-type.application";
@@ -260,6 +313,9 @@
 				Base,
 			);
 			mainGroup = 22848DAB281BDBBD00AF996F;
+			packageReferences = (
+				22928AEB281FC734000FCEFA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 22848DB5281BDBBD00AF996F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -276,6 +332,7 @@
 			files = (
 				22848DBF281BDBC800AF996F /* Preview Assets.xcassets in Resources */,
 				22848DBC281BDBC800AF996F /* Assets.xcassets in Resources */,
+				22928AEA281FC5BA000FCEFA /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,16 +347,20 @@
 				22848DDB281BEAC700AF996F /* DisciplineButtonView.swift in Sources */,
 				22848DD8281BEA4A00AF996F /* HomeView.swift in Sources */,
 				22848DDE281BEF1C00AF996F /* TrainingDetailsView.swift in Sources */,
+				22928AE5281D25EB000FCEFA /* ConditionsButtonViewModel.swift in Sources */,
 				22848DE6281BF76A00AF996F /* TrainingRowView.swift in Sources */,
 				22848DD3281BDF9600AF996F /* RoundedShape.swift in Sources */,
 				22848DE3281BF6FB00AF996F /* TrainingsListView.swift in Sources */,
+				22928AE1281D2291000FCEFA /* PickDisciplineButton.swift in Sources */,
 				22848DCF281BDF5E00AF996F /* CustomInputField.swift in Sources */,
 				22848DCB281BDD0600AF996F /* LoginView.swift in Sources */,
 				22848DBA281BDBBD00AF996F /* ContentView.swift in Sources */,
+				22928ADF281D1EE7000FCEFA /* DisciplineButtonViewModel.swift in Sources */,
 				22848DD5281BE0D700AF996F /* Extentions.swift in Sources */,
 				22848DE0281BEF5900AF996F /* DetailRowView.swift in Sources */,
 				22928ADB281C0B1D000FCEFA /* StatsView.swift in Sources */,
 				22848DB8281BDBBD00AF996F /* SkiDaysApp.swift in Sources */,
+				22928AF5281FCD17000FCEFA /* AuthViewModel.swift in Sources */,
 				22848DD1281BDF7100AF996F /* AuthenticationHeader.swift in Sources */,
 				22848DCD281BDD1400AF996F /* RegistrationView.swift in Sources */,
 				22848DE9281C016700AF996F /* MainTabView.swift in Sources */,
@@ -507,6 +568,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		22928AEB281FC734000FCEFA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		22928AEC281FC734000FCEFA /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22928AEB281FC734000FCEFA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		22928AEE281FC734000FCEFA /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22928AEB281FC734000FCEFA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		22928AF0281FC734000FCEFA /* FirebaseFirestoreSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22928AEB281FC734000FCEFA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreSwift-Beta";
+		};
+		22928AF2281FC734000FCEFA /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22928AEB281FC734000FCEFA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 22848DAC281BDBBD00AF996F /* Project object */;
 }

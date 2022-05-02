@@ -6,14 +6,23 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct SkiDaysApp: App {
+    
+    @StateObject var viewModel = AuthViewModel()
+    
+    init(){
+        FirebaseApp.configure()
+    }
+    
     var body: some Scene {
         WindowGroup {
             NavigationView{
-                MainTabView()
+                ContentView()
             }
+            .environmentObject(viewModel)
         }
     }
 }
