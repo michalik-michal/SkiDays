@@ -63,4 +63,5 @@ class AuthViewModel: ObservableObject{
         // Signs out on server
         try? Auth.auth().signOut()
     }
+
 }

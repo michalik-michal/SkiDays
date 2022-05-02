@@ -22,10 +22,11 @@ struct AddTrainingView: View {
 
     
     @Environment(\.presentationMode) var presentationMode
+    @ObservedObject var viewModel = UploadSkiDayViewModel()
     
     @State private var date = Date()
     @State private var conditions: String = ""
-    
+    @State private var discipline: String = ""
     @State private var place: String = ""
     @State private var runs: String = ""
     @State private var gates: String = ""
@@ -76,12 +77,17 @@ struct AddTrainingView: View {
                     Text("Enter your notes")
                         .font(.title).bold()
                     
-                    notesView
+                    notesView 
                         
                                 
                 }
             }
         }
+        .onReceive(viewModel.$didUploadSkiDay, perform: { succes in
+            if succes{
+                presentationMode.wrappedValue.dismiss()
+            }
+        })
         .navigationBarHidden(true)
         .padding()
     }
@@ -99,7 +105,15 @@ extension AddTrainingView{
      var doneButton: some View{
          Button {
              //Save training and dismiss
-             presentationMode.wrappedValue.dismiss()
+             
+             viewModel.uploadSkiDay(date: date,
+                                    discipline: discipline,
+                                    place: place,
+                                    runs: Int(runs)!,
+                                    gates: Int(gates)!,
+                                    notes: notes)
+             
+            
          } label: {
              Text("Done")
                  .foregroundColor(.darkerBlue)

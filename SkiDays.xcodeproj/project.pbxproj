@@ -35,6 +35,8 @@
 		22928AF1281FC734000FCEFA /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 22928AF0281FC734000FCEFA /* FirebaseFirestoreSwift-Beta */; };
 		22928AF3281FC734000FCEFA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 22928AF2281FC734000FCEFA /* FirebaseStorage */; };
 		22928AF5281FCD17000FCEFA /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AF4281FCD16000FCEFA /* AuthViewModel.swift */; };
+		22C7A061281FF3C1003A9936 /* SkiDayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C7A060281FF3C1003A9936 /* SkiDayService.swift */; };
+		22C7A063281FF67A003A9936 /* UploadSkiDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C7A062281FF67A003A9936 /* UploadSkiDayViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +65,8 @@
 		22928AE4281D25EB000FCEFA /* ConditionsButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionsButtonViewModel.swift; sourceTree = "<group>"; };
 		22928AE9281FC5BA000FCEFA /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		22928AF4281FCD16000FCEFA /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		22C7A060281FF3C1003A9936 /* SkiDayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiDayService.swift; sourceTree = "<group>"; };
+		22C7A062281FF67A003A9936 /* UploadSkiDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadSkiDayViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				22848DC6281BDCC700AF996F /* Components */,
+				22C7A05F281FF398003A9936 /* Service */,
 				22928AD9281C0B0C000FCEFA /* Stats */,
 				22848DE7281C015B00AF996F /* MainTab */,
 				22848DD6281BEA2000AF996F /* Home */,
@@ -251,6 +256,7 @@
 			children = (
 				22928ADE281D1EE7000FCEFA /* DisciplineButtonViewModel.swift */,
 				22928AE4281D25EB000FCEFA /* ConditionsButtonViewModel.swift */,
+				22C7A062281FF67A003A9936 /* UploadSkiDayViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -261,6 +267,14 @@
 				22848DCE281BDF5E00AF996F /* CustomInputField.swift */,
 			);
 			path = TextFields;
+			sourceTree = "<group>";
+		};
+		22C7A05F281FF398003A9936 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				22C7A060281FF3C1003A9936 /* SkiDayService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,12 +362,14 @@
 				22848DD8281BEA4A00AF996F /* HomeView.swift in Sources */,
 				22848DDE281BEF1C00AF996F /* TrainingDetailsView.swift in Sources */,
 				22928AE5281D25EB000FCEFA /* ConditionsButtonViewModel.swift in Sources */,
+				22C7A061281FF3C1003A9936 /* SkiDayService.swift in Sources */,
 				22848DE6281BF76A00AF996F /* TrainingRowView.swift in Sources */,
 				22848DD3281BDF9600AF996F /* RoundedShape.swift in Sources */,
 				22848DE3281BF6FB00AF996F /* TrainingsListView.swift in Sources */,
 				22928AE1281D2291000FCEFA /* PickDisciplineButton.swift in Sources */,
 				22848DCF281BDF5E00AF996F /* CustomInputField.swift in Sources */,
 				22848DCB281BDD0600AF996F /* LoginView.swift in Sources */,
+				22C7A063281FF67A003A9936 /* UploadSkiDayViewModel.swift in Sources */,
 				22848DBA281BDBBD00AF996F /* ContentView.swift in Sources */,
 				22928ADF281D1EE7000FCEFA /* DisciplineButtonViewModel.swift in Sources */,
 				22848DD5281BE0D700AF996F /* Extentions.swift in Sources */,
