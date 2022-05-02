@@ -12,8 +12,14 @@ class UploadSkiDayViewModel: ObservableObject{
     @Published var didUploadSkiDay = false
     let service = SkiDayService()
     
-    func uploadSkiDay(date: Date, discipline: String, place: String, runs: Int, gates: Int, notes: String){
-        service.uploadSkiDay(date: date, discipline: discipline, place: place, runs: runs, gates: gates, notes: notes) { succes in
+    func uploadSkiDay(date: String, discipline: String, place: String,conditions: String, runs: Int, gates: Int, notes: String){
+        service.uploadSkiDay(date: date,
+                             discipline: discipline,
+                             place: place,
+                             conditions: conditions,
+                             runs: runs,
+                             gates: gates,
+                             notes: notes) { succes in
             
             if succes{
                 self.didUploadSkiDay = true

@@ -16,17 +16,4 @@ enum DisciplineButtonViewModel: String, CaseIterable{
     case DH = "DH"
     case FREE = "FREE"
     case PARA = "PARA"
- 
-//    var title: String{
-//        switch self{
-//        case .SL: return "SL"
-//        case .GS: return "GS"
-//        case .SG: return "SG"
-//        case .DH: return "DH"
-//        case .FREE: return "PARA"
-//        case .PARA: return "PARA"
-//            
-//        }
-//    }
-    
 }

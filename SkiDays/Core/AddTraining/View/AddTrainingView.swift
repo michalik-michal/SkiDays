@@ -28,11 +28,11 @@ struct AddTrainingView: View {
     @State private var conditions: String = ""
     @State private var discipline: String = ""
     @State private var place: String = ""
-    @State private var runs: String = "0"
-    @State private var gates: String = "0"
+    @State private var runs: String = ""
+    @State private var gates: String = ""
     @State private var notes: String = ""
     
-    @State var rowHeight : CGFloat = 0
+   
     
     let buttons: [[DisciplineButtonViewModel]] = [
         [.SL, .GS, .SG ],
@@ -53,29 +53,11 @@ struct AddTrainingView: View {
                     Spacer()
                 }
                 DatePicker("", selection: $date, displayedComponents: .date)
+                    
                     .padding(.bottom, 20)
                 VStack(alignment: .leading,spacing: 20){
                     
-                    ForEach(buttons, id: \.self){ row in
-                        HStack{
-                            ForEach(row, id: \.self){item in
-                                Button {
-                                    discipline = item.rawValue
-                                    print(discipline)
-                                } label: {
-                                    Text(item.rawValue)
-                                        .foregroundColor(.white)
-                                        .font(.system(size: 20)).bold()
-                                }
-                                .frame(height: 60)
-                                .frame(maxWidth: .infinity )
-                                .background(Color.darkerBlue)
-                                .cornerRadius(12)
-                                .shadow(color: Color.gray.opacity(0.5), radius: 10, x: 0, y: 0)
-
-                            }
-                        }
-                    }
+                    disciplineButtonsGrid
 
                     VStack(spacing: 40){
                         CustomInputField(imageName: "mappin", placeholderText: "Place", text: $place)
@@ -115,14 +97,19 @@ struct AddTrainingView_Previews: PreviewProvider {
 
 extension AddTrainingView{
     
+    func fetchDate(date: Date) -> String{
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM/dd/yy"
+            let stringDate = dateFormatter.string(from: date)
+            return stringDate
+    }
     
      var doneButton: some View{
          Button {
-             //Save training and dismiss
-             
-             viewModel.uploadSkiDay(date: date,
+             viewModel.uploadSkiDay(date: fetchDate(date: date),
                                     discipline: discipline,
                                     place: place,
+                                    conditions: conditions,
                                     runs: Int(runs)!,
                                     gates: Int(gates)!,
                                     notes: notes)
@@ -157,6 +144,29 @@ extension AddTrainingView{
             .overlay(RoundedRectangle(cornerRadius: 16)
                         .stroke(.gray.opacity(0.2), lineWidth: 2))
         
+    }
+    
+    var disciplineButtonsGrid: some View{
+        ForEach(buttons, id: \.self){ row in
+            HStack{
+                ForEach(row, id: \.self){item in
+                    Button {
+                        discipline = item.rawValue
+                        
+                    } label: {
+                        Text(item.rawValue)
+                            .foregroundColor(.white)
+                            .font(.system(size: 20)).bold()
+                    }
+                    .frame(height: 60)
+                    .frame(maxWidth: .infinity )
+                    .background(Color.darkerBlue)
+                    .cornerRadius(12)
+                    .shadow(color: Color.gray.opacity(0.5), radius: 10, x: 0, y: 0)
+
+                }
+            }
+        }
     }
     
 }

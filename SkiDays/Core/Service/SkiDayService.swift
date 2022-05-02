@@ -9,12 +9,13 @@ import Firebase
 
 struct SkiDayService{
      
-    func uploadSkiDay(date: Date, discipline: String, place: String, runs: Int, gates: Int, notes: String, completion: @escaping(Bool) -> Void){
+    func uploadSkiDay(date: String, discipline: String, place: String,conditions:String, runs: Int, gates: Int, notes: String, completion: @escaping(Bool) -> Void){
         guard let uid = Auth.auth().currentUser?.uid else {return}
         
         let data = ["uid": uid,
                     "date": date ,
                     "discipline": discipline,
+                    "conditions": conditions,
                     "place": place,
                     "runs": runs,
                     "gates": gates,
@@ -24,11 +25,22 @@ struct SkiDayService{
         Firestore.firestore().collection("skidays").document()
             .setData(data) { error in
                 if let error = error{
-                    print("Failed to upload thweet wiht erorror: \(error)")
+                    print("Failed to upload SkiDay wiht errror: \(error)")
                     completion(false)
                     return
                 }
                 completion(true)
             }
+    }
+    func fetchSkiDays(completion: @escaping([SkiDay]) -> Void){
+        
+        Firestore.firestore().collection("skidays").getDocuments { snapshot, _ in
+            guard let documents = snapshot?.documents else {return}
+
+            let skiDays = documents.compactMap({try? $0.data(as: SkiDay.self)})
+            print(skiDays)
+            completion(skiDays)
+            
+        }
     }
 }

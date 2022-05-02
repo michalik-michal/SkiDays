@@ -9,20 +9,16 @@ import SwiftUI
 
 struct TrainingRowView: View {
     
-    var date: String
-    var discipline: String
-    var hasVideo: Bool
-    var place: String
-    var conditions: String
-    
+    let skiDay: SkiDay
+
     var body: some View {
         
         HStack{
             VStack(spacing: 30){
-                Text(date)
+                Text("\(skiDay.date)")
                     .font(.system(size: 20))
                     .frame(width: 120)
-                Text("📍\(place)")
+                Text("📍\(skiDay.place)")
                     .frame(width: 120)
                     .font(.system(size: 20))
             }
@@ -32,13 +28,11 @@ struct TrainingRowView: View {
             NavigationLink{
                 TrainingDetailsView()
             }label: {
-                Text(discipline)
+                Text(skiDay.discipline)
                     .bold()
                     .frame(width: 80)
                     .font(.system(size: 25))
             }
-            
-                
             
            Spacer()
             
@@ -48,8 +42,8 @@ struct TrainingRowView: View {
                     .frame(width: 120)
                 
                     .font(.system(size: 20))
-                    .foregroundColor(hasVideo == true ? .white : .clear)
-                Text(conditions)
+                    .foregroundColor(.white)
+                Text(skiDay.conditions)
                     .frame(width: 120)
                     .font(.system(size: 20))
             }
@@ -60,9 +54,9 @@ struct TrainingRowView: View {
         .cornerRadius(20)
     }
 }
-
-struct TrainingRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        TrainingRowView(date: "03/12/22", discipline: "FREE", hasVideo: true, place: "Obdach", conditions: "Icy")
-    }
-}
+//
+//struct TrainingRowView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TrainingRowView(skiDay: <#SkiDay#>, date: "03/12/22", discipline: "FREE", hasVideo: true, place: "Obdach", conditions: "Icy")
+//    }
+//}
