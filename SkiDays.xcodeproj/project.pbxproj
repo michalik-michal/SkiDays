@@ -11,6 +11,8 @@
 		225A1EFD28201B4300C2C81E /* SkiDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A1EFC28201B4300C2C81E /* SkiDay.swift */; };
 		225A1F012820FB4E00C2C81E /* DeleteDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A1F002820FB4E00C2C81E /* DeleteDayViewModel.swift */; };
 		225A1F0728214C1C00C2C81E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A1F0628214C1B00C2C81E /* HomeViewModel.swift */; };
+		225A1F0F2821559100C2C81E /* FilteredDaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A1F0E2821559100C2C81E /* FilteredDaysView.swift */; };
+		225A1F12282158C700C2C81E /* FilteredDaysViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A1F11282158C700C2C81E /* FilteredDaysViewModel.swift */; };
 		22848DB8281BDBBD00AF996F /* SkiDaysApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22848DB7281BDBBD00AF996F /* SkiDaysApp.swift */; };
 		22848DBA281BDBBD00AF996F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22848DB9281BDBBD00AF996F /* ContentView.swift */; };
 		22848DBC281BDBC800AF996F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22848DBB281BDBC800AF996F /* Assets.xcassets */; };
@@ -48,6 +50,8 @@
 		225A1EFC28201B4300C2C81E /* SkiDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiDay.swift; sourceTree = "<group>"; };
 		225A1F002820FB4E00C2C81E /* DeleteDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDayViewModel.swift; sourceTree = "<group>"; };
 		225A1F0628214C1B00C2C81E /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		225A1F0E2821559100C2C81E /* FilteredDaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredDaysView.swift; sourceTree = "<group>"; };
+		225A1F11282158C700C2C81E /* FilteredDaysViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredDaysViewModel.swift; sourceTree = "<group>"; };
 		22848DB4281BDBBD00AF996F /* SkiDays.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkiDays.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22848DB7281BDBBD00AF996F /* SkiDaysApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiDaysApp.swift; sourceTree = "<group>"; };
 		22848DB9281BDBBD00AF996F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -147,6 +151,31 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		225A1F0A2821553900C2C81E /* FilteredDays */ = {
+			isa = PBXGroup;
+			children = (
+				225A1F0B2821555F00C2C81E /* ViewModel */,
+				225A1F0C2821556800C2C81E /* View */,
+			);
+			path = FilteredDays;
+			sourceTree = "<group>";
+		};
+		225A1F0B2821555F00C2C81E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				225A1F11282158C700C2C81E /* FilteredDaysViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		225A1F0C2821556800C2C81E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				225A1F0E2821559100C2C81E /* FilteredDaysView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		22848DAB281BDBBD00AF996F = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +222,7 @@
 				22928AD9281C0B0C000FCEFA /* Stats */,
 				22848DE7281C015B00AF996F /* MainTab */,
 				22848DD6281BEA2000AF996F /* Home */,
+				225A1F0A2821553900C2C81E /* FilteredDays */,
 				22848DE1281BF6DA00AF996F /* TrainingsList */,
 				22928AD6281C0855000FCEFA /* AddTraining */,
 				22848DDC281BEEFE00AF996F /* TrainingDetails */,
@@ -426,6 +456,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22928AD8281C086B000FCEFA /* AddTrainingView.swift in Sources */,
+				225A1F12282158C700C2C81E /* FilteredDaysViewModel.swift in Sources */,
 				22848DDB281BEAC700AF996F /* DisciplineButtonView.swift in Sources */,
 				225A1EFA282018F300C2C81E /* TrainingListViewModel.swift in Sources */,
 				22848DD8281BEA4A00AF996F /* HomeView.swift in Sources */,
@@ -433,6 +464,7 @@
 				22928AE5281D25EB000FCEFA /* ConditionsButtonViewModel.swift in Sources */,
 				225A1EFD28201B4300C2C81E /* SkiDay.swift in Sources */,
 				22C7A061281FF3C1003A9936 /* SkiDayService.swift in Sources */,
+				225A1F0F2821559100C2C81E /* FilteredDaysView.swift in Sources */,
 				22848DE6281BF76A00AF996F /* TrainingRowView.swift in Sources */,
 				22848DD3281BDF9600AF996F /* RoundedShape.swift in Sources */,
 				225A1F0728214C1C00C2C81E /* HomeViewModel.swift in Sources */,

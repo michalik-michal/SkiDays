@@ -16,7 +16,7 @@ struct DisciplineButtonView: View {
     var body: some View {
         
         NavigationLink{
-            //
+            FilteredDaysView(discipline: discipline)
         }label: {
             Text("\(discipline): \(days)")
                 .foregroundColor(.white)
