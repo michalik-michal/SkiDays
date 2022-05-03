@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    @ObservedObject var viewModel = HomeViewModel()
+    
     var body: some View {
-        
            ScrollView {
                 VStack(){
                     NavigationLink {
                         StatsView()
                     } label: {
-                        Text("ALL: 42")
+                        Text("ALL: \(viewModel.skiDays.count)")
                             .font(.system(size: 60))
                             .foregroundColor(.white)
                     }
@@ -28,17 +30,17 @@ struct HomeView: View {
                     
                     VStack(spacing: 60){
                         HStack(spacing: 30){
-                            DisciplineButtonView(discipline: "SL", days: 20)
-                            DisciplineButtonView(discipline: "GS", days: 11)
+                            DisciplineButtonView(discipline: "SL", days: viewModel.numberOfDisciplineDays("SL"))
+                            DisciplineButtonView(discipline: "GS", days: viewModel.numberOfDisciplineDays("GS"))
                         }
                         HStack(spacing: 30){
-                            DisciplineButtonView(discipline: "SG", days: 5)
-                            DisciplineButtonView(discipline: "DH", days: 14)
+                            DisciplineButtonView(discipline: "SG", days: viewModel.numberOfDisciplineDays("SG"))
+                            DisciplineButtonView(discipline: "DH", days: viewModel.numberOfDisciplineDays("DH"))
                         }
                         HStack(spacing: 30){
                             
-                            DisciplineButtonView(discipline: "FREE", days: 10)
-                            DisciplineButtonView(discipline: "PARA", days: 2)
+                            DisciplineButtonView(discipline: "FREE", days: viewModel.numberOfDisciplineDays("FREE"))
+                            DisciplineButtonView(discipline: "PARA", days: viewModel.numberOfDisciplineDays("PARA"))
                         }
                     }
                     

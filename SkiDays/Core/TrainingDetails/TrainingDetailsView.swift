@@ -46,7 +46,7 @@ struct TrainingDetailsView: View {
                 VStack(spacing: 30){
                     
                     HStack{
-                        DetailRowView(text: "Giant Slalom")
+                        DetailRowView(text: skiDay.discipline)
                         
                         Spacer()
                         DetailRowView(text: skiDay.conditions)

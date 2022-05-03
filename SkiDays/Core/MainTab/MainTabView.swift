@@ -28,7 +28,7 @@ struct MainTabView: View {
                 }
                 .tabItem {
                     Image(systemName: "calendar")
-                    Text("Trainings")
+                    Text("SkiDays")
                 }.tag(1)
         }
         .foregroundColor(.black)

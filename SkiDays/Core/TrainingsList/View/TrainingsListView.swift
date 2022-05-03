@@ -13,7 +13,7 @@ struct TrainingsListView: View {
     
     var body: some View {
         ScrollView{
-            VStack(spacing: 15){
+            LazyVStack(spacing: 15){
                 HStack{
                     Text("All Ski Days")
                         .font(.largeTitle).bold()
