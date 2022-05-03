@@ -38,9 +38,11 @@ struct SkiDayService{
             guard let documents = snapshot?.documents else {return}
 
             let skiDays = documents.compactMap({try? $0.data(as: SkiDay.self)})
-            print(skiDays)
             completion(skiDays)
             
         }
     }
+//    func deleteSkiDay(_ skiDay: SkiDay){
+//        print("\(Firestore.firestore().collection("skidays").document(skiDay.id!))")
+//    }
 }

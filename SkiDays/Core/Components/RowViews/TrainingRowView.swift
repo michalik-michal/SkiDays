@@ -26,7 +26,8 @@ struct TrainingRowView: View {
             Spacer()
             
             NavigationLink{
-                TrainingDetailsView()
+                TrainingDetailsView(skiDay: skiDay)
+                
             }label: {
                 Text(skiDay.discipline)
                     .bold()
@@ -57,6 +58,6 @@ struct TrainingRowView: View {
 //
 //struct TrainingRowView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        TrainingRowView(skiDay: <#SkiDay#>, date: "03/12/22", discipline: "FREE", hasVideo: true, place: "Obdach", conditions: "Icy")
+//        TrainingRowView(skiDay: )
 //    }
 //}

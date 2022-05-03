@@ -9,8 +9,10 @@ import SwiftUI
 
 struct TrainingDetailsView: View {
     
-    @Environment(\.presentationMode) var presentationMode
+    let skiDay: SkiDay
     
+    @Environment(\.presentationMode) var presentationMode
+    @ObservedObject var viewModel = DeleteDayViewModel()
     
     var body: some View {
         
@@ -30,12 +32,12 @@ struct TrainingDetailsView: View {
                 }
 
                 HStack{
-                    Text("19/12/22")
+                    Text(skiDay.date)
                         .font(.title)
                         .bold()
                         
                     Spacer()
-                    Text("📍Obdach")
+                    Text("📍\(skiDay.place)")
                         .font(.title)
                         .bold()
                 }
@@ -47,16 +49,17 @@ struct TrainingDetailsView: View {
                         DetailRowView(text: "Giant Slalom")
                         
                         Spacer()
-                        DetailRowView(text: "Icy")
+                        DetailRowView(text: skiDay.conditions)
                     }
                     HStack{
-                        DetailRowView(text: "7 runs")
-                        DetailRowView(text: "52 gates")
-                        DetailRowView(text: "364 total")
+                        DetailRowView(text: "\(skiDay.runs) runs")
+                        DetailRowView(text: "\(skiDay.gates) gates")
+                        DetailRowView(text: "\(skiDay.runs * skiDay.gates) total")
 
                     }
                     noteView
                     uploadVideoView
+                    deleteButton
                     Spacer()
                 }
             }
@@ -67,7 +70,7 @@ struct TrainingDetailsView: View {
 
 struct TrainingDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        TrainingDetailsView()
+        TrainingDetailsView(skiDay: SkiDay(id: "xd", date: "24/12/20", discipline: "SL", gates: 40, notes: "Ez", place: "Home", runs: 10, conditions: "Bad", uid: "skkkrt"))
     }
 }
 
@@ -76,7 +79,7 @@ extension TrainingDetailsView{
     
     var noteView: some View{
         
-        Text("More over the foreline, better position bla bla bla bla")
+        Text(skiDay.notes)
             .font(.system(size: 20))
             .foregroundColor(.white)
             .frame(maxWidth: .infinity)
@@ -95,6 +98,7 @@ extension TrainingDetailsView{
             //Upload Video
         } label: {
             Text("Upload Video")
+                .font(.headline)
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity)
                 .frame(height: 220)
@@ -103,9 +107,21 @@ extension TrainingDetailsView{
                 .shadow(color: Color.gray.opacity(0.5), radius: 10, x: 0, y: 0)
                 
         }
-
-        
     }
-    
+    var deleteButton: some View{
+        Button {
+            //
+        } label: {
+            Text("Delete")
+                .font(.headline)
+                .foregroundColor(.white)
+                .frame(height: 50)
+                .frame(maxWidth: .infinity)
+                .background(Color.red)
+                .clipShape(Capsule())
+                
+        }
+        .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 0)
+    }
     
 }
