@@ -14,6 +14,24 @@ struct HomeView: View {
     var body: some View {
            ScrollView {
                 VStack(){
+                    HStack{
+                        Spacer()
+                        NavigationLink {
+                                SettingsView()
+                        } label: {
+                            Image(systemName: "gearshape")
+                                
+                                .foregroundColor(.darkerBlue)
+                                .font(.system(size: 25))
+                                .frame(width: 30, height: 30)
+                        }
+
+                        
+                    }
+                    .padding(.top, 30)
+                    .padding(.horizontal)
+                    
+                    
                     NavigationLink {
                         StatsView()
                     } label: {
@@ -25,7 +43,8 @@ struct HomeView: View {
                     .background(Color.blue)
                     .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                     .shadow(color: Color.primary.opacity(0.2), radius: 10, x: 0, y: 5)
-                    .padding(.vertical, 70)
+                    .padding(.top, 20)
+                    .padding(.bottom, 60)
                     
                     
                     VStack(spacing: 60){
