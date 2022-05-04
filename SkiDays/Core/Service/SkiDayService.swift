@@ -42,6 +42,10 @@ struct SkiDayService{
             
         }
     }
+    
+    
+    
+    
 //    func deleteSkiDay(_ skiDay: SkiDay){
 //        print("\(Firestore.firestore().collection("skidays").document(skiDay.id!))")
 //    }

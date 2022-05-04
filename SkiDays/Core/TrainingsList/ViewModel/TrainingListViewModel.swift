@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import FirebaseFirestore
 
 class TrainingListViewModel: ObservableObject{
     
@@ -16,6 +16,19 @@ class TrainingListViewModel: ObservableObject{
     
     init(){
         fetchSkidays()
+        
+//        let db = Firestore.firestore()
+//        db.collection("skidays").addSnapshotListener{(snap, error) in
+//            if error != nil {
+//                print("error")
+//                return
+//            }
+//            for i in snap!.documentChanges{
+//                if i.type == .added{
+//                    self.fetchSkidays()
+//                }
+//            }
+//        }
     }
     
     func fetchSkidays(){

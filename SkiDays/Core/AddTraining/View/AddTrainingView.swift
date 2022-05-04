@@ -110,8 +110,8 @@ extension AddTrainingView{
                                     discipline: discipline,
                                     place: place,
                                     conditions: conditions,
-                                    runs: Int(runs)!,
-                                    gates: Int(gates)!,
+                                    runs: Int(runs)!, //fix
+                                    gates: Int(gates)!, //fix 
                                     notes: notes)
              
          } label: {

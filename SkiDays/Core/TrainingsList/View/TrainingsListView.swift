@@ -30,8 +30,9 @@ struct TrainingsListView: View {
                     }
                 }
                 .padding(.top, 30)
+                
                 ForEach(viewModel.skiDays){skiDay in
-                    TrainingRowView(skiDay: skiDay)
+                        TrainingRowView(skiDay: skiDay)
                 }
             }
         }

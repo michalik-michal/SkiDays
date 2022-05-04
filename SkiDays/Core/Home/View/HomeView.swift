@@ -17,7 +17,7 @@ struct HomeView: View {
                     NavigationLink {
                         StatsView()
                     } label: {
-                        Text("ALL: \(viewModel.skiDays.count)")
+                        Text("Total: \(viewModel.skiDays.count)")
                             .font(.system(size: 60))
                             .foregroundColor(.white)
                     }
