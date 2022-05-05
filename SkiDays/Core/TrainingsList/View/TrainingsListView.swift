@@ -6,10 +6,15 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct TrainingsListView: View {
     
-    @ObservedObject var viewModel = TrainingListViewModel()
+    @ObservedObject var viewModel: TrainingListViewModel
+    
+    init(user: User){
+        self.viewModel = TrainingListViewModel(user: user)
+    }
     
     var body: some View {
         ScrollView{
@@ -18,7 +23,7 @@ struct TrainingsListView: View {
                     Text("All Ski Days")
                         .font(.largeTitle).bold()
                     Spacer()
-                    
+   
                     NavigationLink{
                         AddTrainingView()
                     }label: {
@@ -44,8 +49,8 @@ struct TrainingsListView: View {
     }
 }
 
-struct TrainingsList_Previews: PreviewProvider {
-    static var previews: some View {
-        TrainingsListView()
-    }
-}
+//struct TrainingsList_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TrainingsListView()
+//    }
+//}

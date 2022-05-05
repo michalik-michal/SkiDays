@@ -11,9 +11,13 @@ import Firebase
 class AuthViewModel: ObservableObject{
     
     @Published var userSession: FirebaseAuth.User?
+    @Published var currentUser: User?
+    
+    private let service = UserService()
     
     init(){
         self.userSession = Auth.auth().currentUser
+        self.fetchUser()
     }
     
 //MARK: - Log In User
@@ -50,6 +54,13 @@ class AuthViewModel: ObservableObject{
                 .setData(data) { _ in
                     print("Did update user data")
                 }
+        }
+    }
+    
+    func fetchUser(){
+        guard let uid = self.userSession?.uid else {return}
+        service.fetchUser(withUid: uid){ user in
+            self.currentUser = user
         }
     }
 

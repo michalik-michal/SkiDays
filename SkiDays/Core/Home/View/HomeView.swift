@@ -9,7 +9,11 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @ObservedObject var viewModel = HomeViewModel()
+    @ObservedObject var viewModel: HomeViewModel
+    
+    init(user: User){
+        self.viewModel = HomeViewModel(user: user)
+    }
     
     var body: some View {
            ScrollView {
@@ -72,8 +76,8 @@ struct HomeView: View {
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
-    }
-}
+//struct HomeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeView()
+//    }
+//}

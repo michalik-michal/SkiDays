@@ -15,6 +15,8 @@
 		225A1F12282158C700C2C81E /* FilteredDaysViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A1F11282158C700C2C81E /* FilteredDaysViewModel.swift */; };
 		225A1F1728228CFF00C2C81E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A1F1628228CFE00C2C81E /* SettingsView.swift */; };
 		225A1F192822903700C2C81E /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A1F182822903600C2C81E /* SettingsViewModel.swift */; };
+		22775C9B2823CD2800849BE3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22775C9A2823CD2800849BE3 /* User.swift */; };
+		22775C9D2823D1BC00849BE3 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22775C9C2823D1BC00849BE3 /* UserService.swift */; };
 		22848DB8281BDBBD00AF996F /* SkiDaysApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22848DB7281BDBBD00AF996F /* SkiDaysApp.swift */; };
 		22848DBA281BDBBD00AF996F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22848DB9281BDBBD00AF996F /* ContentView.swift */; };
 		22848DBC281BDBC800AF996F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22848DBB281BDBC800AF996F /* Assets.xcassets */; };
@@ -56,6 +58,8 @@
 		225A1F11282158C700C2C81E /* FilteredDaysViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredDaysViewModel.swift; sourceTree = "<group>"; };
 		225A1F1628228CFE00C2C81E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		225A1F182822903600C2C81E /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		22775C9A2823CD2800849BE3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		22775C9C2823D1BC00849BE3 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		22848DB4281BDBBD00AF996F /* SkiDays.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkiDays.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22848DB7281BDBBD00AF996F /* SkiDaysApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiDaysApp.swift; sourceTree = "<group>"; };
 		22848DB9281BDBBD00AF996F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -120,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				225A1EFC28201B4300C2C81E /* SkiDay.swift */,
+				22775C9A2823CD2800849BE3 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -401,6 +406,7 @@
 			isa = PBXGroup;
 			children = (
 				22C7A060281FF3C1003A9936 /* SkiDayService.swift */,
+				22775C9C2823D1BC00849BE3 /* UserService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -489,6 +495,7 @@
 				225A1F12282158C700C2C81E /* FilteredDaysViewModel.swift in Sources */,
 				22848DDB281BEAC700AF996F /* DisciplineButtonView.swift in Sources */,
 				225A1EFA282018F300C2C81E /* TrainingListViewModel.swift in Sources */,
+				22775C9B2823CD2800849BE3 /* User.swift in Sources */,
 				22848DD8281BEA4A00AF996F /* HomeView.swift in Sources */,
 				22848DDE281BEF1C00AF996F /* TrainingDetailsView.swift in Sources */,
 				22928AE5281D25EB000FCEFA /* ConditionsButtonViewModel.swift in Sources */,
@@ -501,6 +508,7 @@
 				225A1F012820FB4E00C2C81E /* DeleteDayViewModel.swift in Sources */,
 				22848DE3281BF6FB00AF996F /* TrainingsListView.swift in Sources */,
 				225A1F1728228CFF00C2C81E /* SettingsView.swift in Sources */,
+				22775C9D2823D1BC00849BE3 /* UserService.swift in Sources */,
 				22928AE1281D2291000FCEFA /* PickDisciplineButton.swift in Sources */,
 				22848DCF281BDF5E00AF996F /* CustomInputField.swift in Sources */,
 				225A1F192822903700C2C81E /* SettingsViewModel.swift in Sources */,

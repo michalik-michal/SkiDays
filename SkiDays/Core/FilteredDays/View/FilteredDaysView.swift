@@ -10,9 +10,13 @@ import SwiftUI
 struct FilteredDaysView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var viewModel = FilteredDaysViewModel()
-    
+    @ObservedObject var viewModel: FilteredDaysViewModel
     let discipline: String
+    init(user: User, discipline: String){
+        self.viewModel = FilteredDaysViewModel(user: user)
+        self.discipline = discipline
+    }
+    
     
     var title: String{
         switch discipline{
@@ -54,11 +58,11 @@ struct FilteredDaysView: View {
     }
 }
 
-struct FilteredDaysView_Previews: PreviewProvider {
-    static var previews: some View {
-        FilteredDaysView(discipline: "SL")
-    }
-}
+//struct FilteredDaysView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FilteredDaysView(discipline: "SL")
+//    }
+//}
 
 extension FilteredDaysView{
     

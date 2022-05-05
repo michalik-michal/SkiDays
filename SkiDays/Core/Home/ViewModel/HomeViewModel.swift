@@ -13,6 +13,9 @@ class HomeViewModel: ObservableObject{
     @Published var disciplineFilter = ""
     
     let service = SkiDayService()
+    let user: User
+    
+    
     
     
     func numberOfDisciplineDays( _ discipline: String) -> Int{
@@ -22,16 +25,15 @@ class HomeViewModel: ObservableObject{
         return filteredSkiDays.count
     }
     
-    
-    
-    init(){
-        fetchSkiDays()
+    init(user: User){
+        self.user = user
+        self.fetchUserSkidays()
     }
     
-    func fetchSkiDays(){
-        service.fetchSkiDays { skiDays in
+    func fetchUserSkidays(){
+        guard let uid = user.id else {return}
+        service.fetchSkiDaysForUid(forUid: uid) { skiDays in
             self.skiDays = skiDays
-            
         }
     }
 }

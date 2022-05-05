@@ -11,12 +11,16 @@ struct DisciplineButtonView: View {
     
     var discipline: String
     var days: Int
+    @ObservedObject var viewModel = AuthViewModel()
     
     
     var body: some View {
         
         NavigationLink{
-            FilteredDaysView(discipline: discipline)
+            if let user = viewModel.currentUser{
+                FilteredDaysView(user: user,discipline: discipline)
+            }
+            
         }label: {
             Text("\(discipline): \(days)")
                 .foregroundColor(.white)

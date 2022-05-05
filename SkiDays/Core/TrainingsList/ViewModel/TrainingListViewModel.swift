@@ -12,27 +12,18 @@ class TrainingListViewModel: ObservableObject{
     
     @Published var skiDays = [SkiDay]()
     
-    let service = SkiDayService()
+    private let service = SkiDayService()
+    let user: User
     
-    init(){
-        fetchSkidays()
-        
-//        let db = Firestore.firestore()
-//        db.collection("skidays").addSnapshotListener{(snap, error) in
-//            if error != nil {
-//                print("error")
-//                return
-//            }
-//            for i in snap!.documentChanges{
-//                if i.type == .added{
-//                    self.fetchSkidays()
-//                }
-//            }
-//        }
+    init(user: User){
+        self.user = user
+        self.fetchUserSkidays()
     }
+
     
-    func fetchSkidays(){
-        service.fetchSkiDays { skiDays in
+    func fetchUserSkidays(){
+        guard let uid = user.id else {return}
+        service.fetchSkiDaysForUid(forUid: uid) { skiDays in
             self.skiDays = skiDays
         }
     }
