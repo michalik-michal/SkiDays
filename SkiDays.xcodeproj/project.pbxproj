@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		225A1EFA282018F300C2C81E /* TrainingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A1EF9282018F300C2C81E /* TrainingListViewModel.swift */; };
 		225A1EFD28201B4300C2C81E /* SkiDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A1EFC28201B4300C2C81E /* SkiDay.swift */; };
-		225A1F012820FB4E00C2C81E /* DeleteDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A1F002820FB4E00C2C81E /* DeleteDayViewModel.swift */; };
+		225A1F012820FB4E00C2C81E /* TrainingDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A1F002820FB4E00C2C81E /* TrainingDetailsViewModel.swift */; };
 		225A1F0728214C1C00C2C81E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A1F0628214C1B00C2C81E /* HomeViewModel.swift */; };
 		225A1F0F2821559100C2C81E /* FilteredDaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A1F0E2821559100C2C81E /* FilteredDaysView.swift */; };
 		225A1F12282158C700C2C81E /* FilteredDaysViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A1F11282158C700C2C81E /* FilteredDaysViewModel.swift */; };
@@ -52,7 +52,7 @@
 /* Begin PBXFileReference section */
 		225A1EF9282018F300C2C81E /* TrainingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingListViewModel.swift; sourceTree = "<group>"; };
 		225A1EFC28201B4300C2C81E /* SkiDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiDay.swift; sourceTree = "<group>"; };
-		225A1F002820FB4E00C2C81E /* DeleteDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDayViewModel.swift; sourceTree = "<group>"; };
+		225A1F002820FB4E00C2C81E /* TrainingDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingDetailsViewModel.swift; sourceTree = "<group>"; };
 		225A1F0628214C1B00C2C81E /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		225A1F0E2821559100C2C81E /* FilteredDaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredDaysView.swift; sourceTree = "<group>"; };
 		225A1F11282158C700C2C81E /* FilteredDaysViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredDaysViewModel.swift; sourceTree = "<group>"; };
@@ -139,7 +139,7 @@
 		225A1EFF2820FB3E00C2C81E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				225A1F002820FB4E00C2C81E /* DeleteDayViewModel.swift */,
+				225A1F002820FB4E00C2C81E /* TrainingDetailsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -505,7 +505,7 @@
 				22848DE6281BF76A00AF996F /* TrainingRowView.swift in Sources */,
 				22848DD3281BDF9600AF996F /* RoundedShape.swift in Sources */,
 				225A1F0728214C1C00C2C81E /* HomeViewModel.swift in Sources */,
-				225A1F012820FB4E00C2C81E /* DeleteDayViewModel.swift in Sources */,
+				225A1F012820FB4E00C2C81E /* TrainingDetailsViewModel.swift in Sources */,
 				22848DE3281BF6FB00AF996F /* TrainingsListView.swift in Sources */,
 				225A1F1728228CFF00C2C81E /* SettingsView.swift in Sources */,
 				22775C9D2823D1BC00849BE3 /* UserService.swift in Sources */,

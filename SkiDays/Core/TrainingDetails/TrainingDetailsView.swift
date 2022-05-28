@@ -12,7 +12,7 @@ struct TrainingDetailsView: View {
     let skiDay: SkiDay
     
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var viewModel = DeleteDayViewModel()
+    @ObservedObject var viewModel = TrainingDetailsViewModel()
     
     var body: some View {
         
@@ -110,7 +110,8 @@ extension TrainingDetailsView{
     }
     var deleteButton: some View{
         Button {
-            //
+            viewModel.deleteSkiDay(skiDay)
+            presentationMode.wrappedValue.dismiss()
         } label: {
             Text("Delete")
                 .font(.headline)
