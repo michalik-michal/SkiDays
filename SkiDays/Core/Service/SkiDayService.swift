@@ -37,7 +37,7 @@ struct SkiDayService{
         Firestore.firestore().collection("skidays")
             
             .order(by: "date", descending: true) //hours (?)
-            .getDocuments { snapshot, _ in
+            .addSnapshotListener { snapshot, _ in
             guard let documents = snapshot?.documents else {return}
 
             let skiDays = documents.compactMap({try? $0.data(as: SkiDay.self)})
@@ -51,7 +51,7 @@ struct SkiDayService{
             
             .whereField("uid", isEqualTo: uid)
             //.order(by: "date", descending: true) //hours (?)
-            .getDocuments { snapshot, _ in
+            .addSnapshotListener { snapshot, _ in
             guard let documents = snapshot?.documents else {return}
 
             let skiDays = documents.compactMap({try? $0.data(as: SkiDay.self)})

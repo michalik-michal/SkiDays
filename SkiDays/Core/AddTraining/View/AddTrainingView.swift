@@ -111,14 +111,14 @@ extension AddTrainingView{
                                     place: place,
                                     conditions: conditions,
                                     runs: Int(runs) ?? 0,
-                                    gates: Int(gates) ?? 0, 
+                                    gates: Int(gates) ?? 0,
                                     notes: notes)
+             presentationMode.wrappedValue.dismiss()
              
          } label: {
              Text("Done")
                  .foregroundColor(.darkerBlue)
                  .font(.system(size: 20))
-                 
                  .padding(.top, 15)
                  .padding(.bottom, 5)
          }
