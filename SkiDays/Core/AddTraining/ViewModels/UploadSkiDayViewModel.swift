@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class UploadSkiDayViewModel: ObservableObject{
     
@@ -28,6 +29,18 @@ class UploadSkiDayViewModel: ObservableObject{
             }
         }
     }
-    
-    
+    func provideTitle(_ discipline: String) -> String{
+        
+        if discipline == ""{
+            return "Add New Training"
+        }
+        if discipline == "FREE"{
+            return "FREE SKIING"
+        }
+        if discipline == "PARA"{
+            return "PARALLEL"
+        }else{
+            return discipline
+        }
+    }
 }

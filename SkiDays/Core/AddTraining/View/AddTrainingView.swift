@@ -32,8 +32,6 @@ struct AddTrainingView: View {
     @State private var gates: String = ""
     @State private var notes: String = ""
     
-   
-    
     let buttons: [[DisciplineButtonViewModel]] = [
         [.SL, .GS, .SG ],
         [.DH, .FREE, .PARA]
@@ -48,7 +46,7 @@ struct AddTrainingView: View {
                     doneButton
                 }
                 HStack{
-                    Text("Add New Training")
+                    Text(viewModel.provideTitle(discipline))
                         .font(.largeTitle).bold()
                     Spacer()
                 }
@@ -152,7 +150,6 @@ extension AddTrainingView{
                 ForEach(row, id: \.self){item in
                     Button {
                         discipline = item.rawValue
-                        
                     } label: {
                         Text(item.rawValue)
                             .foregroundColor(.white)
