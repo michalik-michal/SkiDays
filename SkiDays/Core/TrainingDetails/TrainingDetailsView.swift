@@ -13,6 +13,7 @@ struct TrainingDetailsView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel = TrainingDetailsViewModel()
+    @State private var showingConfirmation = false
     
     var body: some View {
         
@@ -70,7 +71,7 @@ struct TrainingDetailsView: View {
 
 struct TrainingDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        TrainingDetailsView(skiDay: SkiDay(id: "xd", date: "24/12/20", discipline: "SL", gates: 40, notes: "Ez", place: "Home", runs: 10, conditions: "Bad", uid: "skkkrt"))
+        TrainingDetailsView(skiDay: SkiDay(id: "1234", date: "24/12/20", discipline: "SL", gates: 40, notes: "Good day", place: "Home", runs: 10, conditions: "Bad", uid: "skkkrt"))
     }
 }
 
@@ -110,8 +111,8 @@ extension TrainingDetailsView{
     }
     var deleteButton: some View{
         Button {
-            viewModel.deleteSkiDay(skiDay)
-            presentationMode.wrappedValue.dismiss()
+            showingConfirmation = true
+            
         } label: {
             Text("Delete")
                 .font(.headline)
@@ -121,6 +122,17 @@ extension TrainingDetailsView{
                 .background(Color.red)
                 .clipShape(Capsule())
                 
+        }
+        .alert(isPresented: $showingConfirmation){
+            Alert(
+                title: Text("Are you sure?"),
+                message: Text("Training will be deleted permanently."),
+                primaryButton: .destructive(Text("Delete")){
+                    viewModel.deleteSkiDay(skiDay)
+                    presentationMode.wrappedValue.dismiss()
+                },
+                secondaryButton: .cancel()
+            )
         }
         .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 0)
     }
