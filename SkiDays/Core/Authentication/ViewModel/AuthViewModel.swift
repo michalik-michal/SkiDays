@@ -29,6 +29,7 @@ class AuthViewModel: ObservableObject{
             }
             guard let user = result?.user else {return}
             self.userSession = user
+            self.fetchUser()
         }
     }
     
@@ -43,6 +44,7 @@ class AuthViewModel: ObservableObject{
             
             guard let user = result?.user else {return}
             self.userSession = user
+            self.fetchUser()
             
             let data = ["email" : email,
                         "username" : username.lowercased(),
