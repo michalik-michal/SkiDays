@@ -64,18 +64,18 @@ struct AddTrainingView: View {
                             .keyboardType(.numberPad)
                         CustomInputField(imageName: "italic", placeholderText: "Number of gates", text: $gates)
                             .keyboardType(.numberPad)
-                        
                     }
                     .padding(.top, 40)
                     
                     Text("Enter your notes")
                         .font(.title).bold()
                     
-                    notesView 
-                        
-                                
+                    notesView
                 }
             }
+        }
+        .onTapGesture {
+            self.endTextEditing()
         }
         .onReceive(viewModel.$didUploadSkiDay, perform: { succes in
             if succes{
@@ -165,6 +165,5 @@ extension AddTrainingView{
             }
         }
     }
-    
 }
 
