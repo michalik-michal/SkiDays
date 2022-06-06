@@ -3,26 +3,17 @@
 //  SkiDays
 //
 //  Created by MacOS on 29/04/2022.
-//
 
-// Date datePicker
-// Discipline pickerView?
-// Conditions PickerView?
-
-// Place TextField
-// Runs  Text Field
-// Gates Text Field
-// Notes Text View
-
-// Video Button
 
 import SwiftUI
+import AVKit
 
 struct AddTrainingView: View {
 
     
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel = UploadSkiDayViewModel()
+    @StateObject var imagePicker = ImagePickerViewModel()
     
     @State private var date = Date()
     @State private var conditions: String = ""
@@ -31,6 +22,8 @@ struct AddTrainingView: View {
     @State private var runs: String = ""
     @State private var gates: String = ""
     @State private var notes: String = ""
+    
+    @State private var isShowingVideoPicker: Bool = false
     
     let buttons: [[DisciplineButtonViewModel]] = [
         [.SL, .GS, .SG ],
@@ -71,9 +64,67 @@ struct AddTrainingView: View {
                         .font(.title).bold()
                     
                     notesView
+                    Text("Add video")
+                        .font(.title).bold()
+                    
+                    Image(systemName: "plus")
+                        .foregroundColor(.darkerBlue)
+                        .frame(height: 200)
+                        .frame(maxWidth: .infinity)
+                        .font(.system(size: 40))
+                        .overlay(RoundedRectangle(cornerRadius: 16)
+                                    .stroke(.gray.opacity(0.2), lineWidth: 2))
+                        .onTapGesture {
+                            imagePicker.openImagePicker()
+                        }
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 10){
+                           
+                            
+                            ForEach(imagePicker.fetchedPhotos){photo in
+                                ThumbnailView(photo: photo)
+                                    .onTapGesture {
+                                        imagePicker.extractPreviewData(asset: photo.asset)
+                                        imagePicker.showPreview.toggle()
+                                    }
+                            }
+                            
+                            if imagePicker.libraryStatus == .denied || imagePicker.libraryStatus == .limited{
+                                VStack(spacing: 10){
+                                    Text(imagePicker.libraryStatus == .denied ? "Allow Acces For Videos" : "Select More Videos")
+                                        .foregroundColor(.gray)
+                                    Button(action: {
+                                        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!,options: [:],
+                                        completionHandler: nil)
+                                    }) {
+                                        Text(imagePicker.libraryStatus == .denied ? "Allow Acces" : "Select More")
+                                            .foregroundColor(.white)
+                                            .fontWeight(.bold)
+                                            .padding(.vertical, 10)
+                                            .padding(.horizontal)
+                                            .background(Color.blue)
+                                            .cornerRadius(5)
+                                    }
+                                }
+                                .frame(height: 150)
+                            }
+                        }
+                        .padding()
+                    }
+                    .frame(height: imagePicker.showImagePicker ? 200 : 0)
+                    .background(Color.primary.opacity(0.04))
+                    .opacity(imagePicker.showImagePicker ? 1 : 0)
                 }
             }
         }
+        .onAppear(perform: imagePicker.setUp)
+        .sheet(isPresented: $imagePicker.showPreview, onDismiss: {
+            imagePicker.selectedVideoPreview = nil
+            imagePicker.selectedImagePreview = nil
+        },content: {
+            PreviewView()
+                .environmentObject(imagePicker)
+        })
         .onTapGesture {
             self.endTextEditing()
         }
@@ -135,15 +186,6 @@ extension AddTrainingView{
         }
     }
 
-    var notesView: some View{
-        
-        TextEditor(text: $notes)
-            .frame(height: 200)
-            .overlay(RoundedRectangle(cornerRadius: 16)
-                        .stroke(.gray.opacity(0.2), lineWidth: 2))
-        
-    }
-    
     var disciplineButtonsGrid: some View{
         ForEach(buttons, id: \.self){ row in
             HStack{
@@ -165,5 +207,71 @@ extension AddTrainingView{
             }
         }
     }
+    
+    var notesView: some View{
+        
+        TextEditor(text: $notes)
+            .frame(height: 200)
+            .overlay(RoundedRectangle(cornerRadius: 16)
+                        .stroke(.gray.opacity(0.2), lineWidth: 2))
+        
+    }
+}
+
+struct ThumbnailView: View{
+    
+    var photo: Asset
+    
+    var body: some View{
+        
+        ZStack(alignment: .bottomTrailing) {
+            Image(uiImage: photo.image)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 150, height: 150)
+                .cornerRadius(10)
+            
+            if photo.asset.mediaType == .video{
+                Image(systemName: "vido.fill")
+                    .font(.title2)
+                    .foregroundColor(.white)
+                    .padding(8)
+            }
+        }
+        
+    }
+}
+
+struct PreviewView: View{
+    
+    @EnvironmentObject var imagePicekr: ImagePickerViewModel
+    
+    var body: some View{
+        NavigationView{
+            ZStack{
+                
+                if imagePicekr.selectedVideoPreview != nil{
+                    VideoPlayer(player: AVPlayer(playerItem: AVPlayerItem(asset: imagePicekr.selectedVideoPreview)))
+                }
+                
+                if imagePicekr.selectedImagePreview != nil{
+                    
+                    Image(uiImage: imagePicekr.selectedImagePreview)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                }
+            }
+            .ignoresSafeArea(.all, edges: .bottom)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {}) {
+                        Text("Add")
+                    }
+                }
+            }
+        }
+    }
+    
 }
 
