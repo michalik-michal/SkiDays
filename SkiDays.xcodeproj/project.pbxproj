@@ -274,7 +274,7 @@
 				22928AE6281D3027000FCEFA /* TextFields */,
 				22848DE4281BF75A00AF996F /* RowViews */,
 				22848DD9281BEAA900AF996F /* Buttons */,
-				2297F093284CA5AC00ACDBDF /* VideoPicker.swift */,
+				229D3AB8284E207E00B52B9D /* VideoPicker */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -408,6 +408,14 @@
 				22848DD0281BDF7100AF996F /* AuthenticationHeader.swift */,
 			);
 			path = Shapes;
+			sourceTree = "<group>";
+		};
+		229D3AB8284E207E00B52B9D /* VideoPicker */ = {
+			isa = PBXGroup;
+			children = (
+				2297F093284CA5AC00ACDBDF /* VideoPicker.swift */,
+			);
+			path = VideoPicker;
 			sourceTree = "<group>";
 		};
 		22C7A05F281FF398003A9936 /* Service */ = {

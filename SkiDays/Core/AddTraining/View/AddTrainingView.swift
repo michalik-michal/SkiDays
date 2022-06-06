@@ -22,8 +22,8 @@ struct AddTrainingView: View {
     @State private var runs: String = ""
     @State private var gates: String = ""
     @State private var notes: String = ""
-    
-  
+    @State private var isShowingVideoPicker: Bool = false
+    @State private var video = UIImage()
     
     let buttons: [[DisciplineButtonViewModel]] = [
         [.SL, .GS, .SG ],
@@ -67,20 +67,13 @@ struct AddTrainingView: View {
                     Text("Add video")
                         .font(.title).bold()
                     
-                    Image(systemName: "plus")
-                        .foregroundColor(.darkerBlue)
-                        .frame(height: 200)
-                        .frame(maxWidth: .infinity)
-                        .font(.system(size: 40))
-                        .overlay(RoundedRectangle(cornerRadius: 16)
-                                    .stroke(.gray.opacity(0.2), lineWidth: 2))
-                        .onTapGesture {
-                            //
-                        }
-                    
+                    addVideoView
                 }
             }
         }
+        .fullScreenCover(isPresented: $isShowingVideoPicker, content: {
+            VideoPicker(video: $video)
+        })
         .onTapGesture {
             self.endTextEditing()
         }
@@ -171,6 +164,19 @@ extension AddTrainingView{
             .overlay(RoundedRectangle(cornerRadius: 16)
                         .stroke(.gray.opacity(0.2), lineWidth: 2))
         
+    }
+    
+    var addVideoView: some View{
+        Image(systemName: "plus")
+            .foregroundColor(.darkerBlue)
+            .frame(height: 200)
+            .frame(maxWidth: .infinity)
+            .font(.system(size: 40))
+            .overlay(RoundedRectangle(cornerRadius: 16)
+                        .stroke(.gray.opacity(0.2), lineWidth: 2))
+            .onTapGesture {
+                isShowingVideoPicker.toggle()
+            }
     }
 }
 
