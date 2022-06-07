@@ -68,6 +68,8 @@ struct AddTrainingView: View {
                         .font(.title).bold()
                     
                     addVideoView
+                    
+                        
                 }
             }
         }

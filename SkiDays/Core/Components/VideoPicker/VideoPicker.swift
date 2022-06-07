@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct VideoPicker: UIViewControllerRepresentable{
 
@@ -36,11 +37,30 @@ struct VideoPicker: UIViewControllerRepresentable{
         }
         
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            //ulpoad image to firebase
+            
+            guard let uid = Firebase.Auth.auth().currentUser?.uid else {return}
+            let filename = uid + ".mov"
+            let ref = Storage.storage().reference().child("videos").child(filename)
+            if let url = info[.mediaURL] as? URL {
+                
+                ref.putFile(from: url, metadata: nil) { metadata, error in
+                    if let error = error{
+                        print("failed to upload video -- ",error)
+                        return
+                    }
+                    ref.downloadURL { downloadUrl, error in
+                        if let error = error{
+                            print("error while generating download url", error)
+                            return
+                        }
+                        guard let url = downloadUrl?.absoluteString else {return}
+                        print("URLLLLL", url)
+                    }
+                }
+            }
             picker.dismiss(animated: true)
         }
     }
-
 }
 
 
