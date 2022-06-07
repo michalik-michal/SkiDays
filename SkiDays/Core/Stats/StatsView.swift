@@ -15,19 +15,26 @@ struct StatsView: View {
         ScrollView{
             VStack{
                 HStack{
-                    Button {
-                        presentationMode.wrappedValue.dismiss()
-                    } label: {
-                        Image(systemName: "arrow.left")
-                            .foregroundColor(.darkerBlue)
-                            .font(.system(size: 25))
-                            .frame(width: 30, height: 30)
-                            .padding(.top, 15)
-                            .padding(.bottom, 5)
-                    }
+                    backButton
                     Spacer()
                 }
-                Text("This is stats view")
+                HStack{
+                    Text("Statistics")
+                        .font(.largeTitle).bold()
+                    Spacer()
+                }
+                Circle()
+                    .fill(.green)
+                    .frame(width: 250, height: 250)
+                    .padding(.bottom, 30)
+                VStack(spacing: 30){
+                    DisciplineStatsRow(discipline: "Slalom")
+                    DisciplineStatsRow(discipline: "Giant Slalom")
+                    DisciplineStatsRow(discipline: "Super G")
+                    DisciplineStatsRow(discipline: "Downhill")
+                    DisciplineStatsRow(discipline: "Parallel")
+                    DisciplineStatsRow(discipline: "Free Skiing")
+                }
             }
         }
         .padding()
@@ -40,5 +47,21 @@ struct StatsView: View {
 struct StatsView_Previews: PreviewProvider {
     static var previews: some View {
         StatsView()
+    }
+}
+
+extension StatsView{
+    
+    var backButton: some View {
+        Button {
+            presentationMode.wrappedValue.dismiss()
+        } label: {
+            Image(systemName: "arrow.left")
+                .foregroundColor(.darkerBlue)
+                .font(.system(size: 25))
+                .frame(width: 30, height: 30)
+                .padding(.top, 15)
+                .padding(.bottom, 5)
+        }
     }
 }

@@ -55,9 +55,9 @@ struct TrainingRowView: View {
         .cornerRadius(20)
     }
 }
-//
-//struct TrainingRowView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TrainingRowView(skiDay: )
-//    }
-//}
+
+struct TrainingRowView_Previews: PreviewProvider {
+    static var previews: some View {
+        TrainingRowView(skiDay: SkiDay(date: "111", discipline: "SL", gates: 12, notes: "es", place: "dom", runs: 0, conditions: "bad", uid: "1234"))
+    }
+}
