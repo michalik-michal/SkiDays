@@ -14,20 +14,12 @@ class HomeViewModel: ObservableObject{
     
     let service = SkiDayService()
     let user: User
-    
-    
-    
-    
-    func numberOfDisciplineDays( _ discipline: String) -> Int{
-        let filteredSkiDays = skiDays.filter({
-            $0.discipline.contains(discipline)
-        })
-        return filteredSkiDays.count
-    }
+
     
     init(user: User){
         self.user = user
         self.fetchUserSkidays()
+
     }
     
     func fetchUserSkidays(){
@@ -35,5 +27,14 @@ class HomeViewModel: ObservableObject{
         service.fetchSkiDaysForUid(forUid: uid) { skiDays in
             self.skiDays = skiDays
         }
+        
     }
+    func numberOfDisciplineDays( _ discipline: String) -> Int{
+        let filteredSkiDays = skiDays.filter({
+            $0.discipline.contains(discipline)
+        })
+        return filteredSkiDays.count
+    }
+    
+        
 }

@@ -10,10 +10,16 @@ import SwiftUI
 struct StatsView: View {
     
     @Environment(\.presentationMode) var presentationMode
+    @ObservedObject var viewModel: StatsViewModel
+    
+    init(user: User){
+        self.viewModel = StatsViewModel(user: user)
+        
+    }
     
     var body: some View {
         ScrollView{
-            VStack{
+            LazyVStack{
                 HStack{
                     backButton
                     Spacer()
@@ -21,6 +27,7 @@ struct StatsView: View {
                 HStack{
                     Text("Statistics")
                         .font(.largeTitle).bold()
+                        
                     Spacer()
                 }
                 Circle()
@@ -28,12 +35,11 @@ struct StatsView: View {
                     .frame(width: 250, height: 250)
                     .padding(.bottom, 30)
                 VStack(spacing: 30){
-                    DisciplineStatsRow(discipline: "Slalom")
-                    DisciplineStatsRow(discipline: "Giant Slalom")
-                    DisciplineStatsRow(discipline: "Super G")
-                    DisciplineStatsRow(discipline: "Downhill")
-                    DisciplineStatsRow(discipline: "Parallel")
-                    DisciplineStatsRow(discipline: "Free Skiing")
+                    ForEach(viewModel.stats){stat in
+                        
+                        DisciplineStatsRow(discipline: stat)
+                        
+                    }
                 }
             }
         }
@@ -44,11 +50,11 @@ struct StatsView: View {
         
 }
 
-struct StatsView_Previews: PreviewProvider {
-    static var previews: some View {
-        StatsView()
-    }
-}
+//struct StatsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        StatsView()
+//    }
+//}
 
 extension StatsView{
     

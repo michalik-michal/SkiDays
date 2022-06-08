@@ -48,6 +48,9 @@
 		22C7A061281FF3C1003A9936 /* SkiDayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C7A060281FF3C1003A9936 /* SkiDayService.swift */; };
 		22C7A063281FF67A003A9936 /* UploadSkiDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C7A062281FF67A003A9936 /* UploadSkiDayViewModel.swift */; };
 		22F04E33284F56C100A5F03B /* DisciplineStatsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F04E32284F56C100A5F03B /* DisciplineStatsRow.swift */; };
+		22F04E37284F5E6B00A5F03B /* StatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F04E36284F5E6B00A5F03B /* StatsViewModel.swift */; };
+		22F04E39284F5EC000A5F03B /* DisciplineStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F04E38284F5EC000A5F03B /* DisciplineStats.swift */; };
+		22F04E3B284F601300A5F03B /* StatsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F04E3A284F601300A5F03B /* StatsService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +92,9 @@
 		22C7A060281FF3C1003A9936 /* SkiDayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiDayService.swift; sourceTree = "<group>"; };
 		22C7A062281FF67A003A9936 /* UploadSkiDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadSkiDayViewModel.swift; sourceTree = "<group>"; };
 		22F04E32284F56C100A5F03B /* DisciplineStatsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisciplineStatsRow.swift; sourceTree = "<group>"; };
+		22F04E36284F5E6B00A5F03B /* StatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewModel.swift; sourceTree = "<group>"; };
+		22F04E38284F5EC000A5F03B /* DisciplineStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisciplineStats.swift; sourceTree = "<group>"; };
+		22F04E3A284F601300A5F03B /* StatsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +133,7 @@
 			children = (
 				225A1EFC28201B4300C2C81E /* SkiDay.swift */,
 				22775C9A2823CD2800849BE3 /* User.swift */,
+				22F04E38284F5EC000A5F03B /* DisciplineStats.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -374,7 +381,8 @@
 		22928AD9281C0B0C000FCEFA /* Stats */ = {
 			isa = PBXGroup;
 			children = (
-				22928ADA281C0B1D000FCEFA /* StatsView.swift */,
+				22F04E35284F5E5800A5F03B /* ViewModel */,
+				22F04E34284F5E5300A5F03B /* View */,
 			);
 			path = Stats;
 			sourceTree = "<group>";
@@ -426,6 +434,7 @@
 			children = (
 				22C7A060281FF3C1003A9936 /* SkiDayService.swift */,
 				22775C9C2823D1BC00849BE3 /* UserService.swift */,
+				22F04E3A284F601300A5F03B /* StatsService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -436,6 +445,22 @@
 				22F04E32284F56C100A5F03B /* DisciplineStatsRow.swift */,
 			);
 			path = DisciplineStats;
+			sourceTree = "<group>";
+		};
+		22F04E34284F5E5300A5F03B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				22928ADA281C0B1D000FCEFA /* StatsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		22F04E35284F5E5800A5F03B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				22F04E36284F5E6B00A5F03B /* StatsViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -533,16 +558,19 @@
 				22848DD3281BDF9600AF996F /* RoundedShape.swift in Sources */,
 				225A1F0728214C1C00C2C81E /* HomeViewModel.swift in Sources */,
 				225A1F012820FB4E00C2C81E /* TrainingDetailsViewModel.swift in Sources */,
+				22F04E39284F5EC000A5F03B /* DisciplineStats.swift in Sources */,
 				22848DE3281BF6FB00AF996F /* TrainingsListView.swift in Sources */,
 				225A1F1728228CFF00C2C81E /* SettingsView.swift in Sources */,
 				22775C9D2823D1BC00849BE3 /* UserService.swift in Sources */,
 				22928AE1281D2291000FCEFA /* PickDisciplineButton.swift in Sources */,
 				22848DCF281BDF5E00AF996F /* CustomInputField.swift in Sources */,
+				22F04E37284F5E6B00A5F03B /* StatsViewModel.swift in Sources */,
 				225A1F192822903700C2C81E /* SettingsViewModel.swift in Sources */,
 				22848DCB281BDD0600AF996F /* LoginView.swift in Sources */,
 				22C7A063281FF67A003A9936 /* UploadSkiDayViewModel.swift in Sources */,
 				22848DBA281BDBBD00AF996F /* ContentView.swift in Sources */,
 				22928ADF281D1EE7000FCEFA /* DisciplineButtonViewModel.swift in Sources */,
+				22F04E3B284F601300A5F03B /* StatsService.swift in Sources */,
 				22848DD5281BE0D700AF996F /* Extentions.swift in Sources */,
 				22848DE0281BEF5900AF996F /* DetailRowView.swift in Sources */,
 				22928ADB281C0B1D000FCEFA /* StatsView.swift in Sources */,
