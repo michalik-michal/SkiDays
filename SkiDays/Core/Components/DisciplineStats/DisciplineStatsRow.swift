@@ -9,12 +9,12 @@ import SwiftUI
 
 struct DisciplineStatsRow: View {
     
-    var discipline: DisciplineStats
+    var stats: DisciplineStats
     
     var body: some View {
         VStack(spacing: 10){
             HStack{
-                Text(discipline.discipline)
+                Text(stats.discipline)
                     .font(.largeTitle).bold()
                 Spacer()
             }
@@ -22,16 +22,16 @@ struct DisciplineStatsRow: View {
             .padding(.top)
             HStack{
                 VStack(alignment: .leading,spacing: 10){
-                    Text("Total runs: \(discipline.totalRuns)")
+                    Text("Total runs: \(stats.totalRuns)")
                         .font(.system(size: 20))
-                    Text("Total gates: \(discipline.totalGates)")
+                    Text("Total gates: \(stats.totalGates)")
                         .font(.system(size: 20))
                 }
                 Spacer()
                 VStack(alignment: .leading,spacing: 10){
-                    Text("Average runs: \(discipline.averageRuns)")
+                    Text("Average runs: \(stats.averageRuns)")
                         .font(.system(size: 20))
-                    Text("Average gates: \(discipline.averageGates)")
+                    Text("Average gates: \(stats.averageGates)")
                         .font(.system(size: 20))
                 }
             }
@@ -48,6 +48,6 @@ struct DisciplineStatsRow: View {
 
 struct DisciplineStatsRow_Previews: PreviewProvider {
     static var previews: some View {
-        DisciplineStatsRow(discipline: DisciplineStats(discipline: "SL", numberOfDays: 10, totalRuns: 100, totalGates: 10000, averageRuns: 10, averageGates: 30))
+        DisciplineStatsRow(stats: DisciplineStats(discipline: "SL", numberOfDays: 10, totalRuns: 100, totalGates: 10000, averageRuns: 10, averageGates: 30))
     }
 }
