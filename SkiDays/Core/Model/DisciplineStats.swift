@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 
 struct DisciplineStats: Identifiable{
 
-    var id: Int { 1 }
+    var id: String = UUID().uuidString
     var discipline: String
     var numberOfDays: Int
     var totalRuns: Int

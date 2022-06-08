@@ -36,9 +36,7 @@ struct StatsView: View {
                     .padding(.bottom, 30)
                 VStack(spacing: 30){
                     ForEach(viewModel.stats){stat in
-        
-                        DisciplineStatsRow(stats: stat)
-                        
+                            DisciplineStatsRow(stats: stat)
                     }
                 }
             }

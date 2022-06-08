@@ -32,14 +32,13 @@ class StatsViewModel: ObservableObject{
         }
     }
     func getStats(){
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             
-            let discipline = "SL"
-                
+            for discipline in self.disciplines {
+
                 let filteredSkiDays = self.skiDays.filter({
                     $0.discipline.contains(discipline)
                 })
-                
                 let discilpineDays = filteredSkiDays.count
                 var totalGates = 0
                 var totalRuns = 0
@@ -69,7 +68,7 @@ class StatsViewModel: ObservableObject{
                     averageGates: averageGates))
             
                 self.stats.append(stat)
-            
+            }
         }
     }
 }
