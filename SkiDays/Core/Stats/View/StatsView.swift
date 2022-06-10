@@ -34,6 +34,10 @@ struct StatsView: View {
                     .fill(.green)
                     .frame(width: 250, height: 250)
                     .padding(.bottom, 30)
+                    .overlay {
+                        Text("Add Chart")
+                            .foregroundColor(.white)
+                    }
                 VStack(spacing: 30){
                     ForEach(viewModel.stats){stat in
                             DisciplineStatsRow(stats: stat)
@@ -48,11 +52,11 @@ struct StatsView: View {
         
 }
 
-//struct StatsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        StatsView()
-//    }
-//}
+struct StatsView_Previews: PreviewProvider {
+    static var previews: some View {
+        StatsView(user: User(id: "123", username: "meszkos", fullname: "meszkos", email: "meszkos", uid: "123"))
+    }
+}
 
 extension StatsView{
     

@@ -29,9 +29,9 @@ struct DisciplineStatsRow: View {
                 }
                 Spacer()
                 VStack(alignment: .leading,spacing: 10){
-                    Text("Average runs: \(stats.averageRuns)")
+                    Text("Average: \(stats.averageRuns)")
                         .font(.system(size: 20))
-                    Text("Average gates: \(stats.averageGates)")
+                    Text("Average: \(stats.averageGates)")
                         .font(.system(size: 20))
                 }
             }
