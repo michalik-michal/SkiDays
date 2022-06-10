@@ -9,30 +9,40 @@ import SwiftUI
 
 struct MainTabView: View {
     
-    @State private var selectedIndex = 0
+    @State private var selectedIndex = 1
     @EnvironmentObject var viewModel: AuthViewModel
    
    
     var body: some View {
         if let user = viewModel.currentUser{
             TabView(selection: $selectedIndex){
-                HomeView(user: user)
+                
+                TrainingsListView(user: user)
                     .onTapGesture {
                         self.selectedIndex = 0
                     }
                     .tabItem {
-                        Image(systemName: "house")
-                        Text("Home")
+                        Image(systemName: "calendar")
+                        Text("SkiDays")
                     }.tag(0)
                 
-                TrainingsListView(user: user)
+                HomeView(user: user)
                     .onTapGesture {
                         self.selectedIndex = 1
                     }
                     .tabItem {
-                        Image(systemName: "calendar")
-                        Text("SkiDays")
+                        Image(systemName: "house")
+                        Text("Home")
                     }.tag(1)
+                
+                StatsView(user: user)
+                    .onTapGesture {
+                        self.selectedIndex = 2
+                    }
+                    .tabItem {
+                        Image(systemName: "waveform.path.ecg")
+                        Text("Stats")
+                    }.tag(2)
             }
             .foregroundColor(.black)
         }

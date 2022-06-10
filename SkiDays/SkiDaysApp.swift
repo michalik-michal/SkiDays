@@ -22,6 +22,7 @@ struct SkiDaysApp: App {
             NavigationView{
                 ContentView()
             }
+           
             .environmentObject(viewModel)
         }
     }

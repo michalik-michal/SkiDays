@@ -141,6 +141,7 @@
 		225A1EFE2820FB3900C2C81E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				22848DDD281BEF1C00AF996F /* TrainingDetailsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -338,7 +339,6 @@
 			children = (
 				225A1EFF2820FB3E00C2C81E /* ViewModel */,
 				225A1EFE2820FB3900C2C81E /* View */,
-				22848DDD281BEF1C00AF996F /* TrainingDetailsView.swift */,
 			);
 			path = TrainingDetails;
 			sourceTree = "<group>";

@@ -20,14 +20,14 @@ struct StatsView: View {
     var body: some View {
         ScrollView{
             LazyVStack{
-                HStack{
-                    backButton
-                    Spacer()
-                }
+//                HStack{
+//                    backButton
+//                    Spacer()
+//                }
                 HStack{
                     Text("Statistics")
                         .font(.largeTitle).bold()
-                        
+
                     Spacer()
                 }
                 Circle()
@@ -46,9 +46,11 @@ struct StatsView: View {
             }
         }
         .padding()
+        .padding(.top, 30)
+        .navigationBarTitle("")
         .navigationBarHidden(true)
-        
     }
+        
         
 }
 

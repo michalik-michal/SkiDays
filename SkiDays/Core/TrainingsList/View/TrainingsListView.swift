@@ -20,7 +20,7 @@ struct TrainingsListView: View {
         ScrollView{
             LazyVStack(spacing: 15){
                 HStack{
-                    Text("All Ski Days")
+                    Text("Ski Days")
                         .font(.largeTitle).bold()
                     Spacer()
    
@@ -35,16 +35,14 @@ struct TrainingsListView: View {
                     }
                 }
                 .padding(.top, 30)
-                
-                
-                
                 ForEach(viewModel.skiDays){skiDay in
                         TrainingRowView(skiDay: skiDay)
                 }
             }
         }
         .padding()
-        .navigationBarTitle("All Ski Days")
+        .navigationBarTitle("")
+        .navigationBarHidden(true)
         
     }
 }

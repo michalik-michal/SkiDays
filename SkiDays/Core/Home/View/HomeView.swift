@@ -36,19 +36,7 @@ struct HomeView: View {
                     .padding(.horizontal)
                     
                     
-                    NavigationLink {
-                        StatsView(user: viewModel.user)
-                    } label: {
-                        Text("Total: \(viewModel.skiDays.count)")
-                            .font(.system(size: 60))
-                            .foregroundColor(.white)
-                    }
-                    .frame(width: 300, height: 160)
-                    .background(Color.blue)
-                    .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                    .shadow(color: Color.primary.opacity(0.2), radius: 10, x: 0, y: 5)
-                    .padding(.top, 20)
-                    .padding(.bottom, 60)
+                    totalLabel
                     
                     
                     VStack(spacing: 60){
@@ -70,6 +58,7 @@ struct HomeView: View {
                     
                 }
                 .frame(maxWidth: .infinity)
+                .navigationTitle("")
                 .navigationBarHidden(true)
             }
         
@@ -81,3 +70,20 @@ struct HomeView: View {
 //        HomeView()
 //    }
 //}
+
+
+extension HomeView{
+    
+    var totalLabel: some View{
+        Text("Total: \(viewModel.skiDays.count)")
+            .font(.system(size: 60))
+            .foregroundColor(.white)
+            .frame(width: 300, height: 160)
+            .background(Color.blue)
+            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+            .shadow(color: Color.primary.opacity(0.2), radius: 10, x: 0, y: 5)
+            .padding(.top, 20)
+            .padding(.bottom, 60)
+    }
+    
+}
