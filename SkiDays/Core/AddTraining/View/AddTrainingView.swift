@@ -99,7 +99,7 @@ extension AddTrainingView{
     
     func fetchDate(date: Date) -> String{
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MM/dd/yy"
+            dateFormatter.dateFormat = "dd/MM/yy"
             let stringDate = dateFormatter.string(from: date)
             return stringDate
     }

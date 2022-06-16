@@ -54,14 +54,11 @@ struct HomeView: View {
                             DisciplineButtonView(discipline: "PARA", days: viewModel.numberOfDisciplineDays("PARA"))
                         }
                     }
-                    
-                    
                 }
                 .frame(maxWidth: .infinity)
                 .navigationTitle("")
                 .navigationBarHidden(true)
-            }
-        
+        }
     }
 }
 
