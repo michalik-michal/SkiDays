@@ -40,7 +40,7 @@ struct MainTabView: View {
                         self.selectedIndex = 2
                     }
                     .tabItem {
-                        Image(systemName: "waveform.path.ecg")
+                        Image(systemName: "align.vertical.bottom.fill")
                         Text("Stats")
                     }.tag(2)
             }

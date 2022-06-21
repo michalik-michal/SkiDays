@@ -18,19 +18,7 @@ struct TrainingDetailsView: View {
     var body: some View {
         
             ScrollView{
-                HStack{
-                    Button {
-                        presentationMode.wrappedValue.dismiss()
-                    } label: {
-                        Image(systemName: "arrow.left")
-                            .foregroundColor(.darkerBlue)
-                            .font(.system(size: 25))
-                            .frame(width: 30, height: 30)
-                            .padding(.top, 30)
-                            .padding(.bottom, 5)
-                    }
-                    Spacer()
-                }
+                buttonStack
 
                 HStack{
                     Text(skiDay.date)
@@ -60,7 +48,7 @@ struct TrainingDetailsView: View {
                     }
                     noteView
                     uploadVideoView
-                    deleteButton
+                    
                     Spacer()
                 }
             }
@@ -78,6 +66,47 @@ struct TrainingDetailsView_Previews: PreviewProvider {
 
 extension TrainingDetailsView{
     
+//MARK: - Button Stack
+    var buttonStack: some View{
+        HStack{
+            Button {
+                presentationMode.wrappedValue.dismiss()
+            } label: {
+                Image(systemName: "arrow.left")
+                    .foregroundColor(.darkerBlue)
+                    .font(.system(size: 25))
+                    .frame(width: 30, height: 30)
+                    .padding(.top, 30)
+                    .padding(.bottom, 5)
+            }
+            Spacer()
+            Button {
+                showingConfirmation = true
+                
+            } label: {
+                Image(systemName: "trash")
+                    .foregroundColor(.red)
+                    .font(.system(size: 25))
+                    .frame(width: 30, height: 30)
+                    .padding(.top, 30)
+                    .padding(.bottom, 5)
+            }
+            .alert(isPresented: $showingConfirmation){
+                Alert(
+                    title: Text("Are you sure?"),
+                    message: Text("Training will be deleted permanently."),
+                    primaryButton: .destructive(Text("Delete")){
+                        viewModel.deleteSkiDay(skiDay)
+                        presentationMode.wrappedValue.dismiss()
+                    },
+                    secondaryButton: .cancel()
+                )
+            }
+            .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 0)
+        }
+    }
+
+//MARK: - Notes View
     var noteView: some View{
         
         Text(skiDay.notes)
@@ -91,9 +120,8 @@ extension TrainingDetailsView{
             
     }
     
-
+//MARK: - Upload Video
     var uploadVideoView: some View{
-        
         
         Button {
             //Upload Video
@@ -109,32 +137,7 @@ extension TrainingDetailsView{
                 
         }
     }
-    var deleteButton: some View{
-        Button {
-            showingConfirmation = true
-            
-        } label: {
-            Text("Delete")
-                .font(.headline)
-                .foregroundColor(.white)
-                .frame(height: 50)
-                .frame(maxWidth: .infinity)
-                .background(Color.red)
-                .clipShape(Capsule())
-                
-        }
-        .alert(isPresented: $showingConfirmation){
-            Alert(
-                title: Text("Are you sure?"),
-                message: Text("Training will be deleted permanently."),
-                primaryButton: .destructive(Text("Delete")){
-                    viewModel.deleteSkiDay(skiDay)
-                    presentationMode.wrappedValue.dismiss()
-                },
-                secondaryButton: .cancel()
-            )
-        }
-        .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 0)
-    }
+    
+
     
 }
