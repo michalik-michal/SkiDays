@@ -6,6 +6,8 @@
 //
 
 import Firebase
+import MobileCoreServices
+
 
 struct SkiDayService{
      
@@ -50,7 +52,6 @@ struct SkiDayService{
         Firestore.firestore().collection("skidays")
             
             .whereField("uid", isEqualTo: uid)
-            //.order(by: "date", descending: true) //hours (?)
             .addSnapshotListener { snapshot, _ in
             guard let documents = snapshot?.documents else {return}
 
@@ -67,4 +68,5 @@ struct SkiDayService{
             }
         }
     }
+    
 }

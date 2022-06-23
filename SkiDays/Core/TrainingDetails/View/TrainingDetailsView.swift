@@ -19,7 +19,6 @@ struct TrainingDetailsView: View {
         
             ScrollView{
                 buttonStack
-
                 HStack{
                     Text(skiDay.date)
                         .font(.title)

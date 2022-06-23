@@ -8,6 +8,8 @@
 import SwiftUI
 import Firebase
 import FirebaseStorage
+import AVFoundation
+import MobileCoreServices
 
 struct VideoPicker: UIViewControllerRepresentable{
 
@@ -40,12 +42,22 @@ struct VideoPicker: UIViewControllerRepresentable{
         
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             
-            guard let uid = Firebase.Auth.auth().currentUser?.uid else {return}
-                //let filename = uid + ".mov"
-            
-            if let url = info[.mediaURL] as? URL {
+            if let videoURL = info[UIImagePickerController.InfoKey.mediaURL] as? NSURL{
+                //print(videoURL, "file url")
+                let filename = "someFilename.mov"
+                
+                Storage.storage().reference().child(filename).putFile(from: videoURL as URL, metadata: nil, completion: {(metadata, error) in
+                    if error != nil {
+                        print("failed uploading video:", error)
+                    }
+                    if let storageURL = metadata?.storageReference?.downloadURL{
+                        print(storageURL)
+                    }
+                    
+                })
                 
             }
+            
             picker.dismiss(animated: true)
         }
 
