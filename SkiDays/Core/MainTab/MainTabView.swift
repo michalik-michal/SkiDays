@@ -40,7 +40,7 @@ struct MainTabView: View {
                         self.selectedIndex = 2
                     }
                     .tabItem {
-                        Image(systemName: "align.vertical.bottom.fill")
+                        Image(systemName: "chart.bar.xaxis")
                         Text("Stats")
                     }.tag(2)
             }
