@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		20075CF428784EA7004743B1 /* SecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20075CF328784EA7004743B1 /* SecureTextField.swift */; };
+		20755F74287ACE60009E63DB /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20755F73287ACE60009E63DB /* SearchBar.swift */; };
 		225A1EFA282018F300C2C81E /* TrainingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A1EF9282018F300C2C81E /* TrainingListViewModel.swift */; };
 		225A1EFD28201B4300C2C81E /* SkiDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A1EFC28201B4300C2C81E /* SkiDay.swift */; };
 		225A1F012820FB4E00C2C81E /* TrainingDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A1F002820FB4E00C2C81E /* TrainingDetailsViewModel.swift */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		20075CF328784EA7004743B1 /* SecureTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureTextField.swift; sourceTree = "<group>"; };
+		20755F73287ACE60009E63DB /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		225A1EF9282018F300C2C81E /* TrainingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingListViewModel.swift; sourceTree = "<group>"; };
 		225A1EFC28201B4300C2C81E /* SkiDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiDay.swift; sourceTree = "<group>"; };
 		225A1F002820FB4E00C2C81E /* TrainingDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -114,6 +116,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20755F72287ACE50009E63DB /* SearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				20755F73287ACE60009E63DB /* SearchBar.swift */,
+			);
+			path = SearchBar;
+			sourceTree = "<group>";
+		};
 		225A1EF7282018D300C2C81E /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +292,7 @@
 		22848DC6281BDCC700AF996F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				20755F72287ACE50009E63DB /* SearchBar */,
 				22F04E31284F56AD00A5F03B /* DisciplineStats */,
 				229D3AB7284E1C5600B52B9D /* Shapes */,
 				22928AE6281D3027000FCEFA /* TextFields */,
@@ -572,6 +583,7 @@
 				22848DCB281BDD0600AF996F /* LoginView.swift in Sources */,
 				22C7A063281FF67A003A9936 /* UploadSkiDayViewModel.swift in Sources */,
 				22848DBA281BDBBD00AF996F /* ContentView.swift in Sources */,
+				20755F74287ACE60009E63DB /* SearchBar.swift in Sources */,
 				22928ADF281D1EE7000FCEFA /* DisciplineButtonViewModel.swift in Sources */,
 				22F04E3B284F601300A5F03B /* StatsService.swift in Sources */,
 				22848DD5281BE0D700AF996F /* Extentions.swift in Sources */,

@@ -11,6 +11,7 @@ import Firebase
 struct TrainingsListView: View {
     
     @ObservedObject var viewModel: TrainingListViewModel
+    @State var text: String = ""
     
     init(user: User){
         self.viewModel = TrainingListViewModel(user: user)
@@ -35,10 +36,14 @@ struct TrainingsListView: View {
                     }
                 }
                 .padding(.top, 30)
-                ForEach(viewModel.skiDays){skiDay in
+                SearchBar(text: $viewModel.searchText)
+                ForEach(viewModel.searchableSkiDays){skiDay in
                         TrainingRowView(skiDay: skiDay)
                 }
             }
+        }
+        .onTapGesture {
+            self.endTextEditing()
         }
         .padding()
         .navigationBarTitle("")
@@ -47,8 +52,8 @@ struct TrainingsListView: View {
     }
 }
 
-//struct TrainingsList_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TrainingsListView()
-//    }
-//}
+struct TrainingsList_Previews: PreviewProvider {
+    static var previews: some View {
+        TrainingsListView(user: User(username: "1", fullname: "1", email: "1", uid: "1"))
+    }
+}
