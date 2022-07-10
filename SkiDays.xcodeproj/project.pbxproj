@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20075CF428784EA7004743B1 /* SecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20075CF328784EA7004743B1 /* SecureTextField.swift */; };
 		225A1EFA282018F300C2C81E /* TrainingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A1EF9282018F300C2C81E /* TrainingListViewModel.swift */; };
 		225A1EFD28201B4300C2C81E /* SkiDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A1EFC28201B4300C2C81E /* SkiDay.swift */; };
 		225A1F012820FB4E00C2C81E /* TrainingDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A1F002820FB4E00C2C81E /* TrainingDetailsViewModel.swift */; };
@@ -54,6 +55,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		20075CF328784EA7004743B1 /* SecureTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureTextField.swift; sourceTree = "<group>"; };
 		225A1EF9282018F300C2C81E /* TrainingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingListViewModel.swift; sourceTree = "<group>"; };
 		225A1EFC28201B4300C2C81E /* SkiDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiDay.swift; sourceTree = "<group>"; };
 		225A1F002820FB4E00C2C81E /* TrainingDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				22848DCE281BDF5E00AF996F /* CustomInputField.swift */,
+				20075CF328784EA7004743B1 /* SecureTextField.swift */,
 			);
 			path = TextFields;
 			sourceTree = "<group>";
@@ -577,6 +580,7 @@
 				22F04E33284F56C100A5F03B /* DisciplineStatsRow.swift in Sources */,
 				22848DB8281BDBBD00AF996F /* SkiDaysApp.swift in Sources */,
 				22928AF5281FCD17000FCEFA /* AuthViewModel.swift in Sources */,
+				20075CF428784EA7004743B1 /* SecureTextField.swift in Sources */,
 				22848DD1281BDF7100AF996F /* AuthenticationHeader.swift in Sources */,
 				22848DCD281BDD1400AF996F /* RegistrationView.swift in Sources */,
 				22848DE9281C016700AF996F /* MainTabView.swift in Sources */,

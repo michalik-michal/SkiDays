@@ -7,9 +7,7 @@
 
 import SwiftUI
 
-
 //ADD PITCURE AS HEADER BACKGROUND (?)!!!
-
 
 struct LoginView: View {
     
@@ -24,8 +22,7 @@ struct LoginView: View {
             
             VStack(spacing: 40){
                 CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
-                CustomInputField(imageName: "lock", placeholderText: "Password",isSecureField: true,text: $password)
-                    
+                SecureTextField(password: $password)
             }
             .padding(.horizontal, 32)
             .padding(.top, 42)
