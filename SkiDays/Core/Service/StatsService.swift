@@ -20,10 +20,6 @@ struct StatsService{
 
             let skiDays = documents.compactMap({try? $0.data(as: SkiDay.self)})
             completion(skiDays.sorted(by: {$0.date > $1.date}))
-            
         }
     }
-    
-    
-    
 }

@@ -35,7 +35,7 @@ class StatsViewModel: ObservableObject{
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             
             for discipline in self.disciplines {
-
+                
                 let filteredSkiDays = self.skiDays.filter({
                     $0.discipline.contains(discipline)
                 })

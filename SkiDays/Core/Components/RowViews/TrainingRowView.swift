@@ -19,6 +19,7 @@ struct TrainingRowView: View {
                     .font(.system(size: 20))
                     .frame(width: 120)
                 Text("📍\(skiDay.place)")
+                    .lineLimit(0)
                     .frame(width: 120)
                     .font(.system(size: 20))
             }
@@ -39,9 +40,7 @@ struct TrainingRowView: View {
             
             VStack(spacing:30){
                 Image(systemName: "video")
-                
                     .frame(width: 120)
-                
                     .font(.system(size: 20))
                     .foregroundColor(.white)
                 Text(skiDay.conditions)
@@ -49,6 +48,7 @@ struct TrainingRowView: View {
                     .font(.system(size: 20))
             }
         }
+        .padding(.horizontal)
         .foregroundColor(.white)
         .padding(.vertical, 30)
         .background(Color.darkerBlue)
@@ -58,6 +58,6 @@ struct TrainingRowView: View {
 
 struct TrainingRowView_Previews: PreviewProvider {
     static var previews: some View {
-        TrainingRowView(skiDay: SkiDay(date: "111", discipline: "SL", gates: 12, notes: "es", place: "dom", runs: 0, conditions: "bad", uid: "1234"))
+        TrainingRowView(skiDay: SkiDay(date: "11/08/22", discipline: "SL", gates: 12, notes: "es", place: "Sierra nevada", runs: 0, conditions: "bad", uid: "1234"))
     }
 }
