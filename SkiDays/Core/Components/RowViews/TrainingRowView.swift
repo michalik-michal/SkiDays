@@ -17,10 +17,10 @@ struct TrainingRowView: View {
             VStack(spacing: 30){
                 Text("\(skiDay.date)")
                     .font(.system(size: 20))
-                    .frame(width: 120)
+                    .frame(width: 100)
                 Text("📍\(skiDay.place)")
                     .lineLimit(0)
-                    .frame(width: 120)
+                    .frame(width: 100)
                     .font(.system(size: 20))
             }
             
@@ -40,11 +40,11 @@ struct TrainingRowView: View {
             
             VStack(spacing:30){
                 Image(systemName: "video")
-                    .frame(width: 120)
+                    .frame(width: 100)
                     .font(.system(size: 20))
                     .foregroundColor(.white)
                 Text(skiDay.conditions)
-                    .frame(width: 120)
+                    .frame(width: 100)
                     .font(.system(size: 20))
             }
         }
