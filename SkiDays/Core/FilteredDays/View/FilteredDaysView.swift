@@ -1,25 +1,18 @@
-//
-//  FilteredDaysView.swift
-//  SkiDays
-//
-//  Created by MacOS on 03/05/2022.
-//
-
 import SwiftUI
 
 struct FilteredDaysView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: FilteredDaysViewModel
+    
     let discipline: String
-    init(user: User, discipline: String){
+    init(user: User, discipline: String) {
         self.viewModel = FilteredDaysViewModel(user: user)
         self.discipline = discipline
     }
     
-    
-    var title: String{
-        switch discipline{
+    var title: String {
+        switch discipline {
         case "SL":
             return "Slalom"
         case "GS":
@@ -38,16 +31,16 @@ struct FilteredDaysView: View {
     }
     
     var body: some View {
-        ScrollView{
-            LazyVStack(alignment: .leading, spacing: 15){
+        ScrollView {
+            LazyVStack(alignment: .leading, spacing: 15) {
                 backButton
-                HStack{
+                HStack {
                     Text(title)
                         .font(.largeTitle).bold()
                     Spacer()
                 }
-                ForEach(viewModel.skiDays){skiDay in
-                    if skiDay.discipline.contains(discipline){
+                ForEach(viewModel.skiDays) {skiDay in
+                    if skiDay.discipline.contains(discipline) {
                         TrainingRowView(skiDay: skiDay)
                     }
                 }
@@ -64,9 +57,9 @@ struct FilteredDaysView: View {
 //    }
 //}
 
-extension FilteredDaysView{
+extension FilteredDaysView {
     
-    var backButton: some View{
+    var backButton: some View {
         Button {
             presentationMode.wrappedValue.dismiss()
         } label: {

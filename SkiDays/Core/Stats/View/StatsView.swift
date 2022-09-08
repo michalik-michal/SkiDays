@@ -1,10 +1,3 @@
-//
-//  StatsView.swift
-//  SkiDays
-//
-//  Created by MacOS on 29/04/2022.
-//
-
 import SwiftUI
 
 struct StatsView: View {
@@ -19,14 +12,13 @@ struct StatsView: View {
     var body: some View {
         ScrollView{
             LazyVStack{
-//                HStack{
-//                    backButton
-//                    Spacer()
-//                }
+                //                HStack{
+                //                    backButton
+                //                    Spacer()
+                //                }
                 HStack{
                     Text("Statistics")
                         .font(.largeTitle).bold()
-
                     Spacer()
                 }
                 Circle()
@@ -39,7 +31,7 @@ struct StatsView: View {
                     }
                 VStack(spacing: 30){
                     ForEach(viewModel.stats){stat in
-                            DisciplineStatsRow(stats: stat)
+                        DisciplineStatsRow(stats: stat)
                     }
                 }
             }
@@ -50,8 +42,6 @@ struct StatsView: View {
         .navigationBarTitle("")
         .navigationBarHidden(true)
     }
-        
-        
 }
 
 struct StatsView_Previews: PreviewProvider {

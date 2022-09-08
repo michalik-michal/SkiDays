@@ -1,14 +1,7 @@
-//
-//  TrainingListViewModel.swift
-//  SkiDays
-//
-//  Created by MacOS on 02/05/2022.
-//
-
 import Foundation
 import FirebaseFirestore
 
-class TrainingListViewModel: ObservableObject{
+class TrainingListViewModel: ObservableObject {
     
     @Published var skiDays = [SkiDay]()
     @Published var searchText = ""
@@ -21,10 +14,10 @@ class TrainingListViewModel: ObservableObject{
         self.fetchUserSkidays()
     }
 
-    var searchableSkiDays: [SkiDay]{
+    var searchableSkiDays: [SkiDay] {
         if searchText.isEmpty{
             return skiDays
-        }else{
+        } else {
             let lowercasedQuery = searchText.lowercased()
             
             return skiDays.filter({
@@ -33,7 +26,7 @@ class TrainingListViewModel: ObservableObject{
         }
     }
     
-    func fetchUserSkidays(){
+    func fetchUserSkidays() {
         guard let uid = user.id else {return}
         service.fetchSkiDaysForUid(forUid: uid) { skiDays in
             self.skiDays = skiDays

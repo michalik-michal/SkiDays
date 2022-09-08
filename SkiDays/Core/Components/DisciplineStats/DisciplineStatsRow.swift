@@ -1,10 +1,3 @@
-//
-//  DisciplineStatsRow.swift
-//  SkiDays
-//
-//  Created by MacOS on 07/06/2022.
-//
-
 import SwiftUI
 
 struct DisciplineStatsRow: View {
@@ -35,14 +28,11 @@ struct DisciplineStatsRow: View {
                         .font(.system(size: 20))
                 }
             }
-            
             .padding()
         }
         .background(Color.secondayBackground)
         .foregroundColor(.blackWhite)
         .cornerRadius(20)
-        
-        
     }
 }
 

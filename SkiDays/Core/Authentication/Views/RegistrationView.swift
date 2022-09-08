@@ -1,10 +1,3 @@
-//
-//  RegistrationView.swift
-//  SkiDays
-//
-//  Created by MacOS on 29/04/2022.
-//
-
 import SwiftUI
 
 struct RegistrationView: View {
@@ -18,7 +11,7 @@ struct RegistrationView: View {
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
-        VStack{
+        VStack {
            AuthenticationHeader(title1: "Welcome.", title2: "Create you account")
             VStack(spacing: 40){
                 CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
@@ -27,7 +20,6 @@ struct RegistrationView: View {
                 SecureTextField(password: $password)
             }
             .padding(32)
-            
             Button {
                 viewModel.register(withEmail: email, password: password, fullname: fullname, username: username)
             } label: {
@@ -40,17 +32,16 @@ struct RegistrationView: View {
                     .padding()
             }
             Spacer()
-            
             Button {
                 presentationMode.wrappedValue.dismiss()
             } label: {
-                HStack{
+                HStack {
                     Text("Already have an account?")
                         .font(.footnote)
                     Text("Sign In")
                         .font(.footnote)
                         .fontWeight(.semibold)
-                        
+                    
                 }
             }
             .padding(.bottom, 32)

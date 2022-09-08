@@ -1,20 +1,12 @@
-//
-//  UploadSkiDayViewModel.swift
-//  SkiDays
-//
-//  Created by MacOS on 02/05/2022.
-//
-
 import Foundation
 import SwiftUI
-
 
 class UploadSkiDayViewModel: ObservableObject{
     
     @Published var didUploadSkiDay = false
     let service = SkiDayService()
     
-    func uploadSkiDay(date: String, discipline: String, place: String,conditions: String, runs: Int, gates: Int, notes: String){
+    func uploadSkiDay(date: String, discipline: String, place: String,conditions: String, runs: Int, gates: Int, notes: String) {
         service.uploadSkiDay(date: date,
                              discipline: discipline,
                              place: place,
@@ -30,17 +22,17 @@ class UploadSkiDayViewModel: ObservableObject{
             }
         }
     }
-    func provideTitle(_ discipline: String) -> String{
+    func provideTitle(_ discipline: String) -> String {
         
-        if discipline == ""{
+        if discipline == "" {
             return "Add New Training"
         }
-        if discipline == "FREE"{
+        if discipline == "FREE" {
             return "FREE SKIING"
         }
-        if discipline == "PARA"{
+        if discipline == "PARA" {
             return "PARALLEL"
-        }else{
+        } else {
             return discipline
         }
     }

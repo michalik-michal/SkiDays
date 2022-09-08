@@ -1,10 +1,3 @@
-//
-//  AuthenticationHeader.swift
-//  SkiDays
-//
-//  Created by MacOS on 28/04/2022.
-//
-
 import SwiftUI
 
 struct AuthenticationHeader: View {
@@ -13,24 +6,20 @@ struct AuthenticationHeader: View {
     let title2: String
     
     var body: some View {
-       
-            VStack(alignment: .leading){
-                HStack{Spacer()}
-                
-                Text(title1)
-                    .font(.largeTitle)
-                    .fontWeight(.semibold)
-                
-                Text(title2)
-                    .font(.largeTitle)
-                    .fontWeight(.semibold)
-            }
-            .frame(height: 260)
-            .padding(.leading)
-            .background(Color.background)
-            .foregroundColor(.blackWhite)
-            .clipShape(RoundedShape(corners: [.bottomRight]))
-        
+        VStack(alignment: .leading){
+            HStack{Spacer()}
+            Text(title1)
+                .font(.largeTitle)
+                .fontWeight(.semibold)
+            Text(title2)
+                .font(.largeTitle)
+                .fontWeight(.semibold)
+        }
+        .frame(height: 260)
+        .padding(.leading)
+        .background(Color.background)
+        .foregroundColor(.blackWhite)
+        .clipShape(RoundedShape(corners: [.bottomRight]))
     }
 }
 

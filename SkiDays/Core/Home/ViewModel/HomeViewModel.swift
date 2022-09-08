@@ -1,10 +1,3 @@
-//
-//  HomeViewModel.swift
-//  SkiDays
-//
-//  Created by MacOS on 03/05/2022.
-//
-
 import Foundation
 
 class HomeViewModel: ObservableObject{
@@ -15,21 +8,19 @@ class HomeViewModel: ObservableObject{
     let service = SkiDayService()
     let user: User
 
-    
-    init(user: User){
+    init(user: User) {
         self.user = user
         self.fetchUserSkidays()
-
     }
     
-    func fetchUserSkidays(){
+    func fetchUserSkidays() {
         guard let uid = user.id else {return}
         service.fetchSkiDaysForUid(forUid: uid) { skiDays in
             self.skiDays = skiDays
         }
-        
     }
-    func numberOfDisciplineDays( _ discipline: String) -> Int{
+    
+    func numberOfDisciplineDays( _ discipline: String) -> Int {
         let filteredSkiDays = skiDays.filter({
             $0.discipline.contains(discipline)
         })

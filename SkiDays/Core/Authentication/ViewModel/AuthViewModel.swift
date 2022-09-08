@@ -1,28 +1,19 @@
-//
-//  AuthViewModel.swift
-//  SkiDays
-//
-//  Created by MacOS on 02/05/2022.
-//
-
 import SwiftUI
 import Firebase
 
-class AuthViewModel: ObservableObject{
+class AuthViewModel: ObservableObject {
     
     @Published var userSession: FirebaseAuth.User?
     @Published var currentUser: User?
     
     private let service = UserService()
     
-    init(){
+    init() {
         self.userSession = Auth.auth().currentUser
         self.fetchUser()
     }
-    
-//MARK: - Log In User
-    
-    func login(withEmail email: String, password: String){
+    //MARK: - Log In User
+    func login(withEmail email: String, password: String) {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if let error = error{
                 print("Failed to sign in user with error: \(error)")
@@ -32,12 +23,10 @@ class AuthViewModel: ObservableObject{
             self.fetchUser()
         }
     }
-    
-//MARK: - Register User
-    
-    func register(withEmail email: String, password: String, fullname: String, username: String){
+    //MARK: - Register User
+    func register(withEmail email: String, password: String, fullname: String, username: String) {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
-            if let error = error{
+            if let error = error {
                 print("Failed to register the user \(error.localizedDescription)")
                 return
             }
@@ -65,16 +54,13 @@ class AuthViewModel: ObservableObject{
             self.currentUser = user
         }
     }
-
-//MARK: - Log Out User
+    //MARK: - Log Out User
     
     func signOut(){
-        
         //Show login view
         userSession = nil
         
         // Signs out on server
         try? Auth.auth().signOut()
     }
-
 }

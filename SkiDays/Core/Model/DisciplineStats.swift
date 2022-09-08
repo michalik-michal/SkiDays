@@ -1,10 +1,3 @@
-//
-//  DisciplineStats.swift
-//  SkiDays
-//
-//  Created by MacOS on 07/06/2022.
-//
-
 import Foundation
 import FirebaseFirestoreSwift
 

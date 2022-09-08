@@ -1,10 +1,3 @@
-//
-//  SkiDaysApp.swift
-//  SkiDays
-//
-//  Created by MacOS on 29/04/2022.
-//
-
 import SwiftUI
 import Firebase
 
@@ -22,9 +15,8 @@ struct SkiDaysApp: App {
             NavigationView{
                 ContentView()
             }
-           
             .environmentObject(viewModel)
         }
     }
 }
- 
+

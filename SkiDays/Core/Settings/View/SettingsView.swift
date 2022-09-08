@@ -6,7 +6,6 @@ struct SettingsView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var viewModel: AuthViewModel
     
-    
     var body: some View {
         ScrollView{
             VStack{
@@ -63,7 +62,6 @@ extension SettingsView{
                 .frame(maxWidth: .infinity)
                 .background(Color.red)
                 .clipShape(Capsule())
-                
         }
         .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 0)
     }

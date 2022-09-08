@@ -1,10 +1,3 @@
-//
-//  DisciplineButtonView.swift
-//  SkiDays
-//
-//  Created by MacOS on 29/04/2022.
-//
-
 import SwiftUI
 
 struct DisciplineButtonView: View {
@@ -13,9 +6,7 @@ struct DisciplineButtonView: View {
     var days: Int
     @ObservedObject var viewModel = AuthViewModel()
     
-    
     var body: some View {
-        
         NavigationLink{
             if let user = viewModel.currentUser{
                 FilteredDaysView(user: user,discipline: discipline)
@@ -24,7 +15,6 @@ struct DisciplineButtonView: View {
             Text("\(discipline): \(days)")
                 .foregroundColor(.blackWhite)
                 .font(.system(size: 35)).bold()
-                
         }
         .frame(width: 150, height: 80)
         .background(Color.secondayBackground)

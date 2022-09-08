@@ -1,18 +1,10 @@
-//
-//  TrainingRowView.swift
-//  SkiDays
-//
-//  Created by MacOS on 29/04/2022.
-//
-
 import SwiftUI
 
 struct TrainingRowView: View {
     
     let skiDay: SkiDay
-
+    
     var body: some View {
-        
         HStack{
             VStack(spacing: 30){
                 Text("\(skiDay.date)")
@@ -36,7 +28,7 @@ struct TrainingRowView: View {
                     .font(.system(size: 25))
                     .foregroundColor(.blackWhite)
             }
-           Spacer()
+            Spacer()
             VStack(spacing:30){
                 Image(systemName: "video")
                     .frame(width: 100)

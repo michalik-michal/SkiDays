@@ -1,10 +1,3 @@
-//
-//  User.swift
-//  SkiDays
-//
-//  Created by MacOS on 05/05/2022.
-//
-
 import FirebaseFirestoreSwift
 
 struct User: Identifiable, Decodable{

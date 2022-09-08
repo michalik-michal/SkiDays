@@ -1,10 +1,3 @@
-//
-//  TrainingDetailsView.swift
-//  SkiDays
-//
-//  Created by MacOS on 29/04/2022.
-//
-
 import SwiftUI
 
 struct TrainingDetailsView: View {
@@ -16,41 +9,39 @@ struct TrainingDetailsView: View {
     @State private var showingConfirmation = false
     
     var body: some View {
-            ScrollView{
-                buttonStack
-                HStack{
-                    Text(skiDay.date)
-                        .font(.title)
-                        .bold()
-                        .foregroundColor(.blackWhite)
-                    Spacer()
-                    Text("📍\(skiDay.place)")
-                        .font(.title)
-                        .bold()
-                        .foregroundColor(.blackWhite)
-                }
-                .padding(.top, 10)
-                VStack(spacing: 30){
-                    HStack{
-                        DetailRowView(text: skiDay.discipline)
-                        Spacer()
-                        DetailRowView(text: skiDay.conditions)
-                    }
-                    HStack{
-                        DetailRowView(text: "\(skiDay.runs) runs")
-                        DetailRowView(text: "\(skiDay.gates) gates")
-                        DetailRowView(text: "\(skiDay.runs * skiDay.gates) total")
-
-                    }
-                    noteView
-                    uploadVideoView
-                    
-                    Spacer()
-                }
+        ScrollView {
+            buttonStack
+            HStack {
+                Text(skiDay.date)
+                    .font(.title)
+                    .bold()
+                    .foregroundColor(.blackWhite)
+                Spacer()
+                Text("📍\(skiDay.place)")
+                    .font(.title)
+                    .bold()
+                    .foregroundColor(.blackWhite)
             }
-            .padding(.horizontal)
-            .background(Color.background)
-            .navigationBarHidden(true)
+            .padding(.top, 10)
+            VStack(spacing: 30) {
+                HStack {
+                    DetailRowView(text: skiDay.discipline)
+                    Spacer()
+                    DetailRowView(text: skiDay.conditions)
+                }
+                HStack {
+                    DetailRowView(text: "\(skiDay.runs) runs")
+                    DetailRowView(text: "\(skiDay.gates) gates")
+                    DetailRowView(text: "\(skiDay.runs * skiDay.gates) total")
+                }
+                noteView
+                uploadVideoView
+                Spacer()
+            }
+        }
+        .padding(.horizontal)
+        .background(Color.background)
+        .navigationBarHidden(true)
     }
 }
 
@@ -61,10 +52,10 @@ struct TrainingDetailsView_Previews: PreviewProvider {
 }
 
 
-extension TrainingDetailsView{
+extension TrainingDetailsView {
     
-//MARK: - Button Stack
-    var buttonStack: some View{
+    //MARK: - Button Stack
+    var buttonStack: some View {
         HStack{
             Button {
                 presentationMode.wrappedValue.dismiss()
@@ -101,9 +92,8 @@ extension TrainingDetailsView{
             }
         }
     }
-
-//MARK: - Notes View
-    var noteView: some View{
+    //MARK: - Notes View
+    var noteView: some View {
         Text(skiDay.notes)
             .font(.system(size: 20))
             .foregroundColor(.blackWhite)
@@ -111,12 +101,10 @@ extension TrainingDetailsView{
             .frame(height: 200)
             .background(Color.secondayBackground)
             .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-            
     }
     
-//MARK: - Upload Video
-    var uploadVideoView: some View{
-        
+    //MARK: - Upload Video
+    var uploadVideoView: some View {
         Button {
             //Upload Video
         } label: {
@@ -126,10 +114,7 @@ extension TrainingDetailsView{
                 .frame(maxWidth: .infinity)
                 .frame(height: 220)
                 .background(Color.secondayBackground)
-                .cornerRadius(12)                
+                .cornerRadius(12)
         }
     }
-    
-
-    
 }

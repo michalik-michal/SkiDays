@@ -1,10 +1,3 @@
-//
-//  SecureTextField.swift
-//  SkiDays
-//
-//  Created by Michał Michalik on 08/07/2022.
-//
-
 import SwiftUI
 
 struct SecureTextField: View {
@@ -16,7 +9,6 @@ struct SecureTextField: View {
         ZStack(alignment: .trailing){
             if isSecure{
                 CustomInputField(imageName: "lock", placeholderText: "Password", isSecureField: true, text: $password)
-                    
             }else{
                 CustomInputField(imageName: "lock", placeholderText: "Password", isSecureField: false, text: $password)
             }
@@ -26,7 +18,6 @@ struct SecureTextField: View {
                 Image(systemName: self.isSecure ? "eye.slash" : "eye")
                     .foregroundColor(Color(.darkGray))
             }
-
         }
     }
 }

@@ -1,10 +1,3 @@
-//
-//  MainTabView.swift
-//  SkiDays
-//
-//  Created by MacOS on 29/04/2022.
-//
-
 import SwiftUI
 
 struct MainTabView: View {

@@ -1,10 +1,3 @@
-//
-//  SkiDay.swift
-//  SkiDays
-//
-//  Created by MacOS on 02/05/2022.
-//
-
 import FirebaseFirestoreSwift
 import Firebase
 

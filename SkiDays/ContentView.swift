@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  SkiDays
-//
-//  Created by MacOS on 29/04/2022.
-//
-
 import SwiftUI
 
 struct ContentView: View {
@@ -14,7 +7,7 @@ struct ContentView: View {
     var body: some View {
         if viewModel.userSession == nil{
             LoginView()
-        }else{
+        } else {
             MainTabView()
         }
     }

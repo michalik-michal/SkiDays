@@ -8,9 +8,8 @@ struct LoginView: View {
     @State private var password = ""
     @EnvironmentObject var viewModel: AuthViewModel
     
-    
     var body: some View {
-        VStack{
+        VStack {
             AuthenticationHeader(title1: "Hello.", title2: "Great to se you again")
             
             VStack(spacing: 40){
@@ -19,13 +18,11 @@ struct LoginView: View {
             }
             .padding(.horizontal, 32)
             .padding(.top, 42)
-            
-            HStack{
+            HStack {
                 Spacer()
-                
-                NavigationLink{
+                NavigationLink {
                     Text("Reset password view...")
-                }label: {
+                } label: {
                     Text("Forgot Password?")
                         .font(.caption)
                         .fontWeight(.semibold)
@@ -49,14 +46,13 @@ struct LoginView: View {
             NavigationLink{
                 RegistrationView()
                     .navigationBarHidden(true)
-            }label: {
+            } label: {
                 HStack{
                     Text("Dont have an account?")
                         .font(.footnote)
                     Text("Sign Up")
                         .font(.footnote)
                         .fontWeight(.semibold)
-                        
                 }
             }
             .padding(.bottom, 32)
