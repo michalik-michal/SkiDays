@@ -1,10 +1,3 @@
-//
-//  SettingsView.swift
-//  SkiDays
-//
-//  Created by MacOS on 04/05/2022.
-//
-
 import SwiftUI
 import Firebase
 
@@ -27,16 +20,14 @@ struct SettingsView: View {
                     Spacer()
                 }
                 .padding(.bottom, 300)
-                
                 signoutButton
-                
-                Text("More to come")
-                    .font(.system(size: 50))
             }
         }
         .navigationBarTitle("Settings")
         .navigationBarHidden(true)
+        .foregroundColor(.blackWhite)
         .padding()
+        .background(Color.background)
     }
 }
 

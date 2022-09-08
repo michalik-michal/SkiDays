@@ -1,10 +1,3 @@
-//
-//  SearchBar.swift
-//  SkiDays
-//
-//  Created by Michał Michalik on 10/07/2022.
-//
-
 import SwiftUI
 
 struct SearchBar: View {
@@ -16,14 +9,15 @@ struct SearchBar: View {
                 TextField("Search...", text: $text)
                     .padding(8)
                     .padding(.horizontal, 24)
-                    .background(Color(.systemGray6))
+                    .background(Color.secondayBackground)
                     .cornerRadius(8)
+                    .foregroundColor(.blackWhite)
                     .overlay(
                         HStack{
                             Image(systemName: "magnifyingglass")
-                                .foregroundColor(.gray)
                                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                                 .padding(.leading, 8)
+                                .foregroundColor(.background)
                         }
                     )
             }

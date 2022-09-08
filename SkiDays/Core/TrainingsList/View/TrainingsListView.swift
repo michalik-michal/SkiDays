@@ -23,6 +23,7 @@ struct TrainingsListView: View {
                 HStack{
                     Text("Ski Days")
                         .font(.largeTitle).bold()
+                        .foregroundColor(.blackWhite)
                     Spacer()
    
                     NavigationLink{
@@ -48,7 +49,7 @@ struct TrainingsListView: View {
         .padding()
         .navigationBarTitle("")
         .navigationBarHidden(true)
-        
+        .background(Color.background)
     }
 }
 

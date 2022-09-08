@@ -13,13 +13,12 @@ struct DetailRowView: View {
     
     var body: some View {
         Text(text)
-            .foregroundColor(.white)
+            .foregroundColor(.blackWhite)
             .frame(height: 80)
             .frame(maxWidth: .infinity)
             .font(.system(size: 20))
-            .background(Color.darkerBlue)
+            .background(Color.secondayBackground)
             .cornerRadius(12)
-            .shadow(color: Color.gray.opacity(0.5), radius: 10, x: 0, y: 0)
     }
 }
 

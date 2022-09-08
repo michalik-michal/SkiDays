@@ -1,10 +1,3 @@
-//
-//  LoginView.swift
-//  SkiDays
-//
-//  Created by MacOS on 29/04/2022.
-//
-
 import SwiftUI
 
 //ADD PITCURE AS HEADER BACKGROUND (?)!!!
@@ -52,10 +45,7 @@ struct LoginView: View {
                     .clipShape(Capsule())
                     .padding()
             }
-            .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 0)
-            
             Spacer()
-            
             NavigationLink{
                 RegistrationView()
                     .navigationBarHidden(true)
@@ -74,6 +64,7 @@ struct LoginView: View {
         }
         .ignoresSafeArea()
         .navigationBarHidden(true)
+        .background(Color.background)
     }
 }
 

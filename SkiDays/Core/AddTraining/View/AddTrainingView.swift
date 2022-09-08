@@ -86,6 +86,8 @@ struct AddTrainingView: View {
         })
         .navigationBarHidden(true)
         .padding()
+        .background(Color.background)
+        .foregroundColor(.blackWhite)
     }
 }
 
@@ -145,29 +147,26 @@ extension AddTrainingView{
                         discipline = item.rawValue
                     } label: {
                         Text(item.rawValue)
-                            .foregroundColor(.white)
+                            .foregroundColor(.blackWhite)
                             .font(.system(size: 20)).bold()
                     }
                     .frame(height: 60)
                     .frame(maxWidth: .infinity )
-                    .background(Color.darkerBlue)
+                    .background(Color.secondayBackground)
                     .cornerRadius(12)
-                    .shadow(color: Color.gray.opacity(0.5), radius: 10, x: 0, y: 0)
-
                 }
             }
         }
     }
-    
     var notesView: some View{
-        
         TextEditor(text: $notes)
             .frame(height: 200)
             .overlay(RoundedRectangle(cornerRadius: 16)
-                        .stroke(.gray.opacity(0.2), lineWidth: 2))
+                .stroke(.gray.opacity(0.2), lineWidth: 2)
+                .background(Color.secondayBackground))
+        
         
     }
-    
     var addVideoView: some View{
         Image(systemName: "plus")
             .foregroundColor(.darkerBlue)
@@ -175,7 +174,8 @@ extension AddTrainingView{
             .frame(maxWidth: .infinity)
             .font(.system(size: 40))
             .overlay(RoundedRectangle(cornerRadius: 16)
-                        .stroke(.gray.opacity(0.2), lineWidth: 2))
+                .stroke(.gray.opacity(0.2), lineWidth: 2)
+                .background(Color.secondayBackground))
             .onTapGesture {
                 isShowingVideoPicker.toggle()
             }

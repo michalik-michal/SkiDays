@@ -20,19 +20,15 @@ struct DisciplineButtonView: View {
             if let user = viewModel.currentUser{
                 FilteredDaysView(user: user,discipline: discipline)
             }
-            
         }label: {
             Text("\(discipline): \(days)")
-                .foregroundColor(.white)
+                .foregroundColor(.blackWhite)
                 .font(.system(size: 35)).bold()
                 
         }
         .frame(width: 150, height: 80)
-        .background(Color.darkerBlue)
+        .background(Color.secondayBackground)
         .cornerRadius(12)
-        .shadow(color: Color.gray.opacity(0.5), radius: 10, x: 0, y: 0)
-        
-        
     }
 }
 

@@ -27,8 +27,8 @@ struct AuthenticationHeader: View {
             }
             .frame(height: 260)
             .padding(.leading)
-            .background(Color.darkerBlue)
-            .foregroundColor(.white)
+            .background(Color.background)
+            .foregroundColor(.blackWhite)
             .clipShape(RoundedShape(corners: [.bottomRight]))
         
     }

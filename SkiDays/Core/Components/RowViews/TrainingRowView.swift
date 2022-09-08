@@ -18,14 +18,14 @@ struct TrainingRowView: View {
                 Text("\(skiDay.date)")
                     .font(.system(size: 20))
                     .frame(width: 100)
+                    .foregroundColor(.blackWhite)
                 Text("📍\(skiDay.place)")
                     .lineLimit(0)
                     .frame(width: 100)
                     .font(.system(size: 20))
+                    .foregroundColor(.blackWhite)
             }
-            
             Spacer()
-            
             NavigationLink{
                 TrainingDetailsView(skiDay: skiDay)
                 
@@ -34,24 +34,24 @@ struct TrainingRowView: View {
                     .bold()
                     .frame(width: 80)
                     .font(.system(size: 25))
+                    .foregroundColor(.blackWhite)
             }
-            
            Spacer()
-            
             VStack(spacing:30){
                 Image(systemName: "video")
                     .frame(width: 100)
                     .font(.system(size: 20))
-                    .foregroundColor(.white)
+                    .foregroundColor(.blackWhite)
                 Text(skiDay.conditions)
                     .frame(width: 100)
                     .font(.system(size: 20))
+                    .foregroundColor(.blackWhite)
             }
         }
         .padding(.horizontal)
         .foregroundColor(.white)
         .padding(.vertical, 30)
-        .background(Color.darkerBlue)
+        .background(Color.secondayBackground)
         .cornerRadius(20)
     }
 }

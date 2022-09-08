@@ -38,8 +38,8 @@ struct DisciplineStatsRow: View {
             
             .padding()
         }
-        .background(Color.darkerBlue)
-        .foregroundColor(.white)
+        .background(Color.secondayBackground)
+        .foregroundColor(.blackWhite)
         .cornerRadius(20)
         
         

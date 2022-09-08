@@ -14,7 +14,6 @@ struct StatsView: View {
     
     init(user: User){
         self.viewModel = StatsViewModel(user: user)
-        
     }
     
     var body: some View {
@@ -47,6 +46,7 @@ struct StatsView: View {
         }
         .padding()
         .padding(.top, 30)
+        .background(Color.background)
         .navigationBarTitle("")
         .navigationBarHidden(true)
     }

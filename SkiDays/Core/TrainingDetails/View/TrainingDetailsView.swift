@@ -16,26 +16,23 @@ struct TrainingDetailsView: View {
     @State private var showingConfirmation = false
     
     var body: some View {
-        
             ScrollView{
                 buttonStack
                 HStack{
                     Text(skiDay.date)
                         .font(.title)
                         .bold()
-                        
+                        .foregroundColor(.blackWhite)
                     Spacer()
                     Text("📍\(skiDay.place)")
                         .font(.title)
                         .bold()
+                        .foregroundColor(.blackWhite)
                 }
                 .padding(.top, 10)
-                
                 VStack(spacing: 30){
-                    
                     HStack{
                         DetailRowView(text: skiDay.discipline)
-                        
                         Spacer()
                         DetailRowView(text: skiDay.conditions)
                     }
@@ -51,8 +48,9 @@ struct TrainingDetailsView: View {
                     Spacer()
                 }
             }
-            .navigationBarHidden(true)
             .padding(.horizontal)
+            .background(Color.background)
+            .navigationBarHidden(true)
     }
 }
 
@@ -101,21 +99,18 @@ extension TrainingDetailsView{
                     secondaryButton: .cancel()
                 )
             }
-            .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 0)
         }
     }
 
 //MARK: - Notes View
     var noteView: some View{
-        
         Text(skiDay.notes)
             .font(.system(size: 20))
-            .foregroundColor(.white)
+            .foregroundColor(.blackWhite)
             .frame(maxWidth: .infinity)
             .frame(height: 200)
-            .background(Color.darkerBlue)
+            .background(Color.secondayBackground)
             .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-            .shadow(color: Color.gray.opacity(0.5), radius: 10, x: 0, y: 0)
             
     }
     
@@ -127,13 +122,11 @@ extension TrainingDetailsView{
         } label: {
             Text("Upload Video")
                 .font(.headline)
-                .foregroundColor(.white)
+                .foregroundColor(.blackWhite)
                 .frame(maxWidth: .infinity)
                 .frame(height: 220)
-                .background(Color.darkerBlue)
-                .cornerRadius(12)
-                .shadow(color: Color.gray.opacity(0.5), radius: 10, x: 0, y: 0)
-                
+                .background(Color.secondayBackground)
+                .cornerRadius(12)                
         }
     }
     

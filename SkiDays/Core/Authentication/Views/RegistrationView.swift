@@ -16,12 +16,10 @@ struct RegistrationView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     
     @Environment(\.presentationMode) var presentationMode
-    
-    
+
     var body: some View {
         VStack{
            AuthenticationHeader(title1: "Welcome.", title2: "Create you account")
-        
             VStack(spacing: 40){
                 CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
                 CustomInputField(imageName: "person", placeholderText: "username", text: $username)
@@ -41,7 +39,6 @@ struct RegistrationView: View {
                     .clipShape(Capsule())
                     .padding()
             }
-            .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 0)
             Spacer()
             
             Button {
@@ -59,6 +56,8 @@ struct RegistrationView: View {
             .padding(.bottom, 32)
         }
         .ignoresSafeArea()
+        .foregroundColor(.blackWhite)
+        .background(Color.background)
     }
 }
 
