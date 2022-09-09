@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>718696027294-56h5728p9q0v7gm5g64v40ufb0kflesa.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.718696027294-56h5728p9q0v7gm5g64v40ufb0kflesa</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDKaajPvvYHGaigZWvYEho33WtMx2ryaCk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>718696027294</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.michal-michalik.SkiDays</string>
+	<key>PROJECT_ID</key>
+	<string>skidays-d2cc1</string>
+	<key>STORAGE_BUCKET</key>
+	<string>skidays-d2cc1.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:718696027294:ios:8ba3767296f69bee25978f</string>
+</dict>
+</plist>

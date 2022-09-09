@@ -20,7 +20,6 @@ struct TrainingRowView: View {
             Spacer()
             NavigationLink{
                 TrainingDetailsView(skiDay: skiDay)
-                
             }label: {
                 Text(skiDay.discipline)
                     .bold()
