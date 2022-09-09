@@ -9,29 +9,27 @@ struct HomeView: View {
     }
     
     var body: some View {
-        ScrollView {
-            VStack {
-                HStack {
-                    Spacer()
-                    NavigationLink {
-                        SettingsView()
-                    } label: {
-                        Image(systemName: "gearshape")
-                            .foregroundColor(.darkerBlue)
-                            .font(.system(size: 25))
-                            .frame(width: 30, height: 30)
+        NavigationView {
+            ScrollView {
+                VStack {
+                    totalLabel
+                    buttonStack(model: viewModel)
+                }
+                .frame(maxWidth: .infinity)
+                .navigationTitle("Home")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink {
+                            SettingsView()
+                        } label: {
+                            Image(systemName: "gearshape")
+                                .foregroundColor(.darkerBlue)
+                        }
                     }
                 }
-                .padding(.top, 30)
-                .padding(.horizontal)
-                totalLabel
-                buttonStack(model: viewModel)
             }
-            .frame(maxWidth: .infinity)
-            .navigationTitle("")
-            .navigationBarHidden(true)
+            .background(Color.background)
         }
-        .background(Color.background)
     }
 }
 

@@ -7,33 +7,33 @@ struct MainTabView: View {
     
     var body: some View {
         if let user = viewModel.currentUser{
-            TabView(selection: $selectedIndex){
-                TrainingsListView(user: user)
-                    .onTapGesture {
-                        self.selectedIndex = 0
-                    }
-                    .tabItem {
-                        Image(systemName: "calendar")
-                        Text("SkiDays")
-                    }.tag(0)
-                HomeView(user: user)
-                    .onTapGesture {
-                        self.selectedIndex = 1
-                    }
-                    .tabItem {
-                        Image(systemName: "house")
-                        Text("Home")
-                    }.tag(1)
-                StatsView(user: user)
-                    .onTapGesture {
-                        self.selectedIndex = 2
-                    }
-                    .tabItem {
-                        Image(systemName: "chart.bar.xaxis")
-                        Text("Stats")
-                    }.tag(2)
-            }
-            .foregroundColor(.blackWhite)
+                TabView(selection: $selectedIndex){
+                        TrainingsListView(user: user)
+                            .onTapGesture {
+                                self.selectedIndex = 0
+                            }
+                            .tabItem {
+                                Image(systemName: "calendar")
+                                Text("SkiDays")
+                        }.tag(0)
+                        HomeView(user: user)
+                            .onTapGesture {
+                                self.selectedIndex = 1
+                            }
+                            .tabItem {
+                                Image(systemName: "house")
+                                Text("Home")
+                            }.tag(1)
+                        StatsView(user: user)
+                            .onTapGesture {
+                                self.selectedIndex = 2
+                            }
+                            .tabItem {
+                                Image(systemName: "chart.bar.xaxis")
+                                Text("Stats")
+                        }.tag(2)
+                }
+                .foregroundColor(.blackWhite)
             .background(Color.secondayBackground)
         }
     }

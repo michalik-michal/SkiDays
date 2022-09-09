@@ -11,36 +11,32 @@ struct TrainingsListView: View {
     }
     
     var body: some View {
-        ScrollView {
-            LazyVStack(spacing: 15) {
-                HStack {
-                    Text("Ski Days")
-                        .font(.largeTitle).bold()
-                        .foregroundColor(.blackWhite)
-                    Spacer()
+        NavigationView {
+            ScrollView {
+                LazyVStack(spacing: 15) {
+                    SearchBar(text: $viewModel.searchText)
+                    ForEach(viewModel.searchableSkiDays){skiDay in
+                        TrainingRowView(skiDay: skiDay)
+                    }
+                }
+            }
+            .onTapGesture {
+                self.endTextEditing()
+            }
+            .padding()
+            .background(Color.background)
+            .navigationTitle("Ski Days")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink{
                         AddTrainingView()
                     } label: {
                         Image(systemName: "plus")
                             .foregroundColor(.darkerBlue)
-                            .font(.system(size: 25))
-                            .frame(width: 30, height: 30)
                     }
-                }
-                .padding(.top, 30)
-                SearchBar(text: $viewModel.searchText)
-                ForEach(viewModel.searchableSkiDays){skiDay in
-                    TrainingRowView(skiDay: skiDay)
                 }
             }
         }
-        .onTapGesture {
-            self.endTextEditing()
-        }
-        .padding()
-        .navigationBarTitle("")
-        .navigationBarHidden(true)
-        .background(Color.background)
     }
 }
 

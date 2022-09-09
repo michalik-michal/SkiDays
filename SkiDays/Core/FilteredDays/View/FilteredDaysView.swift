@@ -2,7 +2,6 @@ import SwiftUI
 
 struct FilteredDaysView: View {
     
-    @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: FilteredDaysViewModel
     
     init(user: User, discipline: String) {
