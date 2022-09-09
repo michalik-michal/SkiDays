@@ -16,19 +16,19 @@ struct HomeView: View {
                     buttonStack(model: viewModel)
                 }
                 .frame(maxWidth: .infinity)
-                .navigationTitle("Home")
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink {
-                            SettingsView()
-                        } label: {
-                            Image(systemName: "gearshape")
-                                .foregroundColor(.darkerBlue)
-                        }
+            }
+            .background(Color.background)
+            .navigationTitle("Home")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink {
+                        SettingsView()
+                    } label: {
+                        Image(systemName: "gearshape")
+                            .foregroundColor(.darkerBlue)
                     }
                 }
             }
-            .background(Color.background)
         }
     }
 }

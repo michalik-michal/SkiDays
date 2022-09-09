@@ -3,30 +3,18 @@ import Firebase
 
 struct SettingsView: View {
     
-    @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
         ScrollView{
             VStack{
-                HStack{
-                    backButton
-                    Spacer()
-                }
-                HStack{
-                    Text("Settings")
-                        .font(.largeTitle).bold()
-                    Spacer()
-                }
-                .padding(.bottom, 300)
                 signoutButton
             }
         }
-        .navigationBarTitle("Settings")
-        .navigationBarHidden(true)
         .foregroundColor(.blackWhite)
         .padding()
         .background(Color.background)
+        .navigationTitle("Settings")
     }
 }
 
@@ -36,20 +24,7 @@ struct SettingsView_Previews: PreviewProvider {
     }
 }
 
-extension SettingsView{
-    
-    var backButton: some View{
-        Button {
-            presentationMode.wrappedValue.dismiss()
-        } label: {
-            Image(systemName: "arrow.left")
-                .foregroundColor(.darkerBlue)
-                .font(.system(size: 25))
-                .frame(width: 30, height: 30)
-                .padding(.top, 15)
-                .padding(.bottom, 5)
-        }
-    }
+extension SettingsView {
     
     var signoutButton: some View{
         Button {

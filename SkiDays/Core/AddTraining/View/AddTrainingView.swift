@@ -25,11 +25,6 @@ struct AddTrainingView: View {
         ScrollView {
             VStack {
                 HStack {
-                    backButton
-                    Spacer()
-                    doneButton
-                }
-                HStack {
                     Text(viewModel.provideTitle(discipline))
                         .font(.largeTitle).bold()
                     Spacer()
@@ -69,10 +64,15 @@ struct AddTrainingView: View {
                 presentationMode.wrappedValue.dismiss()
             }
         })
-        .navigationBarHidden(true)
         .padding()
         .background(Color.background)
         .foregroundColor(.blackWhite)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                doneButton
+            }
+        }
     }
 }
 
@@ -92,36 +92,22 @@ extension AddTrainingView {
     }
     
     var doneButton: some View {
-        Button {
-            viewModel.uploadSkiDay(date: fetchDate(date: date),
-                                   discipline: discipline,
-                                   place: place,
-                                   conditions: conditions,
-                                   runs: Int(runs) ?? 0,
-                                   gates: Int(gates) ?? 0,
-                                   notes: notes)
-            presentationMode.wrappedValue.dismiss()
-            
-        } label: {
-            Text("Done")
-                .foregroundColor(.darkerBlue)
-                .font(.system(size: 20))
-                .padding(.top, 15)
-                .padding(.bottom, 5)
-        }
-    }
-    
-    var backButton: some View {
-        Button {
-            presentationMode.wrappedValue.dismiss()
-        } label: {
-            Image(systemName: "arrow.left")
-                .foregroundColor(.darkerBlue)
-                .font(.system(size: 25))
-                .frame(width: 30, height: 30)
-                .padding(.top, 15)
-                .padding(.bottom, 5)
-        }
+            Button {
+                viewModel.uploadSkiDay(date: fetchDate(date: date),
+                                       discipline: discipline,
+                                       place: place,
+                                       conditions: conditions,
+                                       runs: Int(runs) ?? 0,
+                                       gates: Int(gates) ?? 0,
+                                       notes: notes)
+                presentationMode.wrappedValue.dismiss()
+            } label: {
+                Text("Done")
+                    .foregroundColor(.darkerBlue)
+                    .font(.system(size: 20))
+                    .padding(.top, 15)
+                    .padding(.bottom, 5)
+            }
     }
     
     var disciplineButtonsGrid: some View {

@@ -10,7 +10,6 @@ struct TrainingDetailsView: View {
     
     var body: some View {
         ScrollView {
-            buttonStack
             HStack {
                 Text(skiDay.date)
                     .font(.title)
@@ -22,7 +21,6 @@ struct TrainingDetailsView: View {
                     .bold()
                     .foregroundColor(.blackWhite)
             }
-            .padding(.top, 10)
             VStack(spacing: 30) {
                 HStack {
                     DetailRowView(text: skiDay.discipline)
@@ -41,7 +39,11 @@ struct TrainingDetailsView: View {
         }
         .padding(.horizontal)
         .background(Color.background)
-        .navigationBarHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                deleteButton
+            }
+        }
     }
 }
 
@@ -54,42 +56,23 @@ struct TrainingDetailsView_Previews: PreviewProvider {
 
 extension TrainingDetailsView {
     
-    //MARK: - Button Stack
-    var buttonStack: some View {
-        HStack{
-            Button {
-                presentationMode.wrappedValue.dismiss()
-            } label: {
-                Image(systemName: "arrow.left")
-                    .foregroundColor(.darkerBlue)
-                    .font(.system(size: 25))
-                    .frame(width: 30, height: 30)
-                    .padding(.top, 30)
-                    .padding(.bottom, 5)
-            }
-            Spacer()
-            Button {
-                showingConfirmation = true
-                
-            } label: {
-                Image(systemName: "trash")
-                    .foregroundColor(.red)
-                    .font(.system(size: 25))
-                    .frame(width: 30, height: 30)
-                    .padding(.top, 30)
-                    .padding(.bottom, 5)
-            }
-            .alert(isPresented: $showingConfirmation){
-                Alert(
-                    title: Text("Are you sure?"),
-                    message: Text("Training will be deleted permanently."),
-                    primaryButton: .destructive(Text("Delete")){
-                        viewModel.deleteSkiDay(skiDay)
-                        presentationMode.wrappedValue.dismiss()
-                    },
-                    secondaryButton: .cancel()
-                )
-            }
+    var deleteButton: some View {
+        Button {
+            showingConfirmation = true
+        } label: {
+            Image(systemName: "trash")
+                .foregroundColor(.red)
+        }
+        .alert(isPresented: $showingConfirmation){
+            Alert(
+                title: Text("Are you sure?"),
+                message: Text("Training will be deleted permanently."),
+                primaryButton: .destructive(Text("Delete")){
+                    viewModel.deleteSkiDay(skiDay)
+                    presentationMode.wrappedValue.dismiss()
+                },
+                secondaryButton: .cancel()
+            )
         }
     }
     //MARK: - Notes View
