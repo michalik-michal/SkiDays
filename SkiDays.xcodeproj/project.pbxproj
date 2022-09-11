@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		20075CF428784EA7004743B1 /* SecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20075CF328784EA7004743B1 /* SecureTextField.swift */; };
 		20755F74287ACE60009E63DB /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20755F73287ACE60009E63DB /* SearchBar.swift */; };
+		20B2906A28CBA96E006E6635 /* SettingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B2906928CBA96E006E6635 /* SettingsRow.swift */; };
+		20B2906C28CBAECE006E6635 /* ThemeSettingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B2906B28CBAECE006E6635 /* ThemeSettingsRow.swift */; };
 		225A1EFA282018F300C2C81E /* TrainingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A1EF9282018F300C2C81E /* TrainingListViewModel.swift */; };
 		225A1EFD28201B4300C2C81E /* SkiDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A1EFC28201B4300C2C81E /* SkiDay.swift */; };
 		225A1F012820FB4E00C2C81E /* TrainingDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A1F002820FB4E00C2C81E /* TrainingDetailsViewModel.swift */; };
@@ -58,6 +60,8 @@
 /* Begin PBXFileReference section */
 		20075CF328784EA7004743B1 /* SecureTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureTextField.swift; sourceTree = "<group>"; };
 		20755F73287ACE60009E63DB /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		20B2906928CBA96E006E6635 /* SettingsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRow.swift; sourceTree = "<group>"; };
+		20B2906B28CBAECE006E6635 /* ThemeSettingsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettingsRow.swift; sourceTree = "<group>"; };
 		225A1EF9282018F300C2C81E /* TrainingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingListViewModel.swift; sourceTree = "<group>"; };
 		225A1EFC28201B4300C2C81E /* SkiDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiDay.swift; sourceTree = "<group>"; };
 		225A1F002820FB4E00C2C81E /* TrainingDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -122,6 +126,15 @@
 				20755F73287ACE60009E63DB /* SearchBar.swift */,
 			);
 			path = SearchBar;
+			sourceTree = "<group>";
+		};
+		20B2906828CBA946006E6635 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				20B2906928CBA96E006E6635 /* SettingsRow.swift */,
+				20B2906B28CBAECE006E6635 /* ThemeSettingsRow.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		225A1EF7282018D300C2C81E /* View */ = {
@@ -292,6 +305,7 @@
 		22848DC6281BDCC700AF996F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				20B2906828CBA946006E6635 /* Settings */,
 				20755F72287ACE50009E63DB /* SearchBar */,
 				22F04E31284F56AD00A5F03B /* DisciplineStats */,
 				229D3AB7284E1C5600B52B9D /* Shapes */,
@@ -567,6 +581,7 @@
 				2297F094284CA5AD00ACDBDF /* VideoPicker.swift in Sources */,
 				225A1EFD28201B4300C2C81E /* SkiDay.swift in Sources */,
 				22C7A061281FF3C1003A9936 /* SkiDayService.swift in Sources */,
+				20B2906C28CBAECE006E6635 /* ThemeSettingsRow.swift in Sources */,
 				225A1F0F2821559100C2C81E /* FilteredDaysView.swift in Sources */,
 				22848DE6281BF76A00AF996F /* TrainingRowView.swift in Sources */,
 				22848DD3281BDF9600AF996F /* RoundedShape.swift in Sources */,
@@ -594,6 +609,7 @@
 				22928AF5281FCD17000FCEFA /* AuthViewModel.swift in Sources */,
 				20075CF428784EA7004743B1 /* SecureTextField.swift in Sources */,
 				22848DD1281BDF7100AF996F /* AuthenticationHeader.swift in Sources */,
+				20B2906A28CBA96E006E6635 /* SettingsRow.swift in Sources */,
 				22848DCD281BDD1400AF996F /* RegistrationView.swift in Sources */,
 				22848DE9281C016700AF996F /* MainTabView.swift in Sources */,
 			);

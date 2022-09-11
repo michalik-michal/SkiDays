@@ -10,7 +10,7 @@ struct StatsView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView{
+            ScrollView(showsIndicators: false) {
                 LazyVStack{
                     Circle()
                         .fill(.green)

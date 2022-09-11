@@ -9,7 +9,7 @@ struct TrainingDetailsView: View {
     @State private var showingConfirmation = false
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             HStack {
                 Text(skiDay.date)
                     .font(.title)
