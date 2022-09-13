@@ -3,7 +3,8 @@ import MobileCoreServices
 
 struct SkiDayService{
     
-    func uploadSkiDay(date: String, discipline: String, place: String,conditions:String, runs: Int, gates: Int, notes: String, completion: @escaping(Bool) -> Void){
+    func uploadSkiDay(date: String, discipline: String, place: String,conditions:String, runs: Int, gates: Int, notes: String,
+                      slopeProfile: String, skis: String, video: String,completion: @escaping(Bool) -> Void){
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let data = ["uid": uid,
                     "date": date ,
@@ -12,7 +13,10 @@ struct SkiDayService{
                     "place": place,
                     "runs": runs,
                     "gates": gates,
-                    "notes": notes
+                    "notes": notes,
+                    "slopeProfile": slopeProfile,
+                    "skis": skis,
+                    "video": video
         ]as [String : Any]
         
         Firestore.firestore().collection("skidays").document()

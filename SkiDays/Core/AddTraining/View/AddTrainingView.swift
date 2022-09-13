@@ -99,7 +99,11 @@ extension AddTrainingView {
                                        conditions: conditions,
                                        runs: Int(runs) ?? 0,
                                        gates: Int(gates) ?? 0,
-                                       notes: notes)
+                                       notes: notes,
+                                       slopeProfile: "",
+                                       skis: "",
+                                       video: ""
+                )
                 presentationMode.wrappedValue.dismiss()
             } label: {
                 Text("Done")
@@ -132,11 +136,10 @@ extension AddTrainingView {
     var notesView: some View {
         TextEditor(text: $notes)
             .frame(height: 200)
-            .overlay(RoundedRectangle(cornerRadius: 16)
+            .background(RoundedRectangle(cornerRadius: 20)
                 .stroke(.gray.opacity(0.2), lineWidth: 2)
                 .background(Color.secondayBackground))
-        
-        
+            .cornerRadius(20)
     }
     var addVideoView: some View {
         Image(systemName: "plus")
