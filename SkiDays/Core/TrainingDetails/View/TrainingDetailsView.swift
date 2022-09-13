@@ -33,7 +33,9 @@ struct TrainingDetailsView: View {
                     DetailRowView(text: "\(skiDay.runs * skiDay.gates) total")
                 }
                 noteView
+                    .hide(if: skiDay.notes == "")
                 uploadVideoView
+                    .hide(if: true)
                 Spacer()
             }
         }
