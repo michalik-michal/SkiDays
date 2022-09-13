@@ -12,9 +12,9 @@ struct SkiDay: Identifiable, Decodable{
     let place: String
     let runs: Int
     let conditions: String
-    
-
+    let slopeProfile: String
+    let skis: String
+    let video: String // Should it be string ?
     let uid: String
     
-    // video 
 }
