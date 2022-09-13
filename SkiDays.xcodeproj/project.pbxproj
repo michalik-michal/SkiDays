@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		20075CF428784EA7004743B1 /* SecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20075CF328784EA7004743B1 /* SecureTextField.swift */; };
+		2050050128D0CB400006795A /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2050050028D0CB400006795A /* ErrorView.swift */; };
 		20755F74287ACE60009E63DB /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20755F73287ACE60009E63DB /* SearchBar.swift */; };
 		20B2906A28CBA96E006E6635 /* SettingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B2906928CBA96E006E6635 /* SettingsRow.swift */; };
 		20B2906C28CBAECE006E6635 /* ThemeSettingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B2906B28CBAECE006E6635 /* ThemeSettingsRow.swift */; };
@@ -59,6 +60,7 @@
 
 /* Begin PBXFileReference section */
 		20075CF328784EA7004743B1 /* SecureTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureTextField.swift; sourceTree = "<group>"; };
+		2050050028D0CB400006795A /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		20755F73287ACE60009E63DB /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		20B2906928CBA96E006E6635 /* SettingsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRow.swift; sourceTree = "<group>"; };
 		20B2906B28CBAECE006E6635 /* ThemeSettingsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettingsRow.swift; sourceTree = "<group>"; };
@@ -120,6 +122,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		205004FF28D0CB280006795A /* ErrorMessage */ = {
+			isa = PBXGroup;
+			children = (
+				2050050028D0CB400006795A /* ErrorView.swift */,
+			);
+			path = ErrorMessage;
+			sourceTree = "<group>";
+		};
 		20755F72287ACE50009E63DB /* SearchBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,6 +315,7 @@
 		22848DC6281BDCC700AF996F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				205004FF28D0CB280006795A /* ErrorMessage */,
 				20B2906828CBA946006E6635 /* Settings */,
 				20755F72287ACE50009E63DB /* SearchBar */,
 				22F04E31284F56AD00A5F03B /* DisciplineStats */,
@@ -596,6 +607,7 @@
 				22F04E37284F5E6B00A5F03B /* StatsViewModel.swift in Sources */,
 				225A1F192822903700C2C81E /* SettingsViewModel.swift in Sources */,
 				22848DCB281BDD0600AF996F /* LoginView.swift in Sources */,
+				2050050128D0CB400006795A /* ErrorView.swift in Sources */,
 				22C7A063281FF67A003A9936 /* UploadSkiDayViewModel.swift in Sources */,
 				22848DBA281BDBBD00AF996F /* ContentView.swift in Sources */,
 				20755F74287ACE60009E63DB /* SearchBar.swift in Sources */,

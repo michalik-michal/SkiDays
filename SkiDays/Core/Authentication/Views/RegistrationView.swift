@@ -49,6 +49,7 @@ struct RegistrationView: View {
         .ignoresSafeArea()
         .foregroundColor(.blackWhite)
         .background(Color.background)
+        .overlay { if viewModel.shouldShowError { ErrorView() } }
     }
 }
 

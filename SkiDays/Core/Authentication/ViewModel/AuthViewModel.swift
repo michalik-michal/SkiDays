@@ -5,6 +5,7 @@ class AuthViewModel: ObservableObject {
     
     @Published var userSession: FirebaseAuth.User?
     @Published var currentUser: User?
+    @Published var shouldShowError = false
     
     private let service = UserService()
     
@@ -17,6 +18,10 @@ class AuthViewModel: ObservableObject {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if let error = error{
                 print("Failed to sign in user with error: \(error)")
+                self.shouldShowError = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self.shouldShowError = false
+                }
             }
             guard let user = result?.user else {return}
             self.userSession = user
@@ -28,6 +33,10 @@ class AuthViewModel: ObservableObject {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
                 print("Failed to register the user \(error.localizedDescription)")
+                self.shouldShowError = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self.shouldShowError = false
+                }
                 return
             }
             
