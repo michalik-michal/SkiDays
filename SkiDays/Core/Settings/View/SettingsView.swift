@@ -16,8 +16,7 @@ struct SettingsView: View {
                         Alert(
                             title: Text("Sign Out ?"),
                             primaryButton: .destructive(Text("Sign Out")){ viewModel.signOut() },
-                            secondaryButton: .cancel()
-                        )
+                            secondaryButton: .cancel())
                     }
             }
         }

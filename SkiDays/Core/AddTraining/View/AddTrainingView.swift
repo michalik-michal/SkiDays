@@ -24,14 +24,19 @@ struct AddTrainingView: View {
     var body: some View {
         ScrollView {
             VStack {
-                HStack {
+                // UGLY - find better solution
+                HStack() {
                     Text(viewModel.provideTitle(discipline))
                         .font(.largeTitle).bold()
                     Spacer()
                 }
-                DatePicker("", selection: $date, displayedComponents: .date)
-                
-                    .padding(.bottom, 20)
+                .overlay {
+                    HStack {
+                        Spacer()
+                        DatePicker("", selection: $date, displayedComponents: .date)
+                    }
+                }
+                .padding(.bottom, 20)
                 VStack(alignment: .leading,spacing: 20) {
                     disciplineButtonsGrid
                     VStack(spacing: 40) {
@@ -47,9 +52,10 @@ struct AddTrainingView: View {
                     Text("Enter your notes")
                         .font(.title).bold()
                     notesView
-                    Text("Add video")
-                        .font(.title).bold()
-                    addVideoView
+                    // Dont add video for now
+                    //Text("Add video")
+                    //  .font(.title).bold()
+                    //addVideoView
                 }
             }
         }
@@ -136,23 +142,23 @@ extension AddTrainingView {
     var notesView: some View {
         TextEditor(text: $notes)
             .frame(height: 200)
-            .background(RoundedRectangle(cornerRadius: 20)
-                .stroke(.gray.opacity(0.2), lineWidth: 2)
-                .background(Color.secondayBackground))
+//            .background(RoundedRectangle(cornerRadius: 20)
+//                .stroke(.gray.opacity(0.2), lineWidth: 2)
+//                .background(Color.secondayBackground))
             .cornerRadius(20)
     }
-    var addVideoView: some View {
-        Image(systemName: "plus")
-            .foregroundColor(.darkerBlue)
-            .frame(height: 200)
-            .frame(maxWidth: .infinity)
-            .font(.system(size: 40))
-            .overlay(RoundedRectangle(cornerRadius: 16)
-                .stroke(.gray.opacity(0.2), lineWidth: 2)
-                .background(Color.secondayBackground))
-            .onTapGesture {
-                isShowingVideoPicker.toggle()
-            }
-    }
+//    var addVideoView: some View {
+//        Image(systemName: "plus")
+//            .foregroundColor(.darkerBlue)
+//            .frame(height: 200)
+//            .frame(maxWidth: .infinity)
+//            .font(.system(size: 40))
+//            .overlay(RoundedRectangle(cornerRadius: 16)
+//                .stroke(.gray.opacity(0.2), lineWidth: 2)
+//                .background(Color.secondayBackground))
+//            .onTapGesture {
+//                isShowingVideoPicker.toggle()
+//            }
+//    }
 }
 

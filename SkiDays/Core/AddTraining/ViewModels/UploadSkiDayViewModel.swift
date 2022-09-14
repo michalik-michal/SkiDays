@@ -27,17 +27,21 @@ class UploadSkiDayViewModel: ObservableObject{
         }
     }
     func provideTitle(_ discipline: String) -> String {
-        
-        if discipline == "" {
-            return "Add New Training"
-        }
-        if discipline == "FREE" {
-            return "FREE SKIING"
-        }
-        if discipline == "PARA" {
-            return "PARALLEL"
-        } else {
-            return discipline
+        switch discipline {
+        case "SL":
+            return "Slalom"
+        case "GS":
+            return "Giant Slalom"
+        case "SG":
+            return "Super G"
+        case "DH":
+            return "Downhill"
+        case "FREE":
+            return "Free Skiing"
+        case "PARA":
+            return "Paralell"
+        default:
+            return "Add Training"
         }
     }
 }
