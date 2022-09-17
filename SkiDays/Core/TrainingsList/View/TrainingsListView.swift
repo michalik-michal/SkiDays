@@ -18,8 +18,11 @@ struct TrainingsListView: View {
                     ForEach(viewModel.searchableSkiDays){skiDay in
                         TrainingRowView(skiDay: skiDay)
                     }
+                    addTrainingWidget
+                        .hide(if: viewModel.searchableSkiDays.count != 0)
                 }
             }
+            
             .onTapGesture {
                 self.endTextEditing()
             }
@@ -36,6 +39,25 @@ struct TrainingsListView: View {
                     }
                 }
             }
+        }
+    }
+    private var addTrainingWidget: some View {
+        NavigationLink {
+            AddTrainingView()
+        } label: {
+            VStack {
+                Image(systemName: "plus")
+                    .font(.system(size: 40))
+                    .padding(.bottom, 10)
+                    .foregroundColor(.blue)
+                Text("Add Training")
+                    .font(.title2.bold())
+                    .foregroundColor(.blackWhite)
+            }
+            .frame(height: 140)
+            .frame(maxWidth: .infinity)
+            .background(Color.secondayBackground)
+            .cornerRadius(20)
         }
     }
 }
