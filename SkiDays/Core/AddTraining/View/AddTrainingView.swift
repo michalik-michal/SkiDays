@@ -22,7 +22,7 @@ struct AddTrainingView: View {
     ]
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             VStack {
                 // UGLY - find better solution
                 HStack() {
