@@ -6,10 +6,12 @@ class AuthViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
     @Published var currentUser: User?
     @Published var shouldShowError = false
+    @Published var showSplashScreen = false
     
     private let service = UserService()
     
     init() {
+        self.showSplashScreen.toggle()
         self.userSession = Auth.auth().currentUser
         self.fetchUser()
     }

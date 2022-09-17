@@ -10,6 +10,7 @@
 		20075CF428784EA7004743B1 /* SecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20075CF328784EA7004743B1 /* SecureTextField.swift */; };
 		2050050128D0CB400006795A /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2050050028D0CB400006795A /* ErrorView.swift */; };
 		20704BB228D271ED0058CDB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20704BB128D271ED0058CDB6 /* Assets.xcassets */; };
+		20704BB528D612F80058CDB6 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20704BB428D612F80058CDB6 /* SplashScreen.swift */; };
 		20755F74287ACE60009E63DB /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20755F73287ACE60009E63DB /* SearchBar.swift */; };
 		20B2906A28CBA96E006E6635 /* SettingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B2906928CBA96E006E6635 /* SettingsRow.swift */; };
 		20B2906C28CBAECE006E6635 /* ThemeSettingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B2906B28CBAECE006E6635 /* ThemeSettingsRow.swift */; };
@@ -62,6 +63,7 @@
 		20075CF328784EA7004743B1 /* SecureTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureTextField.swift; sourceTree = "<group>"; };
 		2050050028D0CB400006795A /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		20704BB128D271ED0058CDB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
+		20704BB428D612F80058CDB6 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		20755F73287ACE60009E63DB /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		20B2906928CBA96E006E6635 /* SettingsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRow.swift; sourceTree = "<group>"; };
 		20B2906B28CBAECE006E6635 /* ThemeSettingsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettingsRow.swift; sourceTree = "<group>"; };
@@ -128,6 +130,14 @@
 				2050050028D0CB400006795A /* ErrorView.swift */,
 			);
 			path = ErrorMessage;
+			sourceTree = "<group>";
+		};
+		20704BB328D612A70058CDB6 /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				20704BB428D612F80058CDB6 /* SplashScreen.swift */,
+			);
+			path = SplashScreen;
 			sourceTree = "<group>";
 		};
 		20755F72287ACE50009E63DB /* SearchBar */ = {
@@ -275,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				22848DC5281BDCC100AF996F /* Core */,
+				22848DD4281BE0D700AF996F /* Extentions.swift */,
 				22848DB7281BDBBD00AF996F /* SkiDaysApp.swift */,
 				22848DB9281BDBBD00AF996F /* ContentView.swift */,
 				20704BB128D271ED0058CDB6 /* Assets.xcassets */,
@@ -307,7 +318,7 @@
 				22928AD6281C0855000FCEFA /* AddTraining */,
 				22848DDC281BEEFE00AF996F /* TrainingDetails */,
 				22848DC7281BDCDB00AF996F /* Authentication */,
-				22848DD4281BE0D700AF996F /* Extentions.swift */,
+				20704BB328D612A70058CDB6 /* SplashScreen */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -606,6 +617,7 @@
 				22848DCF281BDF5E00AF996F /* CustomInputField.swift in Sources */,
 				22F04E37284F5E6B00A5F03B /* StatsViewModel.swift in Sources */,
 				225A1F192822903700C2C81E /* SettingsViewModel.swift in Sources */,
+				20704BB528D612F80058CDB6 /* SplashScreen.swift in Sources */,
 				22848DCB281BDD0600AF996F /* LoginView.swift in Sources */,
 				2050050128D0CB400006795A /* ErrorView.swift in Sources */,
 				22C7A063281FF67A003A9936 /* UploadSkiDayViewModel.swift in Sources */,
