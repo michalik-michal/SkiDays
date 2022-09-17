@@ -24,10 +24,10 @@ struct SplashScreen: View {
     
     private func animateSplash() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-            withAnimation(Animation.easeIn(duration: 0.45)) {
+            withAnimation(Animation.interactiveSpring()) {
                 animate.toggle()
             }
-            withAnimation(Animation.easeIn(duration: 0.35)) {
+            withAnimation(Animation.interactiveSpring()) {
                 endSplash.toggle()
             }
         }
