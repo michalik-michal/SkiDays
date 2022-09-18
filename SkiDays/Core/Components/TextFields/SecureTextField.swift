@@ -5,10 +5,10 @@ struct SecureTextField: View {
     @Binding var password: String
     @State var isSecure: Bool = true
     private var shouldHideDelete: Bool {
-        if password == "" {
-            return true
-        } else {
+        if password != "" {
             return false
+        } else {
+            return true
         }
     }
     
@@ -19,20 +19,14 @@ struct SecureTextField: View {
             }else{
                 CustomInputField(imageName: "lock", placeholderText: "Password", isSecureField: false, text: $password)
             }
-            HStack {
-                Button {
-                    password = ""
-                } label: {
-                    Image(systemName: "x.circle")
-                        .foregroundColor(Color(.darkGray))
-                }.hide(if: shouldHideDelete)
                 Button {
                     isSecure.toggle()
                 } label: {
                     Image(systemName: self.isSecure ? "eye.slash" : "eye")
                         .foregroundColor(Color(.darkGray))
                 }
-            }
+                .padding(.trailing, 25)
+                .padding(.bottom, 3)
         }
     }
 }

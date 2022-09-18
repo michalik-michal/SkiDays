@@ -8,8 +8,6 @@ struct CustomInputField: View {
     private var shouldHideDelete: Bool {
         if text == "" {
             return true
-        } else if isSecureField! {
-            return true
         } else {
             return false
         }
