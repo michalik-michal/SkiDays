@@ -2,9 +2,12 @@ import SwiftUI
 import AVKit
 
 struct AddTrainingView: View {
+    
+    private enum Field { case place, conditions, runs }
 
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel = UploadSkiDayViewModel()
+    @FocusState private var focusedField: Field?
     
     @State private var date = Date()
     @State private var conditions: String = ""
@@ -41,13 +44,21 @@ struct AddTrainingView: View {
                     disciplineButtonsGrid
                     VStack(spacing: 40) {
                         CustomInputField(imageName: "mappin", placeholderText: "Place", text: $place)
+                            .focused($focusedField, equals: .place)
+                            .submitLabel(.next)
                         CustomInputField(imageName: "snowflake", placeholderText: "Conditions", text: $conditions)
+                            .focused($focusedField, equals: .conditions)
+                            .submitLabel(.next)
                         CustomInputField(imageName: "waveform.path.ecg", placeholderText: "Number of runs", text: $runs)
+                            .focused($focusedField, equals: .runs)
                             .keyboardType(.numberPad)
                         CustomInputField(imageName: "italic", placeholderText: "Number of gates", text: $gates)
                             .keyboardType(.numberPad)
                     }
                     .padding(.top, 40)
+                    .onSubmit {
+                        manageSubmitActions()
+                    }
                     
                     Text("Enter your notes")
                         .font(.title).bold()
@@ -78,6 +89,17 @@ struct AddTrainingView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 doneButton
             }
+        }
+    }
+    
+    private func manageSubmitActions() {
+        switch focusedField {
+        case .place:
+            focusedField = .conditions
+        case .conditions:
+            focusedField = .runs
+        default:
+            return
         }
     }
 }
