@@ -10,13 +10,12 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack {
-                    totalLabel
-                    buttonStack(model: viewModel)
-                }
-                .frame(maxWidth: .infinity)
+            VStack {
+                circleView
+                buttonStack(model: viewModel)
             }
+            .padding(.horizontal)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.background)
             .navigationTitle("Home")
             .toolbar {
@@ -31,33 +30,7 @@ struct HomeView: View {
             }
         }
     }
-}
-
-private func buttonStack(model: HomeViewModel) -> some View {
-    VStack(spacing: 60){
-        HStack(spacing: 30){
-            DisciplineButtonView(discipline: "SL", days: model.numberOfDisciplineDays("SL"))
-            DisciplineButtonView(discipline: "GS", days: model.numberOfDisciplineDays("GS"))
-        }
-        HStack(spacing: 30){
-            DisciplineButtonView(discipline: "SG", days: model.numberOfDisciplineDays("SG"))
-            DisciplineButtonView(discipline: "DH", days: model.numberOfDisciplineDays("DH"))
-        }
-        HStack(spacing: 30){
-            DisciplineButtonView(discipline: "FREE", days: model.numberOfDisciplineDays("FREE"))
-            DisciplineButtonView(discipline: "PARA", days: model.numberOfDisciplineDays("PARA"))
-        }
-    }
-}
-//struct HomeView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HomeView()
-//    }
-//}
-
-extension HomeView{
-    
-    var totalLabel: some View {
+    private var totalLabel: some View {
         Text("Total: \(viewModel.skiDays.count)")
             .font(.system(size: 60))
             .foregroundColor(.blackWhite)
@@ -67,4 +40,43 @@ extension HomeView{
             .padding(.top, 20)
             .padding(.bottom, 60)
     }
+    
+    private var circleView: some View {
+        Circle()
+            .strokeBorder(
+                AngularGradient(gradient: Gradient(colors: viewModel.getColors()), center: .center, startAngle: .zero, endAngle: .degrees(360)),
+                lineWidth: 30)
+            .frame(width: 220, height: 220)
+            .padding(.vertical, 10)
+            .foregroundColor(.buttonColor)
+            .offset(y: -20)
+            .overlay {
+                VStack(spacing: -10) {
+                    Text("\(viewModel.skiDays.count)")
+                        .font(.system(size: 60).bold())
+                    Text(viewModel.getTitle())
+                        .font(.system(size: 30))
+                }
+                .offset(y: -20)
+            }
+    }
+    
+    private func buttonStack(model: HomeViewModel) -> some View {
+        VStack(spacing: 20){
+            HStack(spacing: 10){
+                DisciplineButtonView(discipline: "SL", days: model.numberOfDisciplineDays("SL"))
+                DisciplineButtonView(discipline: "GS", days: model.numberOfDisciplineDays("GS"))
+            }
+            HStack(spacing: 10){
+                DisciplineButtonView(discipline: "SG", days: model.numberOfDisciplineDays("SG"))
+                DisciplineButtonView(discipline: "DH", days: model.numberOfDisciplineDays("DH"))
+            }
+            HStack(spacing: 10){
+                DisciplineButtonView(discipline: "FREE", days: model.numberOfDisciplineDays("FREE"))
+                DisciplineButtonView(discipline: "PARA", days: model.numberOfDisciplineDays("PARA"))
+            }
+        }
+    }
 }
+
+

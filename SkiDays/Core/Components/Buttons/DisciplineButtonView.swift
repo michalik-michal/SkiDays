@@ -16,7 +16,8 @@ struct DisciplineButtonView: View {
                 .foregroundColor(.blackWhite)
                 .font(.system(size: 35)).bold()
         }
-        .frame(width: 150, height: 80)
+        .frame(height: 80)
+        .frame(maxWidth: .infinity)
         .background(Color.secondayBackground)
         .cornerRadius(12)
     }

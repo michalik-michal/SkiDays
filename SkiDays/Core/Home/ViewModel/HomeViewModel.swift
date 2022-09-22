@@ -1,4 +1,4 @@
-import Foundation
+import SwiftUI
 
 class HomeViewModel: ObservableObject{
     
@@ -27,5 +27,45 @@ class HomeViewModel: ObservableObject{
         return filteredSkiDays.count
     }
     
-        
+    func getTitle() -> String {
+        switch skiDays.count {
+        case 1:
+            return "DAY"
+        default:
+            return "DAYS"
+        }
+    }
+    
+    func getColors() -> [Color] {
+        var circleColors: [Color] = []
+        let sortedDays = skiDays.sorted {
+            $0.discipline < $1.discipline
+        }
+        if skiDays.count == 0 {
+            circleColors.append(.secondayBackground)
+        }else {
+            for day in sortedDays {
+                switch day.discipline {
+                case "SL":
+                    circleColors.append(.green)
+                case "GS":
+                    circleColors.append(.blue)
+                case "SG":
+                    circleColors.append(.yellow)
+                case "DH":
+                    circleColors.append(.orange)
+                case "PARA":
+                    circleColors.append(.purple)
+                case "FREE":
+                    circleColors.append(.red)
+                default:
+                    circleColors.append(.black)
+                }
+            }
+            if let connectingColor = circleColors.first {
+                circleColors.append(connectingColor)
+            }
+        }
+        return circleColors
+    }
 }
