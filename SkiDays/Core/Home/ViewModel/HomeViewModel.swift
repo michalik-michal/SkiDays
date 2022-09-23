@@ -41,25 +41,25 @@ class HomeViewModel: ObservableObject{
         let sortedDays = skiDays.sorted {
             $0.discipline < $1.discipline
         }
-        if skiDays.count == 0 {
+        if skiDays.count < 2 {
             circleColors.append(.secondayBackground)
         }else {
             for day in sortedDays {
                 switch day.discipline {
                 case "SL":
-                    circleColors.append(.green)
+                    circleColors.append(.pastelGreen)
                 case "GS":
-                    circleColors.append(.blue)
+                    circleColors.append(.pastelBlue)
                 case "SG":
-                    circleColors.append(.yellow)
+                    circleColors.append(.pastelYellow)
                 case "DH":
-                    circleColors.append(.orange)
+                    circleColors.append(.pastelOrange)
                 case "PARA":
-                    circleColors.append(.purple)
+                    circleColors.append(.pastelPurple)
                 case "FREE":
-                    circleColors.append(.red)
+                    circleColors.append(.pastelRed)
                 default:
-                    circleColors.append(.black)
+                    circleColors.append(.white)
                 }
             }
             if let connectingColor = circleColors.first {

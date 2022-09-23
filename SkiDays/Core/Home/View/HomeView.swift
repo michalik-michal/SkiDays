@@ -30,35 +30,23 @@ struct HomeView: View {
             }
         }
     }
-    private var totalLabel: some View {
-        Text("Total: \(viewModel.skiDays.count)")
-            .font(.system(size: 60))
-            .foregroundColor(.blackWhite)
-            .frame(width: 300, height: 160)
-            .background(Color.secondayBackground)
-            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-            .padding(.top, 20)
-            .padding(.bottom, 60)
-    }
     
     private var circleView: some View {
-        Circle()
-            .strokeBorder(
-                AngularGradient(gradient: Gradient(colors: viewModel.getColors()), center: .center, startAngle: .zero, endAngle: .degrees(360)),
-                lineWidth: 30)
-            .frame(width: 220, height: 220)
-            .padding(.vertical, 10)
-            .foregroundColor(.buttonColor)
-            .offset(y: -20)
-            .overlay {
-                VStack(spacing: -10) {
-                    Text("\(viewModel.skiDays.count)")
-                        .font(.system(size: 60).bold())
-                    Text(viewModel.getTitle())
-                        .font(.system(size: 30))
-                }
-                .offset(y: -20)
-            }
+        VStack(spacing: -10) {
+            Text("\(viewModel.skiDays.count)")
+                .font(.system(size: 60).bold())
+                .foregroundColor(viewModel.skiDays.count > 2 ? .white : .blackWhite)
+            Text(viewModel.getTitle())
+                .font(.system(size: 30))
+                .foregroundColor(viewModel.skiDays.count > 2 ? .white : .blackWhite)
+        }
+        .frame(maxWidth: UIScreen.main.bounds.width)
+        .frame(height: 200)
+        .background(LinearGradient(gradient: Gradient(colors: viewModel.getColors()),
+                                   startPoint: .topLeading,
+                                   endPoint: .bottomTrailing))
+        .cornerRadius(20)
+        .offset(y: -30)
     }
     
     private func buttonStack(model: HomeViewModel) -> some View {
