@@ -24,7 +24,6 @@ class StatsViewModel: ObservableObject{
     
     func getStats(){
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            
             for discipline in self.disciplines {
                 let filteredSkiDays = self.skiDays.filter({
                     $0.discipline.contains(discipline)
@@ -60,5 +59,39 @@ class StatsViewModel: ObservableObject{
                 self.stats.append(stat)
             }
         }
+    }
+    
+    func getStatsFor(_ discipline: String) -> DisciplineStats {
+            let filteredSkiDays = self.skiDays.filter({
+                $0.discipline.contains(discipline)
+            })
+            let discilpineDays = filteredSkiDays.count
+            var totalGates = 0
+            var totalRuns = 0
+            var averageGates = 0
+            var averageRuns = 0
+            
+            for skiDay in self.skiDays{
+                
+                if skiDay.discipline == discipline{
+                    totalRuns = totalRuns + skiDay.runs
+                    
+                    totalGates = totalGates + skiDay.gates *  skiDay.runs
+                }
+            }
+            
+            if discilpineDays != 0{
+                averageRuns = totalRuns / discilpineDays
+                averageGates = totalGates / discilpineDays
+            }
+            
+            let stat = (DisciplineStats(
+                discipline: discipline,
+                numberOfDays: discilpineDays,
+                totalRuns: totalRuns,
+                totalGates: totalGates,
+                averageRuns: averageRuns,
+                averageGates: averageGates))
+            return stat
     }
 }

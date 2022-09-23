@@ -3,6 +3,9 @@ import SwiftUI
 struct StatsView: View {
     
     @ObservedObject var viewModel: StatsViewModel
+    @Namespace var animation
+    
+    @State private var selectedDiscipline: StatsDisciplineFilter = .sl
     
     init(user: User){
         self.viewModel = StatsViewModel(user: user)
@@ -20,11 +23,35 @@ struct StatsView: View {
                             Text("Add Chart")
                                 .foregroundColor(.white)
                         }
-                    VStack(spacing: 30){
-                        ForEach(viewModel.stats){stat in
-                            DisciplineStatsRow(stats: stat)
+                    HStack {
+                        ForEach(StatsDisciplineFilter.allCases, id: \.rawValue) { item in
+                            VStack {
+                                Text(item.title)
+                                    .font(.subheadline)
+                                    .fontWeight(selectedDiscipline == item ? .bold : .regular)
+                                if selectedDiscipline == item {
+                                    Capsule()
+                                        .foregroundColor(.blue)
+                                        .frame(height: 3)
+                                        .matchedGeometryEffect(id: "filter", in: animation)
+                                } else {
+                                    Capsule()
+                                        .foregroundColor(.clear)
+                                        .frame(height: 3)
+                                }
+                            }
+                            .onTapGesture {
+                                withAnimation(.easeInOut) {
+                                    self.selectedDiscipline = item
+                                }
+                            }
                         }
                     }
+                    .overlay {
+                        Divider()
+                            .offset(y: 16)
+                    }
+                    DisciplineStatsRow(stats: viewModel.getStatsFor(selectedDiscipline.title))
                 }
                 .navigationBarTitle("Statistics")
             }
