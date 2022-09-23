@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		20075CF428784EA7004743B1 /* SecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20075CF328784EA7004743B1 /* SecureTextField.swift */; };
+		201D56C328DDA36200CB5025 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 201D56C228DDA36200CB5025 /* Assets.xcassets */; };
 		2050050128D0CB400006795A /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2050050028D0CB400006795A /* ErrorView.swift */; };
-		20704BB228D271ED0058CDB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20704BB128D271ED0058CDB6 /* Assets.xcassets */; };
 		20704BB528D612F80058CDB6 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20704BB428D612F80058CDB6 /* SplashScreen.swift */; };
 		20755F74287ACE60009E63DB /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20755F73287ACE60009E63DB /* SearchBar.swift */; };
 		20B2906A28CBA96E006E6635 /* SettingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B2906928CBA96E006E6635 /* SettingsRow.swift */; };
@@ -61,8 +61,8 @@
 
 /* Begin PBXFileReference section */
 		20075CF328784EA7004743B1 /* SecureTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureTextField.swift; sourceTree = "<group>"; };
+		201D56C228DDA36200CB5025 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2050050028D0CB400006795A /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
-		20704BB128D271ED0058CDB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
 		20704BB428D612F80058CDB6 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		20755F73287ACE60009E63DB /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		20B2906928CBA96E006E6635 /* SettingsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRow.swift; sourceTree = "<group>"; };
@@ -288,7 +288,7 @@
 				22848DD4281BE0D700AF996F /* Extentions.swift */,
 				22848DB7281BDBBD00AF996F /* SkiDaysApp.swift */,
 				22848DB9281BDBBD00AF996F /* ContentView.swift */,
-				20704BB128D271ED0058CDB6 /* Assets.xcassets */,
+				201D56C228DDA36200CB5025 /* Assets.xcassets */,
 				22928AE9281FC5BA000FCEFA /* GoogleService-Info.plist */,
 				22848DBD281BDBC800AF996F /* Preview Content */,
 			);
@@ -581,7 +581,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22848DBF281BDBC800AF996F /* Preview Assets.xcassets in Resources */,
-				20704BB228D271ED0058CDB6 /* Assets.xcassets in Resources */,
+				201D56C328DDA36200CB5025 /* Assets.xcassets in Resources */,
 				22928AEA281FC5BA000FCEFA /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
