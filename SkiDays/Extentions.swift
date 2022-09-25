@@ -14,7 +14,6 @@ extension Color{
     static let pastelGreen = Color("pastelGreen")
     static let pastelPurple = Color("pastelPurple")
     static let pastelOrange = Color("pastelOrange")
-    
 }
 
 extension View {

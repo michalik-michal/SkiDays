@@ -35,10 +35,10 @@ struct HomeView: View {
         VStack(spacing: -10) {
             Text("\(viewModel.skiDays.count)")
                 .font(.system(size: 60).bold())
-                .foregroundColor(viewModel.skiDays.count > 2 ? .white : .blackWhite)
+                .foregroundColor(viewModel.skiDays.count > 2 ? .black : .blackWhite)
             Text(viewModel.getTitle())
                 .font(.system(size: 30))
-                .foregroundColor(viewModel.skiDays.count > 2 ? .white : .blackWhite)
+                .foregroundColor(viewModel.skiDays.count > 2 ? .black : .blackWhite)
         }
         .frame(maxWidth: UIScreen.main.bounds.width)
         .frame(height: 200)

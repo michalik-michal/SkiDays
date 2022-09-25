@@ -1,4 +1,5 @@
 import SwiftUI
+import Charts
 
 struct StatsView: View {
     
@@ -10,19 +11,17 @@ struct StatsView: View {
     init(user: User){
         self.viewModel = StatsViewModel(user: user)
     }
+    let chartColors: [Color] = [.pastelGreen, .pastelBlue, .pastelYellow, .pastelOrange, .pastelPurple, .pastelRed]
     
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: false) {
-                LazyVStack{
-                    Circle()
-                        .fill(.green)
-                        .frame(width: 250, height: 250)
-                        .padding(.bottom, 30)
-                        .overlay {
-                            Text("Add Chart")
-                                .foregroundColor(.white)
-                        }
+                LazyVStack {
+                    if viewModel.skiDays.count < 2 {
+                        emptyView
+                    } else {
+                        chartView
+                    }
                     HStack {
                         ForEach(StatsDisciplineFilter.allCases, id: \.rawValue) { item in
                             VStack {
@@ -31,7 +30,7 @@ struct StatsView: View {
                                     .fontWeight(selectedDiscipline == item ? .bold : .regular)
                                 if selectedDiscipline == item {
                                     Capsule()
-                                        .foregroundColor(.blue)
+                                        .foregroundColor(viewModel.getCapsuleColor(for: item.title))
                                         .frame(height: 3)
                                         .matchedGeometryEffect(id: "filter", in: animation)
                                 } else {
@@ -52,12 +51,38 @@ struct StatsView: View {
                             .offset(y: 16)
                     }
                     DisciplineStatsRow(stats: viewModel.getStatsFor(selectedDiscipline.title))
+                    
                 }
                 .navigationBarTitle("Statistics")
+            }
+            .onAppear {
+                viewModel.getStats()
             }
             .padding()
             .background(Color.background)
         }
+    }
+    
+    private var chartView: some View {
+        Chart(viewModel.stats) { stat in
+            BarMark(x: .value("Discipline", stat.discipline),
+                    y: .value("Days", stat.numberOfDays))
+            .foregroundStyle(viewModel.gradient)
+        }
+        .chartLegend(.hidden)
+        .frame(height: 200)
+        .padding(.top)
+    }
+    
+    private var emptyView: some View {
+        VStack() {
+            Image("emptyImage")
+                .resizable()
+                .frame(width: 150, height: 150)
+            Text("Add more data...")
+                .font(.title2.bold())
+        }
+        .frame(height: 250)
     }
 }
 

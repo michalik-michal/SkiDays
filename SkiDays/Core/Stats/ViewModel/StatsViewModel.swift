@@ -8,7 +8,8 @@ class StatsViewModel: ObservableObject{
     let service = StatsService()
     let user: User
     var disciplines = ["SL", "GS", "SG", "DH", "PARA", "FREE"]
-    
+    let gradient = Gradient(colors: [.pastelGreen, .pastelBlue, .pastelYellow, .pastelOrange, .pastelPurple, .pastelRed])
+
     init(user: User){
         self.user = user
         self.fetchUserSkidays()
@@ -23,7 +24,8 @@ class StatsViewModel: ObservableObject{
     }
     
     func getStats(){
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        stats = []
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
             for discipline in self.disciplines {
                 let filteredSkiDays = self.skiDays.filter({
                     $0.discipline.contains(discipline)
@@ -93,5 +95,17 @@ class StatsViewModel: ObservableObject{
                 averageRuns: averageRuns,
                 averageGates: averageGates))
             return stat
+    }
+    
+    func getCapsuleColor(for discipline: String) -> Color {
+        switch discipline{
+        case "SL": return .pastelGreen
+        case "GS": return .pastelBlue
+        case "SG": return .pastelYellow
+        case "DH": return .pastelOrange
+        case "PARA": return .pastelPurple
+        case "FREE": return .pastelRed
+        default: return .gray
+        }
     }
 }

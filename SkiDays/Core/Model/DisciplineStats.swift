@@ -1,8 +1,10 @@
 import Foundation
 import FirebaseFirestoreSwift
+import SwiftUI
+import Charts
 
 struct DisciplineStats: Identifiable{
-
+    
     var id: String = UUID().uuidString
     var discipline: String
     var numberOfDays: Int
@@ -10,5 +12,4 @@ struct DisciplineStats: Identifiable{
     var totalGates: Int
     var averageRuns: Int
     var averageGates: Int
-    
 }
