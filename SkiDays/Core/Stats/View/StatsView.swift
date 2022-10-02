@@ -54,7 +54,12 @@ struct StatsView: View {
                         Divider()
                             .offset(y: 16)
                     }
-                    AllStatsView()
+                    if selectedDiscipline == .all {
+                        AllStatsView()
+                    } else {
+                        DisciplineStatsRow(stats: viewModel.getStatsFor(selectedDiscipline.title))
+                    }
+                    
                 }
                 .navigationBarTitle("Statistics")
             }

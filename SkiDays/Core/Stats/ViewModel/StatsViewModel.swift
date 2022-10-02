@@ -7,7 +7,8 @@ class StatsViewModel: ObservableObject{
     var skiDays = [SkiDay]()
     let service = StatsService()
     let user: User
-    var disciplines = ["ALL", "SL", "GS", "SG", "DH", "PARA", "FREE"]
+    var disciplines = ["SL", "GS", "SG", "DH", "PARA", "FREE"]
+    var statCategories = ["ALL", "SL", "GS", "SG", "DH", "PARA", "FREE"]
     let gradient = Gradient(colors: [.pastelGreen, .pastelBlue, .pastelYellow, .pastelOrange, .pastelPurple, .pastelRed])
 
     init(user: User){
