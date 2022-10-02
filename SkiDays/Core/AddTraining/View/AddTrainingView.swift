@@ -17,6 +17,7 @@ struct AddTrainingView: View {
     @State private var gates: String = ""
     @State private var notes: String = ""
     @State private var isShowingVideoPicker: Bool = false
+    @State private var runsFinished = 0.0
     @State private var video = UIImage()
     
     let buttons: [[DisciplineButtonViewModel]] = [
@@ -59,8 +60,16 @@ struct AddTrainingView: View {
                     .onSubmit {
                         manageSubmitActions()
                     }
-                    
-                    Text("Enter your notes")
+                    if let runs = Double(runs) {
+                        HStack {
+                            Text("Runs finished: ")
+                                .font(.title).bold()
+                            Text(String(format: "%.0f", runsFinished))
+                                .font(.title.bold())
+                        }
+                        Slider(value: $runsFinished, in: 0...runs, step: 1)
+                    }
+                    Text("Notes")
                         .font(.title).bold()
                     notesView
                     // Dont add video for now
@@ -127,6 +136,7 @@ extension AddTrainingView {
                                        conditions: conditions,
                                        runs: Int(runs) ?? 0,
                                        gates: Int(gates) ?? 0,
+                                       consistency: (runsFinished / (Double(runs) ?? 0.0)),
                                        notes: notes,
                                        slopeProfile: "",
                                        skis: "",

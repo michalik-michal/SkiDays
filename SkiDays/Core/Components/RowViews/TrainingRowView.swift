@@ -49,6 +49,6 @@ struct TrainingRowView: View {
 
 struct TrainingRowView_Previews: PreviewProvider {
     static var previews: some View {
-        TrainingRowView(skiDay: SkiDay(date: "11/08/22", discipline: "SL", gates: 12, notes: "es", place: "Sierra nevada", runs: 0, conditions: "bad", slopeProfile: "", skis: "", video: "", uid: "1234"))
+        TrainingRowView(skiDay: SkiDay(date: "11/08/22", discipline: "SL", gates: 12, notes: "es", place: "Sierra nevada", runs: 0, consistency: 75.2, conditions: "bad", slopeProfile: "", skis: "", video: "", uid: "1234"))
     }
 }

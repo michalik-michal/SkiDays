@@ -21,7 +21,7 @@ struct TrainingDetailsView: View {
                     .bold()
                     .foregroundColor(.blackWhite)
             }
-            VStack(spacing: 30) {
+            VStack(spacing: 15) {
                 HStack {
                     DetailRowView(text: skiDay.discipline)
                     Spacer()
@@ -32,6 +32,14 @@ struct TrainingDetailsView: View {
                     DetailRowView(text: "\(skiDay.gates) gates")
                     DetailRowView(text: "\(skiDay.runs * skiDay.gates) total")
                 }
+                Rectangle()
+                    .fill(Color.secondayBackground)
+                    .frame(height: 200)
+                    .frame(maxWidth: .infinity)
+                    .cornerRadius(20)
+                    .overlay {
+                        CircularProgressView(progress: skiDay.consistency)
+                    }
                 noteView
                     .hide(if: skiDay.notes == "")
                 uploadVideoView
@@ -51,7 +59,7 @@ struct TrainingDetailsView: View {
 
 struct TrainingDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        TrainingDetailsView(skiDay: SkiDay(id: "1234", date: "24/12/20", discipline: "SL", gates: 40, notes: "Good day", place: "Home", runs: 10, conditions: "Bad", slopeProfile: "", skis: "", video: "",  uid: "skkkrt"))
+        TrainingDetailsView(skiDay: SkiDay(id: "1234", date: "24/12/20", discipline: "SL", gates: 40, notes: "Good day", place: "Home", runs: 10, consistency: 0.74, conditions: "Bad", slopeProfile: "", skis: "", video: "",  uid: "skkkrt"))
     }
 }
 

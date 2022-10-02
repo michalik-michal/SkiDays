@@ -3,8 +3,7 @@ import MobileCoreServices
 
 struct SkiDayService{
     
-    func uploadSkiDay(date: String, discipline: String, place: String,conditions:String, runs: Int, gates: Int, notes: String,
-                      slopeProfile: String, skis: String, video: String,completion: @escaping(Bool) -> Void){
+    func uploadSkiDay(date: String, discipline: String, place: String,conditions:String, runs: Int, gates: Int, consistency: Double, notes: String, slopeProfile: String, skis: String, video: String,completion: @escaping(Bool) -> Void){
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let data = ["uid": uid,
                     "date": date ,
@@ -13,6 +12,7 @@ struct SkiDayService{
                     "place": place,
                     "runs": runs,
                     "gates": gates,
+                    "consistency": consistency,
                     "notes": notes,
                     "slopeProfile": slopeProfile,
                     "skis": skis,
@@ -44,7 +44,6 @@ struct SkiDayService{
             .whereField("uid", isEqualTo: uid)
             .addSnapshotListener { snapshot, _ in
                 guard let documents = snapshot?.documents else {return}
-                
                 let skiDays = documents.compactMap({try? $0.data(as: SkiDay.self)})
                 completion(skiDays.sorted(by: {$0.date > $1.date}))
             }

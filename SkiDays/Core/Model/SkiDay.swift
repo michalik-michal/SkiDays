@@ -11,6 +11,7 @@ struct SkiDay: Identifiable, Decodable{
     let notes: String
     let place: String
     let runs: Int
+    let consistency: Double
     let conditions: String
     let slopeProfile: String
     let skis: String

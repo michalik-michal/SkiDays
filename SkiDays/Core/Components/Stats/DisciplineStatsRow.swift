@@ -53,7 +53,7 @@ struct DisciplineStatsRow: View {
             Text(stats.discipline)
                 .font(.largeTitle.bold())
             Spacer()
-            Text("\(stats.numberOfDays)"
+            Text("\(stats.numberOfDays)")
                 .font(.title).bold()
             Text("\(getDayTitle())")
                 .font(.title2)
