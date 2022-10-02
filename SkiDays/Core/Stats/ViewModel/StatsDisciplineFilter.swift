@@ -1,6 +1,7 @@
 import Foundation
 
 enum StatsDisciplineFilter: Int, CaseIterable {
+    case all
     case sl
     case gs
     case sg
@@ -10,6 +11,7 @@ enum StatsDisciplineFilter: Int, CaseIterable {
     
     var title: String {
         switch self {
+        case .all: return "ALL"
         case .sl: return "SL"
         case .gs: return "GS"
         case .sg: return "SG"

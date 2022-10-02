@@ -7,7 +7,7 @@ class StatsViewModel: ObservableObject{
     var skiDays = [SkiDay]()
     let service = StatsService()
     let user: User
-    var disciplines = ["SL", "GS", "SG", "DH", "PARA", "FREE"]
+    var disciplines = ["ALL", "SL", "GS", "SG", "DH", "PARA", "FREE"]
     let gradient = Gradient(colors: [.pastelGreen, .pastelBlue, .pastelYellow, .pastelOrange, .pastelPurple, .pastelRed])
 
     init(user: User){
@@ -99,6 +99,7 @@ class StatsViewModel: ObservableObject{
     
     func getCapsuleColor(for discipline: String) -> Color {
         switch discipline{
+        case "ALL": return .blue
         case "SL": return .pastelGreen
         case "GS": return .pastelBlue
         case "SG": return .pastelYellow

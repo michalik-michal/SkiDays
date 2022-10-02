@@ -6,7 +6,7 @@ struct StatsView: View {
     @ObservedObject var viewModel: StatsViewModel
     @Namespace var animation
     
-    @State private var selectedDiscipline: StatsDisciplineFilter = .sl
+    @State private var selectedDiscipline: StatsDisciplineFilter = .all
     
     init(user: User){
         self.viewModel = StatsViewModel(user: user)
@@ -22,36 +22,39 @@ struct StatsView: View {
                     } else {
                         chartView
                     }
-                    HStack {
-                        ForEach(StatsDisciplineFilter.allCases, id: \.rawValue) { item in
-                            VStack {
-                                Text(item.title)
-                                    .font(.subheadline)
-                                    .fontWeight(selectedDiscipline == item ? .bold : .regular)
-                                if selectedDiscipline == item {
-                                    Capsule()
-                                        .foregroundColor(viewModel.getCapsuleColor(for: item.title))
-                                        .frame(height: 3)
-                                        .matchedGeometryEffect(id: "filter", in: animation)
-                                } else {
-                                    Capsule()
-                                        .foregroundColor(.clear)
-                                        .frame(height: 3)
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            ForEach(StatsDisciplineFilter.allCases, id: \.rawValue) { item in
+                                VStack {
+                                    Text(item.title)
+                                        .font(.subheadline)
+                                        .fontWeight(selectedDiscipline == item ? .bold : .regular)
+                                        .frame(width: 50)
+                                    if selectedDiscipline == item {
+                                        Capsule()
+                                            .foregroundColor(viewModel.getCapsuleColor(for: item.title))
+                                            .frame(height: 3)
+                                            .matchedGeometryEffect(id: "filter", in: animation)
+                                    } else {
+                                        Capsule()
+                                            .foregroundColor(.clear)
+                                            .frame(height: 3)
+                                    }
                                 }
-                            }
-                            .onTapGesture {
-                                withAnimation(.easeInOut) {
-                                    self.selectedDiscipline = item
+                                .onTapGesture {
+                                    withAnimation(.easeInOut) {
+                                        self.selectedDiscipline = item
+                                    }
                                 }
                             }
                         }
+                        
                     }
                     .overlay {
                         Divider()
                             .offset(y: 16)
                     }
-                    DisciplineStatsRow(stats: viewModel.getStatsFor(selectedDiscipline.title))
-                    
+                    AllStatsView()
                 }
                 .navigationBarTitle("Statistics")
             }
@@ -66,12 +69,24 @@ struct StatsView: View {
     private var chartView: some View {
         Chart(viewModel.stats) { stat in
             BarMark(x: .value("Discipline", stat.discipline),
-                    y: .value("Days", stat.numberOfDays))
+                    y: .value("Days", stat.animate ? stat.numberOfDays : 0))
             .foregroundStyle(viewModel.gradient)
         }
         .chartLegend(.hidden)
         .frame(height: 200)
         .padding(.top)
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                for (index,_) in viewModel.stats.enumerated() {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.05) {
+                        withAnimation(.interactiveSpring(response: 0.8, dampingFraction: 0.8, blendDuration: 0.8)) {
+                            viewModel.stats[index].animate = true
+                        }
+                    }
+                }
+            }
+        }
+        
     }
     
     private var emptyView: some View {
