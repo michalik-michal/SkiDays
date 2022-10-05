@@ -1,6 +1,9 @@
 import SwiftUI
 
 struct AllStatsView: View {
+    
+    var mainStats: MainStats
+    
     var body: some View {
         VStack() {
             headerStack
@@ -17,26 +20,20 @@ struct AllStatsView: View {
             HStack {
                 VStack(alignment: .leading) {
                     HStack {
-                        Text("1242")
+                        Text("\(mainStats.totalGates ?? 0)")
                             .font(.title2.bold())
                         Text("gates")
                             .font(.title2)
                     }
                     HStack {
-                        Text("180")
+                        Text("\(mainStats.totalRuns ?? 0)")
                             .font(.title2.bold())
                         Text("runs")
                             .font(.title2)
                     }
-                    HStack {
-                        Text("65")
-                            .font(.title2.bold())
-                        Text("finished")
-                            .font(.title2)
-                    }
                 }
                 Spacer()
-                CircularProgressView(progress: 0.54)
+                CircularProgressView(progress: mainStats.consistency ?? 0)
                     .padding(.trailing, 20)
             }
         }
@@ -51,7 +48,7 @@ struct AllStatsView: View {
             Text("ALL")
                 .font(.largeTitle.bold())
             Spacer()
-            Text("49")
+            Text("\(mainStats.numberOfDays ?? 0)")
                 .font(.title).bold()
             Text("DAYS")
                 .font(.title2)
@@ -63,20 +60,20 @@ struct AllStatsView: View {
         HStack {
             Text("Most skied: ")
                 .font(.title3)
-            Text("SL")
+            Text("\(mainStats.mostSkiedDiscipline ?? "")")
                 .font(.title2).bold()
             Spacer()
-            Text("44")
+            Text("\(mainStats.mostSkiedDisciplineDays ?? 0)")
                 .font(.title2).bold()
             Text("DAYS")
                 .font(.title3)
         }
-        .padding(.bottom)
+        .padding(.bottom, 5)
     }
 }
 
 struct AllStatsView_Previews: PreviewProvider {
     static var previews: some View {
-        AllStatsView()
+        AllStatsView(mainStats: MainStats(numberOfDays: 1, mostSkiedDiscipline: "SL", mostSkiedDisciplineDays: 1, mostSkiedContidions: "Soft", totalGates: 10, totalRuns: 10, consistency: 0.5))
     }
 }

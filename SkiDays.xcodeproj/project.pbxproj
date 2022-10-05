@@ -17,6 +17,7 @@
 		208A82D128E0A9B4006173EF /* AllStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208A82D028E0A9B4006173EF /* AllStatsView.swift */; };
 		20B2906A28CBA96E006E6635 /* SettingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B2906928CBA96E006E6635 /* SettingsRow.swift */; };
 		20B2906C28CBAECE006E6635 /* ThemeSettingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B2906B28CBAECE006E6635 /* ThemeSettingsRow.swift */; };
+		20F7373628EC490F001CF521 /* MainStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7373528EC490F001CF521 /* MainStats.swift */; };
 		225A1EFA282018F300C2C81E /* TrainingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A1EF9282018F300C2C81E /* TrainingListViewModel.swift */; };
 		225A1EFD28201B4300C2C81E /* SkiDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A1EFC28201B4300C2C81E /* SkiDay.swift */; };
 		225A1F012820FB4E00C2C81E /* TrainingDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A1F002820FB4E00C2C81E /* TrainingDetailsViewModel.swift */; };
@@ -73,6 +74,7 @@
 		208A82D028E0A9B4006173EF /* AllStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStatsView.swift; sourceTree = "<group>"; };
 		20B2906928CBA96E006E6635 /* SettingsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRow.swift; sourceTree = "<group>"; };
 		20B2906B28CBAECE006E6635 /* ThemeSettingsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettingsRow.swift; sourceTree = "<group>"; };
+		20F7373528EC490F001CF521 /* MainStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStats.swift; sourceTree = "<group>"; };
 		225A1EF9282018F300C2C81E /* TrainingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingListViewModel.swift; sourceTree = "<group>"; };
 		225A1EFC28201B4300C2C81E /* SkiDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiDay.swift; sourceTree = "<group>"; };
 		225A1F002820FB4E00C2C81E /* TrainingDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				225A1EFC28201B4300C2C81E /* SkiDay.swift */,
 				22775C9A2823CD2800849BE3 /* User.swift */,
 				22F04E38284F5EC000A5F03B /* DisciplineStats.swift */,
+				20F7373528EC490F001CF521 /* MainStats.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -647,6 +650,7 @@
 				20B2906A28CBA96E006E6635 /* SettingsRow.swift in Sources */,
 				208A82D128E0A9B4006173EF /* AllStatsView.swift in Sources */,
 				22848DCD281BDD1400AF996F /* RegistrationView.swift in Sources */,
+				20F7373628EC490F001CF521 /* MainStats.swift in Sources */,
 				22848DE9281C016700AF996F /* MainTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

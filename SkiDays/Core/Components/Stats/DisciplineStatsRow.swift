@@ -30,15 +30,9 @@ struct DisciplineStatsRow: View {
                         Text("runs")
                             .font(.title2)
                     }
-                    HStack {
-                        Text("65")
-                            .font(.title2.bold())
-                        Text("finished")
-                            .font(.title2)
-                    }
                 }
                 Spacer()
-                CircularProgressView(progress: 0.54)
+                CircularProgressView(progress: stats.consistency)
                     .padding(.trailing, 20)
             }
         }
@@ -72,6 +66,6 @@ struct DisciplineStatsRow: View {
 
 struct DisciplineStatsRow_Previews: PreviewProvider {
     static var previews: some View {
-        DisciplineStatsRow(stats: DisciplineStats(discipline: "SL", numberOfDays: 10, totalRuns: 100, totalGates: 960, averageRuns: 10, averageGates: 30))
+        DisciplineStatsRow(stats: DisciplineStats(discipline: "SL", numberOfDays: 10, totalRuns: 100, totalGates: 960, averageRuns: 10, averageGates: 30, consistency: 0.54))
     }
 }

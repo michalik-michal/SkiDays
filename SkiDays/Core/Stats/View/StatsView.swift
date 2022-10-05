@@ -55,7 +55,7 @@ struct StatsView: View {
                             .offset(y: 16)
                     }
                     if selectedDiscipline == .all {
-                        AllStatsView()
+                        AllStatsView(mainStats: viewModel.mainStats)
                     } else {
                         DisciplineStatsRow(stats: viewModel.getStatsFor(selectedDiscipline.title))
                     }
@@ -65,6 +65,7 @@ struct StatsView: View {
             }
             .onAppear {
                 viewModel.getStats()
+                viewModel.getMainStats()
             }
             .padding()
             .background(Color.background)
@@ -72,7 +73,7 @@ struct StatsView: View {
     }
     
     private var chartView: some View {
-        Chart(viewModel.stats) { stat in
+        Chart(viewModel.disciplineStats) { stat in
             BarMark(x: .value("Discipline", stat.discipline),
                     y: .value("Days", stat.animate ? stat.numberOfDays : 0))
             .foregroundStyle(viewModel.gradient)
@@ -82,10 +83,10 @@ struct StatsView: View {
         .padding(.top)
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                for (index,_) in viewModel.stats.enumerated() {
+                for (index,_) in viewModel.disciplineStats.enumerated() {
                     DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.05) {
                         withAnimation(.interactiveSpring(response: 0.8, dampingFraction: 0.8, blendDuration: 0.8)) {
-                            viewModel.stats[index].animate = true
+                            viewModel.disciplineStats[index].animate = true
                         }
                     }
                 }
