@@ -13,5 +13,6 @@ struct DisciplineStats: Identifiable{
     var averageRuns: Int
     var averageGates: Int
     var consistency: Double
+    var mostSkiedContidions: String
     var animate: Bool = false
 }

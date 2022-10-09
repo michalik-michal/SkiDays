@@ -9,6 +9,7 @@ class StatsViewModel: ObservableObject{
     let service = StatsService()
     let user: User
     var disciplines = ["SL", "GS", "SG", "DH", "PARA", "FREE"]
+    var conditions = ["Snow" ,"-" ,"Soft","Grippy","Bumpy" ,"Hard" ,"Compact" ,"Ice" ,"Rats" ,"Salt" ]
     var statCategories = ["ALL", "SL", "GS", "SG", "DH", "PARA", "FREE"]
     let gradient = Gradient(colors: [.pastelGreen, .pastelBlue, .pastelYellow, .pastelOrange, .pastelPurple, .pastelRed])
     
@@ -47,7 +48,7 @@ class StatsViewModel: ObservableObject{
                         hardConsistency += skiDay.consistency
                     }
                 }
-                
+
                 if discilpineDays != 0{
                     averageRuns = totalRuns / discilpineDays
                     averageGates = totalGates / discilpineDays
@@ -61,8 +62,9 @@ class StatsViewModel: ObservableObject{
                     totalGates: totalGates,
                     averageRuns: averageRuns,
                     averageGates: averageGates,
-                    consistency: consistency))
-                
+                    consistency: consistency,
+                    mostSkiedContidions: ""))
+
                 self.disciplineStats.append(stat)
             }
         }
@@ -92,8 +94,8 @@ class StatsViewModel: ObservableObject{
         if discilpineDays != 0{
             averageRuns = totalRuns / discilpineDays
             averageGates = totalGates / discilpineDays
+            consistency = hardConsistency / Double(discilpineDays)
         }
-        consistency = hardConsistency / Double(discilpineDays)
         
         let stat = (DisciplineStats(
             discipline: discipline,
@@ -102,11 +104,12 @@ class StatsViewModel: ObservableObject{
             totalGates: totalGates,
             averageRuns: averageRuns,
             averageGates: averageGates,
-            consistency: consistency))
+            consistency: consistency,
+            mostSkiedContidions: getMostSkiedConditionsForDiscipline(for: discipline)))
         return stat
     }
+    
     func getMainStats() {
-        let mostSkiedContidions = "Soft"
         var totalGates = 0
         var totalRuns = 0
         var hardConsistency = 0.0
@@ -121,14 +124,28 @@ class StatsViewModel: ObservableObject{
         for discipline in self.disciplineStats {
             days.append(discipline.numberOfDays)
         }
-        consistency = hardConsistency / Double(skiDays.count)
+        if !skiDays.isEmpty{
+            consistency = hardConsistency / Double(skiDays.count)
+        }
         mainStats = MainStats(numberOfDays: skiDays.count,
                               mostSkiedDiscipline: getMostSkiedDiscipline(),
                               mostSkiedDisciplineDays: getMostSkiedDisciplineDaysCount(),
-                              mostSkiedContidions: mostSkiedContidions,
+                              mostSkiedContidions: getMostSkiedConditions(),
                               totalGates: totalGates,
                               totalRuns: totalRuns,
                               consistency: consistency)
+    }
+    
+    func getMostSkiedConditions() -> String {
+        var dictionary: [String : Int] = [:]
+        for condition in conditions {
+            dictionary[condition] = 0
+        }
+        for skiDay in skiDays {
+            dictionary[skiDay.conditions]! += 1
+        }
+        let sorted = dictionary.sorted { $0.1 > $1.1 }
+        return sorted[0].key
     }
     
     func getMostSkiedDiscipline() -> String {
@@ -139,6 +156,11 @@ class StatsViewModel: ObservableObject{
         for skiDay in skiDays {
             dictionary[skiDay.discipline]! += 1
         }
+        var sum = 0
+        for i in dictionary.values {
+            sum += i
+        }
+        if sum == 0 { return "-" }
         let sorted = dictionary.sorted {$0.1 > $1.1}
         return sorted[0].key
     }
@@ -152,6 +174,25 @@ class StatsViewModel: ObservableObject{
             dictionary[skiDay.discipline]! += 1
         }
         return dictionary.values.max() ?? 0
+    }
+    
+    func getMostSkiedConditionsForDiscipline(for discipline: String) -> String{
+        var dictionary: [String : Int] = [:]
+        for condition in conditions {
+            dictionary[condition] = 0
+        }
+        for skiDay in skiDays {
+            if skiDay.discipline == discipline {
+                dictionary[skiDay.conditions]! += 1
+            }
+        }
+        var sum = 0
+        for i in dictionary.values {
+            sum += i
+        }
+        if sum == 0 { return "-" }
+        let sorted = dictionary.sorted { $0.1 > $1.1 }
+        return sorted[0].key
     }
     
     func getCapsuleColor(for discipline: String) -> Color {

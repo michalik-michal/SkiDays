@@ -21,7 +21,6 @@ struct CircularProgressView: View {
         }
         .frame(width: 150, height: 150)
         .padding(.vertical, 5)
-        
     }
 }
 

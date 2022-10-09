@@ -3,14 +3,14 @@ import AVKit
 
 struct AddTrainingView: View {
     
-    private enum Field { case place, conditions, runs }
+    private enum Field { case place , runs }
 
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel = UploadSkiDayViewModel()
     @FocusState private var focusedField: Field?
     
     @State private var date = Date()
-    @State private var conditions: String = ""
+    @State private var conditions: String = "Snow"
     @State private var discipline: String = ""
     @State private var place: String = ""
     @State private var runs: String = ""
@@ -47,14 +47,14 @@ struct AddTrainingView: View {
                         CustomInputField(imageName: "mappin", placeholderText: "Place", text: $place)
                             .focused($focusedField, equals: .place)
                             .submitLabel(.next)
-                        CustomInputField(imageName: "snowflake", placeholderText: "Conditions", text: $conditions)
-                            .focused($focusedField, equals: .conditions)
-                            .submitLabel(.next)
+
                         CustomInputField(imageName: "waveform.path.ecg", placeholderText: "Number of runs", text: $runs)
                             .focused($focusedField, equals: .runs)
                             .keyboardType(.numberPad)
                         CustomInputField(imageName: "italic", placeholderText: "Number of gates", text: $gates)
                             .keyboardType(.numberPad)
+                        menu
+
                     }
                     .padding(.top, 40)
                     .onSubmit {
@@ -72,7 +72,7 @@ struct AddTrainingView: View {
                     Text("Notes")
                         .font(.title).bold()
                     notesView
-                    // Dont add video for now
+                    // Don't add video for now
                     //Text("Add video")
                     //  .font(.title).bold()
                     //addVideoView
@@ -101,11 +101,70 @@ struct AddTrainingView: View {
         }
     }
     
+    private var menu: some View {
+        Menu {
+            Button {
+                conditions = "-"
+            } label: {
+                Text("-")
+            }
+            Button {
+                conditions = "Soft"
+            } label: {
+                Text("Soft")
+            }
+            Button {
+                conditions = "Grippy"
+            } label: {
+                Text("Grippy")
+            }
+            Button {
+                conditions = "Bumpy"
+            } label: {
+                Text("Bumpy")
+            }
+            Button {
+                conditions = "Hard"
+            } label: {
+                Text("Hard")
+            }
+            Button {
+                conditions = "Compact"
+            } label: {
+                Text("Compact")
+            }
+            Button {
+                conditions = "Ice"
+            } label: {
+                Text("Ice")
+            }
+            Button {
+                conditions = "Rats"
+            } label: {
+                Text("Rats")
+            }
+            Button {
+                conditions = "Salt"
+            } label: {
+                Text("Salt")
+            }
+        } label: {
+            HStack {
+                Image(systemName: "snowflake")
+                Text(conditions)
+                Spacer()
+            }
+            .padding(.leading)
+            .frame(height: 40)
+            .frame(maxWidth: .infinity)
+            .background(Color.secondayBackground)
+            .cornerRadius(12)
+        }
+    }
+    
     private func manageSubmitActions() {
         switch focusedField {
         case .place:
-            focusedField = .conditions
-        case .conditions:
             focusedField = .runs
         default:
             return

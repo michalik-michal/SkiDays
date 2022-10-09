@@ -12,7 +12,7 @@ struct AllStatsView: View {
             HStack {
                 Text("Most skied conditions: ")
                     .font(.title3)
-                Text("Soft")
+                Text(mainStats.mostSkiedContidions ?? "-")
                     .font(.title2.bold())
                 Spacer()
             }

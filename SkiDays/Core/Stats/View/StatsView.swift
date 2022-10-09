@@ -22,44 +22,12 @@ struct StatsView: View {
                     } else {
                         chartView
                     }
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(StatsDisciplineFilter.allCases, id: \.rawValue) { item in
-                                VStack {
-                                    Text(item.title)
-                                        .font(.subheadline)
-                                        .fontWeight(selectedDiscipline == item ? .bold : .regular)
-                                        .frame(width: 50)
-                                    if selectedDiscipline == item {
-                                        Capsule()
-                                            .foregroundColor(viewModel.getCapsuleColor(for: item.title))
-                                            .frame(height: 3)
-                                            .matchedGeometryEffect(id: "filter", in: animation)
-                                    } else {
-                                        Capsule()
-                                            .foregroundColor(.clear)
-                                            .frame(height: 3)
-                                    }
-                                }
-                                .onTapGesture {
-                                    withAnimation(.easeInOut) {
-                                        self.selectedDiscipline = item
-                                    }
-                                }
-                            }
-                        }
-                        
-                    }
-                    .overlay {
-                        Divider()
-                            .offset(y: 16)
-                    }
+                    disciplineStack
                     if selectedDiscipline == .all {
                         AllStatsView(mainStats: viewModel.mainStats)
                     } else {
                         DisciplineStatsRow(stats: viewModel.getStatsFor(selectedDiscipline.title))
                     }
-                    
                 }
                 .navigationBarTitle("Statistics")
             }
@@ -92,7 +60,40 @@ struct StatsView: View {
                 }
             }
         }
-        
+    }
+    
+    private var disciplineStack: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack {
+                ForEach(StatsDisciplineFilter.allCases, id: \.rawValue) { item in
+                    VStack {
+                        Text(item.title)
+                            .font(.subheadline)
+                            .fontWeight(selectedDiscipline == item ? .bold : .regular)
+                            .frame(width: 50)
+                        if selectedDiscipline == item {
+                            Capsule()
+                                .foregroundColor(viewModel.getCapsuleColor(for: item.title))
+                                .frame(height: 3)
+                                .matchedGeometryEffect(id: "filter", in: animation)
+                        } else {
+                            Capsule()
+                                .foregroundColor(.clear)
+                                .frame(height: 3)
+                        }
+                    }
+                    .onTapGesture {
+                        withAnimation(.easeInOut) {
+                            self.selectedDiscipline = item
+                        }
+                    }
+                }
+            }
+        }
+        .overlay {
+            Divider()
+                .offset(y: 16)
+        }
     }
     
     private var emptyView: some View {
