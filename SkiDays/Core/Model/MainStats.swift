@@ -12,5 +12,5 @@ struct MainStats: Identifiable {
     var mostSkiedContidions: String?
     var totalGates: Int?
     var totalRuns: Int?
-    var consistency: Double?
+    var consistency : Double?
 }

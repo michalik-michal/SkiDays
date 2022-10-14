@@ -6,24 +6,24 @@ class UploadSkiDayViewModel: ObservableObject{
     @Published var didUploadSkiDay = false
     let service = SkiDayService()
     
-    func uploadSkiDay(date: String, discipline: String, place: String,conditions: String, runs: Int, gates: Int,consistency: Double, notes: String, slopeProfile: String, skis: String, video: String ) {
-        service.uploadSkiDay(date: date,
-                             discipline: discipline,
-                             place: place,
-                             conditions: conditions,
-                             runs: runs,
-                             gates: gates,
-                             consistency: consistency,
-                             notes: notes,
-                             slopeProfile: slopeProfile,
-                             skis: skis,
-                             video: video
+//    func uploadSkiDay(date: String,
+//                      discipline: String,
+//                      place: String,
+//                      conditions: String,
+//                      runs: Int,
+//                      gates: Int,
+//                      consistency: Double,
+//                      notes: String,
+//                      slopeProfile: String,
+//                      skis: String,
+//                      video: String ) {
+    func uploadSkiDay(skiDay: SkiDay) {
+        service.uploadSkiDay(skiDay: skiDay
         ) { succes in
-            
-            if succes{
+            if succes {
                 self.didUploadSkiDay = true
-            }else{
-                //show error message
+            }else {
+                // show error message
             }
         }
     }

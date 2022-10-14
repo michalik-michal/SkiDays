@@ -29,7 +29,7 @@ struct AddTrainingView: View {
         ScrollView(showsIndicators: false) {
             VStack {
                 // UGLY - find better solution
-                HStack() {
+                HStack {
                     Text(viewModel.provideTitle(discipline))
                         .font(.largeTitle).bold()
                     Spacer()
@@ -41,7 +41,7 @@ struct AddTrainingView: View {
                     }
                 }
                 .padding(.bottom, 20)
-                VStack(alignment: .leading,spacing: 20) {
+                VStack(alignment: .leading, spacing: 20) {
                     disciplineButtonsGrid
                     VStack(spacing: 40) {
                         CustomInputField(imageName: "mappin", placeholderText: "Place", text: $place)
@@ -73,9 +73,9 @@ struct AddTrainingView: View {
                         .font(.title).bold()
                     notesView
                     // Don't add video for now
-                    //Text("Add video")
+                    // Text("Add video")
                     //  .font(.title).bold()
-                    //addVideoView
+                    // addVideoView
                 }
             }
         }
@@ -189,17 +189,18 @@ extension AddTrainingView {
     
     var doneButton: some View {
             Button {
-                viewModel.uploadSkiDay(date: fetchDate(date: date),
-                                       discipline: discipline,
-                                       place: place,
-                                       conditions: conditions,
-                                       runs: Int(runs) ?? 0,
-                                       gates: Int(gates) ?? 0,
-                                       consistency: (runsFinished / (Double(runs) ?? 0.0)),
-                                       notes: notes,
-                                       slopeProfile: "",
-                                       skis: "",
-                                       video: ""
+                let skiDay = SkiDay(date: fetchDate(date: date),
+                                    discipline: discipline,
+                                    gates: Int(gates) ?? 0,
+                                    notes: notes,
+                                    place: place,
+                                    runs: Int(runs) ?? 0,
+                                    consistency: (runsFinished / (Double(runs) ?? 0.0)),
+                                    conditions: conditions,
+                                    slopeProfile: "",
+                                    skis: "",
+                                    video: "")
+                viewModel.uploadSkiDay(skiDay: skiDay
                 )
                 presentationMode.wrappedValue.dismiss()
             } label: {
@@ -212,9 +213,9 @@ extension AddTrainingView {
     }
     
     var disciplineButtonsGrid: some View {
-        ForEach(buttons, id: \.self){ row in
-            HStack{
-                ForEach(row, id: \.self){item in
+        ForEach(buttons, id: \.self) { row in
+            HStack {
+                ForEach(row, id: \.self) { item in
                     Button {
                         discipline = item.rawValue
                     } label: {
@@ -252,4 +253,3 @@ extension AddTrainingView {
 //            }
 //    }
 }
-

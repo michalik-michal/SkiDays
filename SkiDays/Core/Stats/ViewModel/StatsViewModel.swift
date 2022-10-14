@@ -43,8 +43,8 @@ class StatsViewModel: ObservableObject{
                 var consistency = 0.0
                 for skiDay in self.skiDays{
                     if skiDay.discipline == discipline{
-                        totalRuns = totalRuns + skiDay.runs
-                        totalGates = totalGates + skiDay.gates *  skiDay.runs
+                        totalRuns += skiDay.runs
+                        totalGates += skiDay.gates *  skiDay.runs
                         hardConsistency += skiDay.consistency
                     }
                 }
@@ -85,8 +85,8 @@ class StatsViewModel: ObservableObject{
         for skiDay in self.skiDays{
             
             if skiDay.discipline == discipline{
-                totalRuns = totalRuns + skiDay.runs
-                totalGates = totalGates + skiDay.gates *  skiDay.runs
+                totalRuns += skiDay.runs
+                totalGates += skiDay.gates *  skiDay.runs
                 hardConsistency += skiDay.consistency
             }
         }
@@ -157,8 +157,8 @@ class StatsViewModel: ObservableObject{
             dictionary[skiDay.discipline]! += 1
         }
         var sum = 0
-        for i in dictionary.values {
-            sum += i
+        for number in dictionary.values {
+            sum += number
         }
         if sum == 0 { return "-" }
         let sorted = dictionary.sorted {$0.1 > $1.1}
@@ -187,8 +187,8 @@ class StatsViewModel: ObservableObject{
             }
         }
         var sum = 0
-        for i in dictionary.values {
-            sum += i
+        for number in dictionary.values {
+            sum += number
         }
         if sum == 0 { return "-" }
         let sorted = dictionary.sorted { $0.1 > $1.1 }

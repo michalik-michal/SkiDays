@@ -3,22 +3,32 @@ import MobileCoreServices
 
 struct SkiDayService{
     
-    func uploadSkiDay(date: String, discipline: String, place: String,conditions:String, runs: Int, gates: Int, consistency: Double, notes: String, slopeProfile: String, skis: String, video: String,completion: @escaping(Bool) -> Void){
+//    func uploadSkiDay(date: String,
+//                      discipline: String,
+//                      place: String,
+//                      conditions:String,
+//                      runs: Int,
+//                      gates: Int,
+//                      consistency: Double,
+//                      notes: String,
+//                      slopeProfile: String,
+//                      skis: String,
+//                      video: String,
+    func uploadSkiDay(skiDay: SkiDay,
+                      completion: @escaping(Bool) -> Void){
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let data = ["uid": uid,
-                    "date": date ,
-                    "discipline": discipline,
-                    "conditions": conditions,
-                    "place": place,
-                    "runs": runs,
-                    "gates": gates,
-                    "consistency": consistency,
-                    "notes": notes,
-                    "slopeProfile": slopeProfile,
-                    "skis": skis,
-                    "video": video
-        ]as [String : Any]
-        
+                    "date": skiDay.date,
+                    "discipline": skiDay.discipline,
+                    "conditions": skiDay.conditions,
+                    "place": skiDay.place,
+                    "runs": skiDay.runs,
+                    "gates": skiDay.gates,
+                    "consistency": skiDay.consistency,
+                    "notes": skiDay.notes,
+                    "slopeProfile": skiDay.slopeProfile,
+                    "skis": skiDay.skis,
+                    "video": skiDay.video] as [String : Any]
         Firestore.firestore().collection("skidays").document()
             .setData(data) { error in
                 if let error = error{

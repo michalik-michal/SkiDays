@@ -66,6 +66,13 @@ struct DisciplineStatsRow: View {
 
 struct DisciplineStatsRow_Previews: PreviewProvider {
     static var previews: some View {
-        DisciplineStatsRow(stats: DisciplineStats(discipline: "SL", numberOfDays: 10, totalRuns: 100, totalGates: 960, averageRuns: 10, averageGates: 30, consistency: 0.54, mostSkiedContidions: "Soft"))
+        DisciplineStatsRow(stats: DisciplineStats(discipline: "SL",
+                                                  numberOfDays: 10,
+                                                  totalRuns: 100,
+                                                  totalGates: 960,
+                                                  averageRuns: 10,
+                                                  averageGates: 30,
+                                                  consistency: 0.54,
+                                                  mostSkiedContidions: "Soft"))
     }
 }
