@@ -1,10 +1,10 @@
 import SwiftUI
 
-class HomeViewModel: ObservableObject{
-    
+class HomeViewModel: ObservableObject {
+
     @Published var skiDays = [SkiDay]()
     @Published var disciplineFilter = ""
-    
+
     let service = SkiDayService()
     let user: User
 
@@ -12,21 +12,21 @@ class HomeViewModel: ObservableObject{
         self.user = user
         self.fetchUserSkidays()
     }
-    
+
     func fetchUserSkidays() {
         guard let uid = user.id else {return}
         service.fetchSkiDaysForUid(forUid: uid) { skiDays in
             self.skiDays = skiDays
         }
     }
-    
+
     func numberOfDisciplineDays( _ discipline: String) -> Int {
         let filteredSkiDays = skiDays.filter({
             $0.discipline.contains(discipline)
         })
         return filteredSkiDays.count
     }
-    
+
     func getTitle() -> String {
         switch skiDays.count {
         case 1:
@@ -35,7 +35,7 @@ class HomeViewModel: ObservableObject{
             return "DAYS"
         }
     }
-    
+
     func getColors() -> [Color] {
         var circleColors: [Color] = []
         let sortedDays = skiDays.sorted {
@@ -43,7 +43,7 @@ class HomeViewModel: ObservableObject{
         }
         if skiDays.count < 2 {
             circleColors.append(.secondayBackground)
-        }else {
+        } else {
             for day in sortedDays {
                 switch day.discipline {
                 case "SL":

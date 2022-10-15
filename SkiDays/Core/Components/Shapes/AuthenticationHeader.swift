@@ -1,13 +1,14 @@
 import SwiftUI
 
 struct AuthenticationHeader: View {
-    
+
     let title1: String
     let title2: String
-    
+
     var body: some View {
-        VStack(alignment: .leading){
-            HStack{Spacer()}
+        VStack(alignment: .leading) {
+            // Investigate
+            HStack { Spacer() }
             Text(title1)
                 .font(.largeTitle)
                 .fontWeight(.semibold)

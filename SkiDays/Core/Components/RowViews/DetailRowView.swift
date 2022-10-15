@@ -1,9 +1,9 @@
 import SwiftUI
 
 struct DetailRowView: View {
-    
+
     var text: String
-    
+
     var body: some View {
         Text(text)
             .foregroundColor(.blackWhite)

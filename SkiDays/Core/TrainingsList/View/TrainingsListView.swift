@@ -2,27 +2,26 @@ import SwiftUI
 import Firebase
 
 struct TrainingsListView: View {
-    
+
     @ObservedObject var viewModel: TrainingListViewModel
     @State var text: String = ""
-    
+
     init(user: User) {
         self.viewModel = TrainingListViewModel(user: user)
     }
-    
+
     var body: some View {
         NavigationView {
             ScrollView {
                 LazyVStack(spacing: 15) {
                     SearchBar(text: $viewModel.searchText)
-                    ForEach(viewModel.searchableSkiDays){skiDay in
+                    ForEach(viewModel.searchableSkiDays) { skiDay in
                         TrainingRowView(skiDay: skiDay)
                     }
                     addTrainingWidget
                         .hide(if: viewModel.searchableSkiDays.count != 0)
                 }
             }
-            
             .onTapGesture {
                 self.endTextEditing()
             }
@@ -31,7 +30,7 @@ struct TrainingsListView: View {
             .navigationTitle("Ski Days")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink{
+                    NavigationLink {
                         AddTrainingView()
                     } label: {
                         Image(systemName: "plus")

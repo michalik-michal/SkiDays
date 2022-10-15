@@ -1,17 +1,17 @@
 import SwiftUI
 
 struct DisciplineButtonView: View {
-    
+
     var discipline: String
     var days: Int
     @ObservedObject var viewModel = AuthViewModel()
-    
+
     var body: some View {
-        NavigationLink{
-            if let user = viewModel.currentUser{
-                FilteredDaysView(user: user,discipline: discipline)
+        NavigationLink {
+            if let user = viewModel.currentUser {
+                FilteredDaysView(user: user, discipline: discipline)
             }
-        }label: {
+        } label: {
             Text("\(discipline): \(days)")
                 .foregroundColor(.blackWhite)
                 .font(.system(size: 35)).bold()

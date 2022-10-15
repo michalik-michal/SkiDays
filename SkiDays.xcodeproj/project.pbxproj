@@ -532,8 +532,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 22848DC2281BDBC800AF996F /* Build configuration list for PBXNativeTarget "SkiDays" */;
 			buildPhases = (
-				2072276E28F9920100703811 /* Run SwiftLint */,
 				22848DB0281BDBBD00AF996F /* Sources */,
+				2072276E28F9920100703811 /* Run SwiftLint */,
 				22848DB1281BDBBD00AF996F /* Frameworks */,
 				22848DB2281BDBBD00AF996F /* Resources */,
 			);

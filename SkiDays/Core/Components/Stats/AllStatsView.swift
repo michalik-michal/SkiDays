@@ -1,11 +1,11 @@
 import SwiftUI
 
 struct AllStatsView: View {
-    
+
     var mainStats: MainStats
-    
+
     var body: some View {
-        VStack() {
+        VStack {
             headerStack
             Divider()
             disciplineSection
@@ -42,7 +42,7 @@ struct AllStatsView: View {
         .background(Color.secondayBackground)
         .cornerRadius(20)
     }
-    
+
     private var headerStack: some View {
         HStack {
             Text("ALL")
@@ -55,7 +55,7 @@ struct AllStatsView: View {
         }
         .padding(.bottom)
     }
-    
+
     private var disciplineSection: some View {
         HStack {
             Text("Most skied: ")
@@ -74,6 +74,12 @@ struct AllStatsView: View {
 
 struct AllStatsView_Previews: PreviewProvider {
     static var previews: some View {
-        AllStatsView(mainStats: MainStats(numberOfDays: 1, mostSkiedDiscipline: "SL", mostSkiedDisciplineDays: 1, mostSkiedContidions: "Soft", totalGates: 10, totalRuns: 10, consistency: 0.5))
+        AllStatsView(mainStats: MainStats(numberOfDays: 1,
+                                          mostSkiedDiscipline: "SL",
+                                          mostSkiedDisciplineDays: 1,
+                                          mostSkiedContidions: "Soft",
+                                          totalGates: 10,
+                                          totalRuns: 10,
+                                          consistency: 0.5))
     }
 }

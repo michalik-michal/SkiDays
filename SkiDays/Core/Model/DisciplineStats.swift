@@ -3,8 +3,7 @@ import FirebaseFirestoreSwift
 import SwiftUI
 import Charts
 
-struct DisciplineStats: Identifiable{
-    
+struct DisciplineStats: Identifiable {
     var id: String = UUID().uuidString
     var discipline: String
     var numberOfDays: Int

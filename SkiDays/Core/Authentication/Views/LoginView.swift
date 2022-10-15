@@ -1,20 +1,19 @@
 import SwiftUI
 
-//ADD PITCURE AS HEADER BACKGROUND (?)!!!
+// ADD PITCURE AS HEADER BACKGROUND (?)
 
 struct LoginView: View {
-    
+
     @State private var email = ""
     @State private var password = ""
     @State private var showError = false
     @EnvironmentObject var viewModel: AuthViewModel
-    
+
     var body: some View {
         NavigationView {
             VStack {
                 AuthenticationHeader(title1: "Hello.", title2: "Great to se you again")
-                
-                VStack(spacing: 40){
+                VStack(spacing: 40) {
                     CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
                     SecureTextField(password: $password)
                 }
@@ -45,11 +44,11 @@ struct LoginView: View {
                         .padding()
                 }
                 Spacer()
-                NavigationLink{
+                NavigationLink {
                     RegistrationView()
                         .navigationBarHidden(true)
                 } label: {
-                    HStack{
+                    HStack {
                         Text("Dont have an account?")
                             .font(.footnote)
                         Text("Sign Up")

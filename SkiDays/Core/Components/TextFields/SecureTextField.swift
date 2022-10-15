@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SecureTextField: View {
-    
+
     @Binding var password: String
     @State var isSecure: Bool = true
     private var shouldHideDelete: Bool {
@@ -11,12 +11,12 @@ struct SecureTextField: View {
             return true
         }
     }
-    
+
     var body: some View {
-        ZStack(alignment: .trailing){
-            if isSecure{
+        ZStack(alignment: .trailing) {
+            if isSecure {
                 CustomInputField(imageName: "lock", placeholderText: "Password", isSecureField: true, text: $password)
-            }else{
+            } else {
                 CustomInputField(imageName: "lock", placeholderText: "Password", isSecureField: false, text: $password)
             }
                 Button {
@@ -32,7 +32,6 @@ struct SecureTextField: View {
 }
 
 struct SecureTextField_Previews: PreviewProvider {
-    
     @State static var text = "test"
     static var previews: some View {
         SecureTextField(password: .constant(""))

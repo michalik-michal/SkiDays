@@ -1,11 +1,12 @@
 import Foundation
 
-enum DisciplineButtonViewModel: String, CaseIterable{
-    
-    case SL = "SL"
-    case GS = "GS"
-    case SG = "SG"
-    case DH = "DH"
-    case FREE = "FREE"
-    case PARA = "PARA"
+// swiftlint:disable: identifier_name
+
+enum DisciplineButtonViewModel: String, CaseIterable {
+    case SL
+    case GS
+    case SG
+    case DH
+    case FREE
+    case PARA
 }

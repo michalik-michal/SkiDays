@@ -1,5 +1,7 @@
 import Foundation
 
+// swiftlint:disable: identifier_name
+
 enum StatsDisciplineFilter: Int, CaseIterable {
     case all
     case sl
@@ -8,7 +10,7 @@ enum StatsDisciplineFilter: Int, CaseIterable {
     case dh
     case free
     case para
-    
+
     var title: String {
         switch self {
         case .all: return "ALL"

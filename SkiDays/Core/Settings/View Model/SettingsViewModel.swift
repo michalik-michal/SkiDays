@@ -1,15 +1,15 @@
 import Foundation
 import UIKit
 
-class SettingsViewModel: ObservableObject{
-    
+class SettingsViewModel: ObservableObject {
+
     let service = AuthViewModel()
     var mode = UIUserInterfaceStyle.unspecified
-    
+
     func signOut() {
         service.signOut()
     }
-    
+
     func setAppTheme(tag: Int) {
         switch tag {
         case 0:
@@ -24,7 +24,7 @@ class SettingsViewModel: ObservableObject{
         }
       (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first!.overrideUserInterfaceStyle = mode
     }
-    
+
     func getAppTheme() {
         let theme = UserDefaults.standard.string(forKey: "appTheme")
         switch theme {
@@ -37,7 +37,7 @@ class SettingsViewModel: ObservableObject{
         }
         (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first!.overrideUserInterfaceStyle = mode
     }
-    
+
     func getSelectedMode() -> Int {
         let theme = UserDefaults.standard.string(forKey: "appTheme")
         switch theme {
@@ -49,5 +49,4 @@ class SettingsViewModel: ObservableObject{
             return 2
         }
     }
-    
 }

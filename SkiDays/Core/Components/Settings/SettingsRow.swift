@@ -1,10 +1,10 @@
 import SwiftUI
 
 struct SettingsRow: View {
-    
+
     var image: String
     var title: String
-    
+
     var body: some View {
         VStack {
             HStack {

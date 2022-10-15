@@ -2,23 +2,23 @@ import SwiftUI
 import Firebase
 
 class AuthViewModel: ObservableObject {
-    
+
     @Published var userSession: FirebaseAuth.User?
     @Published var currentUser: User?
     @Published var shouldShowError = false
     @Published var showSplashScreen = false
-    
+
     private let service = UserService()
-    
+
     init() {
         self.showSplashScreen.toggle()
         self.userSession = Auth.auth().currentUser
         self.fetchUser()
     }
-    //MARK: - Log In User
+    // MARK: - Log In User
     func login(withEmail email: String, password: String) {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
-            if let error = error{
+            if let error = error {
                 print("Failed to sign in user with error: \(error)")
                 self.shouldShowError = true
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -30,7 +30,7 @@ class AuthViewModel: ObservableObject {
             self.fetchUser()
         }
     }
-    //MARK: - Register User
+    // MARK: - Register User
     func register(withEmail email: String, password: String, fullname: String, username: String) {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
@@ -41,16 +41,15 @@ class AuthViewModel: ObservableObject {
                 }
                 return
             }
-            
+
             guard let user = result?.user else {return}
             self.userSession = user
             self.fetchUser()
-            
-            let data = ["email" : email,
-                        "username" : username.lowercased(),
-                        "fullname" : fullname,
-                        "uid" : user.uid]
-            
+            let data = ["email": email,
+                        "username": username.lowercased(),
+                        "fullname": fullname,
+                        "uid": user.uid]
+
             Firestore.firestore().collection("users")
                 .document(user.uid)
                 .setData(data) { _ in
@@ -58,20 +57,17 @@ class AuthViewModel: ObservableObject {
                 }
         }
     }
-    
-    func fetchUser(){
+
+    func fetchUser() {
         guard let uid = self.userSession?.uid else {return}
-        service.fetchUser(withUid: uid){ user in
+        service.fetchUser(withUid: uid) { user in
             self.currentUser = user
         }
     }
-    //MARK: - Log Out User
-    
-    func signOut(){
-        //Show login view
+    // MARK: - Log Out User
+
+    func signOut() {
         userSession = nil
-        
-        // Signs out on server
         try? Auth.auth().signOut()
     }
 }

@@ -1,13 +1,13 @@
 import SwiftUI
 
 struct MainTabView: View {
-    
+
     @State private var selectedIndex = 1
     @EnvironmentObject var viewModel: AuthViewModel
-    
+
     var body: some View {
-        if let user = viewModel.currentUser{
-            TabView(selection: $selectedIndex){
+        if let user = viewModel.currentUser {
+            TabView(selection: $selectedIndex) {
                 TrainingsListView(user: user)
                     .onAppear {
                         self.selectedIndex = 0

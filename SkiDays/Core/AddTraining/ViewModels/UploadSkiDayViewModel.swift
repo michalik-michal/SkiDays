@@ -1,28 +1,17 @@
 import Foundation
 import SwiftUI
 
-class UploadSkiDayViewModel: ObservableObject{
-    
+class UploadSkiDayViewModel: ObservableObject {
+
     @Published var didUploadSkiDay = false
     let service = SkiDayService()
-    
-//    func uploadSkiDay(date: String,
-//                      discipline: String,
-//                      place: String,
-//                      conditions: String,
-//                      runs: Int,
-//                      gates: Int,
-//                      consistency: Double,
-//                      notes: String,
-//                      slopeProfile: String,
-//                      skis: String,
-//                      video: String ) {
+
     func uploadSkiDay(skiDay: SkiDay) {
         service.uploadSkiDay(skiDay: skiDay
         ) { succes in
             if succes {
                 self.didUploadSkiDay = true
-            }else {
+            } else {
                 // show error message
             }
         }

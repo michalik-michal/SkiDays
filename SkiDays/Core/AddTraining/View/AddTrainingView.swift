@@ -2,13 +2,13 @@ import SwiftUI
 import AVKit
 
 struct AddTrainingView: View {
-    
-    private enum Field { case place , runs }
+
+    private enum Field { case place, runs }
 
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel = UploadSkiDayViewModel()
     @FocusState private var focusedField: Field?
-    
+
     @State private var date = Date()
     @State private var conditions: String = "Snow"
     @State private var discipline: String = ""
@@ -19,12 +19,12 @@ struct AddTrainingView: View {
     @State private var isShowingVideoPicker: Bool = false
     @State private var runsFinished = 0.0
     @State private var video = UIImage()
-    
+
     let buttons: [[DisciplineButtonViewModel]] = [
         [.SL, .GS, .SG ],
         [.DH, .FREE, .PARA]
     ]
-    
+
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack {
@@ -100,7 +100,7 @@ struct AddTrainingView: View {
             }
         }
     }
-    
+
     private var menu: some View {
         Menu {
             Button {
@@ -161,7 +161,7 @@ struct AddTrainingView: View {
             .cornerRadius(12)
         }
     }
-    
+
     private func manageSubmitActions() {
         switch focusedField {
         case .place:
@@ -179,14 +179,14 @@ struct AddTrainingView_Previews: PreviewProvider {
 }
 
 extension AddTrainingView {
-    
+
     func fetchDate(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yy"
         let stringDate = dateFormatter.string(from: date)
         return stringDate
     }
-    
+
     var doneButton: some View {
             Button {
                 let skiDay = SkiDay(date: fetchDate(date: date),
@@ -211,7 +211,7 @@ extension AddTrainingView {
                     .padding(.bottom, 5)
             }
     }
-    
+
     var disciplineButtonsGrid: some View {
         ForEach(buttons, id: \.self) { row in
             HStack {

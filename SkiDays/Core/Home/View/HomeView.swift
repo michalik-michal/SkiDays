@@ -1,13 +1,13 @@
 import SwiftUI
 
 struct HomeView: View {
-    
+
     @ObservedObject var viewModel: HomeViewModel
-    
+
     init(user: User) {
         self.viewModel = HomeViewModel(user: user)
     }
-    
+
     var body: some View {
         NavigationView {
             VStack {
@@ -30,7 +30,7 @@ struct HomeView: View {
             }
         }
     }
-    
+
     private var circleView: some View {
         VStack(spacing: -10) {
             Text("\(viewModel.skiDays.count)")
@@ -48,23 +48,21 @@ struct HomeView: View {
         .cornerRadius(20)
         .offset(y: -30)
     }
-    
+
     private func buttonStack(model: HomeViewModel) -> some View {
-        VStack(spacing: 20){
-            HStack(spacing: 10){
+        VStack(spacing: 20) {
+            HStack(spacing: 10) {
                 DisciplineButtonView(discipline: "SL", days: model.numberOfDisciplineDays("SL"))
                 DisciplineButtonView(discipline: "GS", days: model.numberOfDisciplineDays("GS"))
             }
-            HStack(spacing: 10){
+            HStack(spacing: 10) {
                 DisciplineButtonView(discipline: "SG", days: model.numberOfDisciplineDays("SG"))
                 DisciplineButtonView(discipline: "DH", days: model.numberOfDisciplineDays("DH"))
             }
-            HStack(spacing: 10){
+            HStack(spacing: 10) {
                 DisciplineButtonView(discipline: "FREE", days: model.numberOfDisciplineDays("FREE"))
                 DisciplineButtonView(discipline: "PARA", days: model.numberOfDisciplineDays("PARA"))
             }
         }
     }
 }
-
-

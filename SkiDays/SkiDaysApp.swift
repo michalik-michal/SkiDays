@@ -3,14 +3,14 @@ import Firebase
 
 @main
 struct SkiDaysApp: App {
-    
+
     @StateObject var viewModel = AuthViewModel()
     @StateObject var settings = SettingsViewModel()
-    
-    init(){
+
+    init() {
         FirebaseApp.configure()
     }
-    
+
     var body: some Scene {
         WindowGroup {
                 ContentView()
@@ -19,4 +19,3 @@ struct SkiDaysApp: App {
         }
     }
 }
-

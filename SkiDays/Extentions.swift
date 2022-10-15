@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-extension Color{
+extension Color {
     static let darkerBlue = Color("darkerBlue")
     static let lightBlue = Color("lightBlue")
     static let buttonColor = Color("buttonColor")
@@ -21,7 +21,7 @@ extension View {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
                                         to: nil, from: nil, for: nil)
     }
-    
+
     @ViewBuilder func hide(if shouldHide: Bool) -> some View {
         if shouldHide {
             self.hidden()

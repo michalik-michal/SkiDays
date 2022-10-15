@@ -4,7 +4,7 @@ import SwiftUI
 import Charts
 
 struct MainStats: Identifiable {
-    
+
     var id: String = UUID().uuidString
     var numberOfDays: Int?
     var mostSkiedDiscipline: String?
@@ -12,5 +12,5 @@ struct MainStats: Identifiable {
     var mostSkiedContidions: String?
     var totalGates: Int?
     var totalRuns: Int?
-    var consistency : Double?
+    var consistency: Double?
 }

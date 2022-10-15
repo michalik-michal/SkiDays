@@ -1,13 +1,13 @@
 import SwiftUI
 
 struct TrainingDetailsView: View {
-    
+
     let skiDay: SkiDay
-    
+
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel = TrainingDetailsViewModel()
     @State private var showingConfirmation = false
-    
+
     var body: some View {
         ScrollView(showsIndicators: false) {
             HStack {
@@ -74,9 +74,8 @@ struct TrainingDetailsView_Previews: PreviewProvider {
     }
 }
 
-
 extension TrainingDetailsView {
-    
+
     var deleteButton: some View {
         Button {
             showingConfirmation = true
@@ -84,11 +83,11 @@ extension TrainingDetailsView {
             Image(systemName: "trash")
                 .foregroundColor(.red)
         }
-        .alert(isPresented: $showingConfirmation){
+        .alert(isPresented: $showingConfirmation) {
             Alert(
                 title: Text("Are you sure?"),
                 message: Text("Training will be deleted permanently."),
-                primaryButton: .destructive(Text("Delete")){
+                primaryButton: .destructive(Text("Delete")) {
                     viewModel.deleteSkiDay(skiDay)
                     presentationMode.wrappedValue.dismiss()
                 },
@@ -96,7 +95,7 @@ extension TrainingDetailsView {
             )
         }
     }
-    //MARK: - Notes View
+    // MARK: - Notes View
     var noteView: some View {
         Text(skiDay.notes)
             .font(.system(size: 20))
@@ -106,11 +105,10 @@ extension TrainingDetailsView {
             .background(Color.secondayBackground)
             .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
     }
-    
-    //MARK: - Upload Video
+    // MARK: - Upload Video
     var uploadVideoView: some View {
         Button {
-            //Upload Video
+            // Upload Video
         } label: {
             Text("Upload Video")
                 .font(.headline)

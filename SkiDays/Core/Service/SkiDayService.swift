@@ -1,21 +1,10 @@
 import Firebase
 import MobileCoreServices
 
-struct SkiDayService{
-    
-//    func uploadSkiDay(date: String,
-//                      discipline: String,
-//                      place: String,
-//                      conditions:String,
-//                      runs: Int,
-//                      gates: Int,
-//                      consistency: Double,
-//                      notes: String,
-//                      slopeProfile: String,
-//                      skis: String,
-//                      video: String,
+struct SkiDayService {
+
     func uploadSkiDay(skiDay: SkiDay,
-                      completion: @escaping(Bool) -> Void){
+                      completion: @escaping(Bool) -> Void) {
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let data = ["uid": uid,
                     "date": skiDay.date,
@@ -28,10 +17,10 @@ struct SkiDayService{
                     "notes": skiDay.notes,
                     "slopeProfile": skiDay.slopeProfile,
                     "skis": skiDay.skis,
-                    "video": skiDay.video] as [String : Any]
+                    "video": skiDay.video] as [String: Any]
         Firestore.firestore().collection("skidays").document()
             .setData(data) { error in
-                if let error = error{
+                if let error = error {
                     print("Failed to upload SkiDay wiht errror: \(error)")
                     completion(false)
                     return
@@ -39,17 +28,16 @@ struct SkiDayService{
                 completion(true)
             }
     }
-    func fetchSkiDays(completion: @escaping([SkiDay]) -> Void){
+    func fetchSkiDays(completion: @escaping([SkiDay]) -> Void) {
         Firestore.firestore().collection("skidays")
-            .order(by: "date", descending: true) //hours (?)
+            .order(by: "date", descending: true) // hours (?)
             .addSnapshotListener { snapshot, _ in
-                guard let documents = snapshot?.documents else {return}
-                
+                guard let documents = snapshot?.documents else { return }
                 let skiDays = documents.compactMap({try? $0.data(as: SkiDay.self)})
                 completion(skiDays)
             }
     }
-    func fetchSkiDaysForUid(forUid uid: String, completion: @escaping([SkiDay]) -> Void){
+    func fetchSkiDaysForUid(forUid uid: String, completion: @escaping([SkiDay]) -> Void) {
         Firestore.firestore().collection("skidays")
             .whereField("uid", isEqualTo: uid)
             .addSnapshotListener { snapshot, _ in
@@ -58,9 +46,9 @@ struct SkiDayService{
                 completion(skiDays.sorted(by: {$0.date > $1.date}))
             }
     }
-    
-    func deleteSkiDay(_ skiDay: SkiDay){
-        Firestore.firestore().collection("skidays").document(skiDay.id!).delete() { error in
+
+    func deleteSkiDay(_ skiDay: SkiDay) {
+        Firestore.firestore().collection("skidays").document(skiDay.id!).delete { error in
             if let error = error {
                 print("Error removing document: \(error)")
             }

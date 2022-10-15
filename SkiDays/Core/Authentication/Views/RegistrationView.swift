@@ -1,19 +1,19 @@
 import SwiftUI
 
 struct RegistrationView: View {
-    
+
     @State private var email = ""
     @State private var username = ""
     @State private var fullname = ""
     @State private var password = ""
     @EnvironmentObject var viewModel: AuthViewModel
-    
+
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         VStack {
            AuthenticationHeader(title1: "Welcome.", title2: "Create you account")
-            VStack(spacing: 40){
+            VStack(spacing: 40) {
                 CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
                 CustomInputField(imageName: "person", placeholderText: "username", text: $username)
                 CustomInputField(imageName: "person", placeholderText: "Full Name", text: $fullname)
@@ -41,7 +41,6 @@ struct RegistrationView: View {
                     Text("Sign In")
                         .font(.footnote)
                         .fontWeight(.semibold)
-                    
                 }
             }
             .padding(.bottom, 32)

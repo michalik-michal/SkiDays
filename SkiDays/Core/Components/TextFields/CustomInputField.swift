@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct CustomInputField: View {
-    
+
     let imageName: String
     let placeholderText: String
     var isSecureField: Bool? = false
@@ -12,20 +12,20 @@ struct CustomInputField: View {
             return false
         }
     }
-    
+
     @Binding var text: String
-    
+
     var body: some View {
-        VStack{
-            HStack{
+        VStack {
+            HStack {
                 Image(systemName: imageName)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 20, height: 20)
                     .foregroundColor(Color(.darkGray))
-                if isSecureField ?? false{
+                if isSecureField ?? false {
                     SecureField(placeholderText, text: $text)
-                }else{
+                } else {
                     TextField(placeholderText, text: $text)
                 }
                 Button {
@@ -34,7 +34,6 @@ struct CustomInputField: View {
                     Image(systemName: "x.circle")
                         .foregroundColor(Color(.darkGray))
                 }.hide(if: shouldHideDelete)
-                
             }
             Divider()
                 .background(Color(.darkGray))

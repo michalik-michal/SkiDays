@@ -1,12 +1,12 @@
 import SwiftUI
 
 struct TrainingRowView: View {
-    
+
     let skiDay: SkiDay
-    
+
     var body: some View {
-        HStack{
-            VStack(spacing: 30){
+        HStack {
+            VStack(spacing: 30) {
                 Text("\(skiDay.date)")
                     .font(.system(size: 20))
                     .frame(width: 100)
@@ -18,7 +18,7 @@ struct TrainingRowView: View {
                     .foregroundColor(.blackWhite)
             }
             Spacer()
-            NavigationLink{
+            NavigationLink {
                 TrainingDetailsView(skiDay: skiDay)
             }label: {
                 Text(skiDay.discipline)
@@ -28,7 +28,7 @@ struct TrainingRowView: View {
                     .foregroundColor(.blackWhite)
             }
             Spacer()
-            VStack(spacing:30){
+            VStack(spacing: 30) {
                 Image(systemName: "video")
                     .frame(width: 100)
                     .font(.system(size: 20))

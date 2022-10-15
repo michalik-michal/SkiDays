@@ -1,12 +1,12 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+
     @EnvironmentObject var viewModel: AuthViewModel
-    
+
     var body: some View {
         ZStack {
-            if viewModel.userSession == nil{
+            if viewModel.userSession == nil {
                 LoginView()
             } else {
                 MainTabView()

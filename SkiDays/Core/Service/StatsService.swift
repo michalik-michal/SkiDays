@@ -1,11 +1,10 @@
 import Foundation
 import Firebase
 
-struct StatsService{
-    
-    func fetchSkiDaysForUid(forUid uid: String, completion: @escaping([SkiDay]) -> Void){
+struct StatsService {
+
+    func fetchSkiDaysForUid(forUid uid: String, completion: @escaping([SkiDay]) -> Void) {
         Firestore.firestore().collection("skidays")
-        
             .whereField("uid", isEqualTo: uid)
             .addSnapshotListener { snapshot, _ in
                 guard let documents = snapshot?.documents else {return}

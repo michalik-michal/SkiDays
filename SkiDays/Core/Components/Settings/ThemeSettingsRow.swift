@@ -1,12 +1,12 @@
 import SwiftUI
 
 struct ThemeSettingsRow: View {
-    
+
     @State var selectedIndex = 0
     @Namespace private var animation
     @ObservedObject var model = SettingsViewModel()
     private let impactMedium = UIImpactFeedbackGenerator(style: .medium)
-    
+
     var body: some View {
         SettingsRow(image: "lightbulb", title: "Theme")
             .overlay {

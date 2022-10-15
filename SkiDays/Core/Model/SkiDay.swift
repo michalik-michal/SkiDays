@@ -2,9 +2,9 @@ import FirebaseFirestoreSwift
 import Firebase
 
 struct SkiDay: Identifiable, Decodable {
-    
+
     @DocumentID var id: String?
-    
+
     var date: String
     let discipline: String
     let gates: Int
@@ -16,5 +16,5 @@ struct SkiDay: Identifiable, Decodable {
     let slopeProfile: String
     let skis: String
     let video: String // Should it be string ?
-   // let uid: String
+   // let uid: String - can i get rid of it ?
 }

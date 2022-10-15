@@ -1,9 +1,9 @@
 import SwiftUI
 
 struct PickDisciplineButton: View {
-    
+
     var discipline: String
-    
+
     var body: some View {
         Button {
             //

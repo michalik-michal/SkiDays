@@ -1,11 +1,11 @@
 import SwiftUI
 
 struct SearchBar: View {
-    
+
     @Binding var text: String
-    
+
     var body: some View {
-        HStack{
+        HStack {
             TextField("Search...", text: $text)
                 .padding(8)
                 .padding(.horizontal, 24)
@@ -13,7 +13,7 @@ struct SearchBar: View {
                 .cornerRadius(20)
                 .foregroundColor(.blackWhite)
                 .overlay(
-                    HStack{
+                    HStack {
                         Image(systemName: "magnifyingglass")
                             .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                             .padding(.leading, 8)

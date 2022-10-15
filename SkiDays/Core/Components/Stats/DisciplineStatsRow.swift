@@ -1,11 +1,11 @@
 import SwiftUI
 
 struct DisciplineStatsRow: View {
-    
+
     var stats: DisciplineStats
-    
+
     var body: some View {
-        VStack() {
+        VStack {
             headerStack
             Divider()
             HStack {
@@ -41,7 +41,7 @@ struct DisciplineStatsRow: View {
         .background(Color.secondayBackground)
         .cornerRadius(20)
     }
-    
+
     private var headerStack: some View {
         HStack {
             Text(stats.discipline)

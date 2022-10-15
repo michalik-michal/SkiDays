@@ -1,13 +1,13 @@
 import Foundation
 
 class FilteredDaysViewModel: ObservableObject {
-    
+
     @Published var skiDays = [SkiDay]()
-    
+
     let service = SkiDayService()
     let user: User
     let discipline: String
-    
+
     var title: String {
         switch discipline {
         case "SL":
@@ -26,13 +26,13 @@ class FilteredDaysViewModel: ObservableObject {
             return ""
         }
     }
-    
+
     init(user: User, discipline: String) {
         self.user = user
         self.discipline = discipline
         self.fetchUserSkidays()
     }
-    
+
     func fetchUserSkidays() {
         guard let uid = user.id else {return}
         service.fetchSkiDaysForUid(forUid: uid) { skiDays in
