@@ -47,11 +47,9 @@ class StatsViewModel: ObservableObject {
                 var hardConsistency = 0.0
                 var consistency = 0.0
                 for skiDay in self.skiDays where skiDay.discipline == discipline {
-                   // if skiDay.discipline == discipline {
                         totalRuns += skiDay.runs
                         totalGates += skiDay.gates *  skiDay.runs
                         hardConsistency += skiDay.consistency
-                    // }
                 }
 
                 if discilpineDays != 0 {
@@ -88,11 +86,9 @@ class StatsViewModel: ObservableObject {
         var consistency = 0.0
 
         for skiDay in self.skiDays where skiDay.discipline == discipline {
-            // if skiDay.discipline == discipline {
                 totalRuns += skiDay.runs
                 totalGates += skiDay.gates *  skiDay.runs
                 hardConsistency += skiDay.consistency
-            // }
         }
         if discilpineDays != 0 {
             averageRuns = totalRuns / discilpineDays
