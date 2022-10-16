@@ -143,6 +143,7 @@ class StatsViewModel: ObservableObject {
             dictionary[skiDay.conditions]! += 1
         }
         let sorted = dictionary.sorted { $0.1 > $1.1 }
+        if sorted[0].value == 0 { return "-" }
         return sorted[0].key
     }
 

@@ -48,7 +48,10 @@ struct RegistrationView: View {
         .ignoresSafeArea()
         .foregroundColor(.blackWhite)
         .background(Color.background)
-        .overlay { if viewModel.shouldShowMessage { MessageView(image: "xmark", message: "Oops there was some error") } }
+        .overlay {
+            if viewModel.shouldShowMessage {
+                MessageView(image: "xmark", message: "Oops there was some error") }
+        }
     }
 }
 

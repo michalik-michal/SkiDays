@@ -16,9 +16,9 @@ struct SettingsView: View {
                     .onTapGesture { viewModel.showFeedbackSheet = true }
                     .sheet(isPresented: $viewModel.showFeedbackSheet) {
                         VStack(alignment: .leading) {
-                            Text("Tell us what can we improve.")
+                            Text("Got some idea? Share it with us!")
                                 .font(.title2).bold()
-                            TextField("Type here: " ,text: $feedback , axis: .vertical)
+                            TextField("Type here: ", text: $feedback, axis: .vertical)
                                 .background(Color.background)
                                 .textFieldStyle(.roundedBorder)
                              Spacer()
@@ -49,7 +49,10 @@ struct SettingsView: View {
         .foregroundColor(.blackWhite)
         .background(Color.background)
         .navigationTitle("Settings")
-        .overlay { if viewModel.shouldMessageView { MessageView(image: "checkmark", message: "Thank you for giving feedback!") } }
+        .overlay {
+            if viewModel.shouldMessageView {
+                MessageView(image: "checkmark", message: "Thank you for giving feedback!") }
+        }
     }
 }
 
