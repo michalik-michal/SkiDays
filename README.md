@@ -4,4 +4,5 @@ SkiDays is a still works but the final goal is to create an app for Alpine Skier
 User will be able to add Training, notes, video and more. 
 
 App is written in SwiftUI
-I'm using Firebase for authentication and data storage. 
+I'm using Firebase for authentication and data storage.
+I'm using SwiftLint for clean code standards
