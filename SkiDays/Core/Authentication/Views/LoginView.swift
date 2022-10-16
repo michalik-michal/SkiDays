@@ -62,7 +62,7 @@ struct LoginView: View {
             .ignoresSafeArea()
             .navigationBarHidden(true)
             .background(Color.background)
-            .overlay { if viewModel.shouldShowError { ErrorView() } }
+            .overlay { if viewModel.shouldShowMessage { MessageView(image: "xmark", message: "Oops there was some error") } }
         }
     }
 }

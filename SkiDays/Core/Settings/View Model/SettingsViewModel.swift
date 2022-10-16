@@ -5,7 +5,12 @@ class SettingsViewModel: ObservableObject {
 
     let service = AuthViewModel()
     var mode = UIUserInterfaceStyle.unspecified
-
+    let feedbackService = FeedbackService()
+    
+    @Published var showFeedbackSheet = false
+    @Published var showingConfirmation = false
+    @Published var shouldMessageView = false
+    
     func signOut() {
         service.signOut()
     }
@@ -47,6 +52,22 @@ class SettingsViewModel: ObservableObject {
             return 1
         default:
             return 2
+        }
+    }
+    
+    func submitFeedback(_ feedback: String) {
+        if feedback != "" {
+            feedbackService.uploadFeedback(feedback) { succes in
+                if succes {
+                    self.showFeedbackSheet = false
+                    self.shouldMessageView = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        self.shouldMessageView = false
+                    }
+                } else {
+                    //
+                }
+            }
         }
     }
 }

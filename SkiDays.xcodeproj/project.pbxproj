@@ -11,8 +11,9 @@
 		201D56C328DDA36200CB5025 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 201D56C228DDA36200CB5025 /* Assets.xcassets */; };
 		201D56C528DDDB8000CB5025 /* StatsDisciplineFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D56C428DDDB8000CB5025 /* StatsDisciplineFilter.swift */; };
 		204B031428E59AFA00C845DA /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204B031328E59AF900C845DA /* CircularProgressView.swift */; };
-		2050050128D0CB400006795A /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2050050028D0CB400006795A /* ErrorView.swift */; };
+		2050050128D0CB400006795A /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2050050028D0CB400006795A /* MessageView.swift */; };
 		20704BB528D612F80058CDB6 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20704BB428D612F80058CDB6 /* SplashScreen.swift */; };
+		2072277128FC0F3A00703811 /* FeedbackService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2072277028FC0F3A00703811 /* FeedbackService.swift */; };
 		20755F74287ACE60009E63DB /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20755F73287ACE60009E63DB /* SearchBar.swift */; };
 		208A82D128E0A9B4006173EF /* AllStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208A82D028E0A9B4006173EF /* AllStatsView.swift */; };
 		20B2906A28CBA96E006E6635 /* SettingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B2906928CBA96E006E6635 /* SettingsRow.swift */; };
@@ -68,8 +69,9 @@
 		201D56C228DDA36200CB5025 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		201D56C428DDDB8000CB5025 /* StatsDisciplineFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsDisciplineFilter.swift; sourceTree = "<group>"; };
 		204B031328E59AF900C845DA /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
-		2050050028D0CB400006795A /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		2050050028D0CB400006795A /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		20704BB428D612F80058CDB6 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		2072277028FC0F3A00703811 /* FeedbackService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackService.swift; sourceTree = "<group>"; };
 		20755F73287ACE60009E63DB /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		208A82D028E0A9B4006173EF /* AllStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStatsView.swift; sourceTree = "<group>"; };
 		20B2906928CBA96E006E6635 /* SettingsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRow.swift; sourceTree = "<group>"; };
@@ -135,7 +137,7 @@
 		205004FF28D0CB280006795A /* ErrorMessage */ = {
 			isa = PBXGroup;
 			children = (
-				2050050028D0CB400006795A /* ErrorView.swift */,
+				2050050028D0CB400006795A /* MessageView.swift */,
 			);
 			path = ErrorMessage;
 			sourceTree = "<group>";
@@ -494,6 +496,7 @@
 				22C7A060281FF3C1003A9936 /* SkiDayService.swift */,
 				22775C9C2823D1BC00849BE3 /* UserService.swift */,
 				22F04E3A284F601300A5F03B /* StatsService.swift */,
+				2072277028FC0F3A00703811 /* FeedbackService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -654,7 +657,7 @@
 				225A1F192822903700C2C81E /* SettingsViewModel.swift in Sources */,
 				20704BB528D612F80058CDB6 /* SplashScreen.swift in Sources */,
 				22848DCB281BDD0600AF996F /* LoginView.swift in Sources */,
-				2050050128D0CB400006795A /* ErrorView.swift in Sources */,
+				2050050128D0CB400006795A /* MessageView.swift in Sources */,
 				22C7A063281FF67A003A9936 /* UploadSkiDayViewModel.swift in Sources */,
 				22848DBA281BDBBD00AF996F /* ContentView.swift in Sources */,
 				20755F74287ACE60009E63DB /* SearchBar.swift in Sources */,
@@ -665,6 +668,7 @@
 				22928ADB281C0B1D000FCEFA /* StatsView.swift in Sources */,
 				204B031428E59AFA00C845DA /* CircularProgressView.swift in Sources */,
 				22F04E33284F56C100A5F03B /* DisciplineStatsRow.swift in Sources */,
+				2072277128FC0F3A00703811 /* FeedbackService.swift in Sources */,
 				22848DB8281BDBBD00AF996F /* SkiDaysApp.swift in Sources */,
 				22928AF5281FCD17000FCEFA /* AuthViewModel.swift in Sources */,
 				20075CF428784EA7004743B1 /* SecureTextField.swift in Sources */,
