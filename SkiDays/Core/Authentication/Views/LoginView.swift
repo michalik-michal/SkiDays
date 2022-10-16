@@ -5,6 +5,7 @@ import SwiftUI
 struct LoginView: View {
 
     @State private var email = ""
+    @State private var emailForPasswordReset = ""
     @State private var password = ""
     @State private var showError = false
     @EnvironmentObject var viewModel: AuthViewModel
@@ -21,8 +22,8 @@ struct LoginView: View {
                 .padding(.top, 42)
                 HStack {
                     Spacer()
-                    NavigationLink {
-                        Text("Reset password view...")
+                    Button {
+                        viewModel.showResetPassword = true
                     } label: {
                         Text("Forgot Password?")
                             .font(.caption)
@@ -64,9 +65,34 @@ struct LoginView: View {
             .background(Color.background)
             .overlay {
                 if viewModel.shouldShowMessage {
-                    MessageView(image: "xmark", message: "Oops there was some error") }
+                    MessageView(image: viewModel.alertImage, message: viewModel.alertMessage) }
+            }
+            .sheet(isPresented: $viewModel.showResetPassword) {
+                resetPasswordSheet
             }
         }
+    }
+    private var resetPasswordSheet: some View {
+        VStack(alignment: .leading) {
+            Text("Reset password")
+                .padding(.bottom)
+                .font(.title2).bold()
+            CustomInputField(imageName: "envelope", placeholderText: "Enter email", text: $emailForPasswordReset)
+            Spacer()
+            Button {
+                viewModel.forgotPassword(email: emailForPasswordReset)
+            } label: {
+                Text("Send")
+                    .font(.title3).bold()
+                    .frame(height: 50)
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(.blackWhite)
+                    .background(Color.background)
+                    .cornerRadius(12)
+            }
+        }
+        .padding()
+        .presentationDetents([.medium])
     }
 }
 
