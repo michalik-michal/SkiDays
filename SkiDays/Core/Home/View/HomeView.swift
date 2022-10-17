@@ -11,7 +11,7 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             VStack {
-                circleView
+                headerView
                 buttonStack(model: viewModel)
             }
             .padding(.horizontal)
@@ -31,13 +31,13 @@ struct HomeView: View {
         }
     }
 
-    private var circleView: some View {
+    private var headerView: some View {
         VStack(spacing: -10) {
             Text("\(viewModel.skiDays.count)")
                 .font(.system(size: 60).bold())
                 .foregroundColor(viewModel.skiDays.count > 2 ? .black : .blackWhite)
             Text(viewModel.getTitle())
-                .font(.system(size: 30))
+                .font(.system(size: 30)).bold()
                 .foregroundColor(viewModel.skiDays.count > 2 ? .black : .blackWhite)
         }
         .frame(maxWidth: UIScreen.main.bounds.width)
