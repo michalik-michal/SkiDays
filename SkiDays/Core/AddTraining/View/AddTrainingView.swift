@@ -234,9 +234,8 @@ extension AddTrainingView {
     var notesView: some View {
         TextEditor(text: $notes)
             .frame(height: 200)
-//            .background(RoundedRectangle(cornerRadius: 20)
-//                .stroke(.gray.opacity(0.2), lineWidth: 2)
-//                .background(Color.secondayBackground))
+            .scrollContentBackground(.hidden)
+            .background(Color.secondayBackground)
             .cornerRadius(20)
     }
 //    var addVideoView: some View {
