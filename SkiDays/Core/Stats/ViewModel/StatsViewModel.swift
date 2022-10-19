@@ -11,12 +11,6 @@ class StatsViewModel: ObservableObject {
     var disciplines = ["SL", "GS", "SG", "DH", "PARA", "FREE"]
     var conditions = ["Snow", "-", "Soft", "Grippy", "Bumpy", "Hard", "Compact", "Ice", "Rats", "Salt"]
     var statCategories = ["ALL", "SL", "GS", "SG", "DH", "PARA", "FREE"]
-    let gradient = Gradient(colors: [.pastelGreen,
-                                     .pastelBlue,
-                                     .pastelYellow,
-                                     .pastelOrange,
-                                     .pastelPurple,
-                                     .pastelRed])
 
     init(user: User) {
         self.user = user

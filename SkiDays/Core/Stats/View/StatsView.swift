@@ -45,7 +45,7 @@ struct StatsView: View {
         Chart(viewModel.disciplineStats) { stat in
             BarMark(x: .value("Discipline", stat.discipline),
                     y: .value("Days", stat.animate ? stat.numberOfDays : 0))
-            .foregroundStyle(viewModel.gradient)
+            .foregroundStyle(Color.blue.gradient)
         }
         .chartLegend(.hidden)
         .frame(height: 200)
@@ -74,7 +74,7 @@ struct StatsView: View {
                             .frame(width: 50)
                         if selectedDiscipline == item {
                             Capsule()
-                                .foregroundColor(viewModel.getCapsuleColor(for: item.title))
+                                .foregroundColor(Color.blue)
                                 .frame(height: 3)
                                 .matchedGeometryEffect(id: "filter", in: animation)
                         } else {
