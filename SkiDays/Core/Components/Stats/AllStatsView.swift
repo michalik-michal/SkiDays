@@ -5,48 +5,48 @@ struct AllStatsView: View {
     var mainStats: MainStats
 
     var body: some View {
-        VStack {
-            headerStack
-            Divider()
-            disciplineSection
-            HStack {
-                Text("Most skied conditions: ")
-                    .font(.title3)
-                Text(mainStats.mostSkiedContidions ?? "-")
-                    .font(.title2.bold())
-                Spacer()
-            }
-            Divider()
-            HStack {
-                VStack(alignment: .leading) {
-                    HStack {
-                        Text("\(mainStats.totalGates ?? 0)")
-                            .font(.title2.bold())
-                        Text("gates")
-                            .font(.title2)
-                    }
-                    HStack {
-                        Text("\(mainStats.totalRuns ?? 0)")
-                            .font(.title2.bold())
-                        Text("runs")
-                            .font(.title2)
-                    }
+            VStack {
+                headerStack
+                Divider()
+                disciplineSection
+                HStack {
+                    Text("Most skied conditions: ")
+                        .font(.title3)
+                    Text(mainStats.mostSkiedContidions ?? "-")
+                        .font(.title2.bold())
+                    Spacer()
                 }
-                Spacer()
-                CircularProgressView(progress: mainStats.consistency ?? 0)
-                    .padding(.trailing, 20)
+                Divider()
+                HStack {
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Text("\(mainStats.totalGates ?? 0)")
+                                .font(.title2.bold())
+                            Text("gates")
+                                .font(.title2)
+                        }
+                        HStack {
+                            Text("\(mainStats.totalRuns ?? 0)")
+                                .font(.title2.bold())
+                            Text("runs")
+                                .font(.title2)
+                        }
+                    }
+                    Spacer()
+                    CircularProgressView(progress: mainStats.consistency ?? 0)
+                        .padding(.trailing, 20)
+                }
             }
-        }
-        .padding()
-        .frame(maxWidth: .infinity)
-        .background(Color.secondayBackground)
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(Color.secondayBackground)
         .cornerRadius(20)
     }
 
     private var headerStack: some View {
         HStack {
-            Text("ALL")
-                .font(.largeTitle.bold())
+            Text("TOTAL")
+                .font(.title.bold())
             Spacer()
             Text("\(mainStats.numberOfDays ?? 0)")
                 .font(.title).bold()

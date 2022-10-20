@@ -12,14 +12,20 @@ struct DisciplineButtonView: View {
                 FilteredDaysView(user: user, discipline: discipline)
             }
         } label: {
-            Text("\(discipline): \(days)")
-                .foregroundColor(.blackWhite)
-                .font(.system(size: 35)).bold()
+            Circle()
+                .frame(width: 60, height: 60)
+                .foregroundColor(.secondayBackground)
+                .overlay {
+                    VStack(alignment: .center) {
+                        Text("\(days)")
+                            .font(.title2).bold()
+                            .foregroundColor(.blackWhite)
+                        Text(discipline)
+                            .foregroundColor(.blackWhite)
+                            .font(.footnote)
+                    }
+                }
         }
-        .frame(height: 80)
-        .frame(maxWidth: .infinity)
-        .background(Color.secondayBackground)
-        .cornerRadius(12)
     }
 }
 

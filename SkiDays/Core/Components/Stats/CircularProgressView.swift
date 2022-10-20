@@ -10,7 +10,7 @@ struct CircularProgressView: View {
                 .stroke(Color.blue.opacity(0.5), lineWidth: 15)
             Circle()
                 .trim(from: 0, to: progress)
-                .stroke(Color.blue, style: StrokeStyle(lineWidth: 15, lineCap: .round))
+                .stroke(Color.blue.gradient, style: StrokeStyle(lineWidth: 15, lineCap: .round))
                 .rotationEffect(.degrees(-90))
                 .animation(.easeIn, value: progress)
             VStack {

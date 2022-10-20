@@ -7,7 +7,7 @@ struct StatsView: View {
     @ObservedObject var viewModel: StatsViewModel
     @Namespace var animation
 
-    @State private var selectedDiscipline: StatsDisciplineFilter = .all
+    @State private var selectedDiscipline: StatsDisciplineFilter = .sl
 
     init(user: User) {
         self.viewModel = StatsViewModel(user: user)
@@ -24,11 +24,7 @@ struct StatsView: View {
                         chartView
                     }
                     disciplineStack
-                    if selectedDiscipline == .all {
-                        AllStatsView(mainStats: viewModel.mainStats)
-                    } else {
-                        DisciplineStatsRow(stats: viewModel.getStatsFor(selectedDiscipline.title))
-                    }
+                    DisciplineStatsRow(stats: viewModel.getStatsFor(selectedDiscipline.title))
                 }
                 .navigationBarTitle("Statistics")
             }
@@ -102,7 +98,7 @@ struct StatsView: View {
             Image("emptyImage")
                 .resizable()
                 .frame(width: 150, height: 150)
-            Text("Add more data...")
+            Text("Not enough data")
                 .font(.title2.bold())
         }
         .frame(height: 250)

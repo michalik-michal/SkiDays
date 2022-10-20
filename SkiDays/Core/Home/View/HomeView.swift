@@ -3,21 +3,37 @@ import SwiftUI
 struct HomeView: View {
 
     @ObservedObject var viewModel: HomeViewModel
+    @ObservedObject var statsViewModel: StatsViewModel
 
     init(user: User) {
+        self.statsViewModel = StatsViewModel(user: user)
         self.viewModel = HomeViewModel(user: user)
     }
 
     var body: some View {
         NavigationView {
-            VStack {
-                headerView
-                buttonStack(model: viewModel)
+            ScrollView {
+                if viewModel.skiDays.isEmpty {
+                    VStack {
+                        emptyView
+                        addTrainingWidget
+                    }
+                } else {
+                    VStack(spacing: 1) {
+                        // headerView
+                        buttonStack(model: viewModel)
+                            .padding(.bottom)
+                        AllStatsView(mainStats: statsViewModel.mainStats)
+                    }
+                }
             }
             .padding(.horizontal)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.background)
             .navigationTitle("Home")
+            .onAppear {
+                statsViewModel.getMainStats()
+            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink {
@@ -46,23 +62,48 @@ struct HomeView: View {
                                    startPoint: .topLeading,
                                    endPoint: .bottomTrailing))
         .cornerRadius(20)
-        .offset(y: -30)
     }
 
     private func buttonStack(model: HomeViewModel) -> some View {
-        VStack(spacing: 20) {
-            HStack(spacing: 10) {
-                DisciplineButtonView(discipline: "SL", days: model.numberOfDisciplineDays("SL"))
-                DisciplineButtonView(discipline: "GS", days: model.numberOfDisciplineDays("GS"))
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack {
+                ForEach(StatsDisciplineFilter.allCases, id: \.rawValue) { item in
+                    if model.numberOfDisciplineDays(item.title) != 0 {
+                        DisciplineButtonView(discipline: item.title, days: model.numberOfDisciplineDays(item.title))
+                    }
+                }
             }
-            HStack(spacing: 10) {
-                DisciplineButtonView(discipline: "SG", days: model.numberOfDisciplineDays("SG"))
-                DisciplineButtonView(discipline: "DH", days: model.numberOfDisciplineDays("DH"))
+        }
+    }
+
+    private var emptyView: some View {
+        Image("emptyImage")
+            .resizable()
+            .frame(width: 200, height: 200)
+            .frame(height: 400)
+    }
+
+    private var addTrainingWidget: some View {
+        NavigationLink {
+            AddTrainingView()
+                .onDisappear {
+                    statsViewModel.getStats()
+                    statsViewModel.getMainStats()
+                }
+        } label: {
+            VStack {
+                Image(systemName: "plus")
+                    .font(.system(size: 40))
+                    .padding(.bottom, 10)
+                    .foregroundColor(.blue)
+                Text("Add First SkiDay")
+                    .font(.title2.bold())
+                    .foregroundColor(.blackWhite)
             }
-            HStack(spacing: 10) {
-                DisciplineButtonView(discipline: "FREE", days: model.numberOfDisciplineDays("FREE"))
-                DisciplineButtonView(discipline: "PARA", days: model.numberOfDisciplineDays("PARA"))
-            }
+            .frame(height: 140)
+            .frame(maxWidth: .infinity)
+            .background(Color.secondayBackground)
+            .cornerRadius(20)
         }
     }
 }
