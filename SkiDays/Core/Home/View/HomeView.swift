@@ -3,27 +3,32 @@ import SwiftUI
 struct HomeView: View {
 
     @ObservedObject var viewModel: HomeViewModel
-    @ObservedObject var statsViewModel: StatsViewModel
 
     init(user: User) {
-        self.statsViewModel = StatsViewModel(user: user)
         self.viewModel = HomeViewModel(user: user)
     }
 
     var body: some View {
         NavigationView {
             ScrollView {
-                if viewModel.skiDays.isEmpty {
-                    VStack {
-                        emptyView
-                        addTrainingWidget
-                    }
-                } else {
-                    VStack(spacing: 1) {
-                        // headerView
-                        buttonStack(model: viewModel)
-                            .padding(.bottom)
-                        AllStatsView(mainStats: statsViewModel.mainStats)
+                switch viewModel.state {
+                case .loading:
+                        ProgressView()
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                case .data:
+                    if viewModel.skiDays.isEmpty {
+                        VStack {
+                            emptyView
+                            addTrainingWidget
+                        }
+                    } else {
+                        VStack(spacing: 1) {
+                            buttonStack(model: viewModel)
+                                .padding(.bottom)
+                            AllStatsView(mainStats: viewModel.mainStats)
+                                .padding(.bottom)
+                            lastNote
+                        }
                     }
                 }
             }
@@ -32,7 +37,7 @@ struct HomeView: View {
             .background(Color.background)
             .navigationTitle("Home")
             .onAppear {
-                statsViewModel.getMainStats()
+                viewModel.getMainStats()
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -45,23 +50,6 @@ struct HomeView: View {
                 }
             }
         }
-    }
-
-    private var headerView: some View {
-        VStack(spacing: -10) {
-            Text("\(viewModel.skiDays.count)")
-                .font(.system(size: 60).bold())
-                .foregroundColor(viewModel.skiDays.count > 2 ? .black : .blackWhite)
-            Text(viewModel.getTitle())
-                .font(.system(size: 30)).bold()
-                .foregroundColor(viewModel.skiDays.count > 2 ? .black : .blackWhite)
-        }
-        .frame(maxWidth: UIScreen.main.bounds.width)
-        .frame(height: 200)
-        .background(LinearGradient(gradient: Gradient(colors: viewModel.getColors()),
-                                   startPoint: .topLeading,
-                                   endPoint: .bottomTrailing))
-        .cornerRadius(20)
     }
 
     private func buttonStack(model: HomeViewModel) -> some View {
@@ -87,8 +75,7 @@ struct HomeView: View {
         NavigationLink {
             AddTrainingView()
                 .onDisappear {
-                    statsViewModel.getStats()
-                    statsViewModel.getMainStats()
+                    viewModel.getMainStats()
                 }
         } label: {
             VStack {
@@ -105,5 +92,24 @@ struct HomeView: View {
             .background(Color.secondayBackground)
             .cornerRadius(20)
         }
+    }
+
+    private var lastNote: some View {
+        VStack(alignment: .center) {
+            HStack {
+                Text("Last note")
+                    .font(.title2).bold()
+                Spacer()
+            }
+            .foregroundColor(.blackWhite)
+            Divider()
+            Text(viewModel.getLastNote())
+                .font(.title3)
+        }
+        .padding()
+        .frame(maxWidth: .infinity)
+        .background(Color.secondayBackground)
+        .cornerRadius(20)
+        .hide(if: viewModel.getLastNote() == "")
     }
 }

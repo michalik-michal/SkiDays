@@ -40,7 +40,7 @@ struct AllStatsView: View {
             .padding()
             .frame(maxWidth: .infinity)
             .background(Color.secondayBackground)
-        .cornerRadius(20)
+            .cornerRadius(20)
     }
 
     private var headerStack: some View {

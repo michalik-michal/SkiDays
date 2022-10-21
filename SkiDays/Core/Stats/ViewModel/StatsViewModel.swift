@@ -4,7 +4,6 @@ import SwiftUI
 class StatsViewModel: ObservableObject {
 
     @Published var disciplineStats = [DisciplineStats]()
-    @Published var mainStats = MainStats()
     var skiDays = [SkiDay]()
     let service = StatsService()
     let user: User
@@ -16,9 +15,6 @@ class StatsViewModel: ObservableObject {
         self.user = user
         self.fetchUserSkidays()
         self.getStats()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.getMainStats()
-        }
     }
 
     func fetchUserSkidays() {
@@ -26,7 +22,6 @@ class StatsViewModel: ObservableObject {
         service.fetchSkiDaysForUid(forUid: uid) { skiDays in
             self.skiDays = skiDays
         }
-        getMainStats()
     }
 
     func getStats() {
@@ -102,35 +97,6 @@ class StatsViewModel: ObservableObject {
             consistency: consistency,
             mostSkiedContidions: getMostSkiedConditionsForDiscipline(for: discipline)))
         return stat
-    }
-
-    func getMainStats() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
-            var totalGates = 0
-            var totalRuns = 0
-            var hardConsistency = 0.0
-            var consistency = 0.0
-            var days: [Int] = []
-
-            for skiDay in self.skiDays {
-                totalRuns += skiDay.runs
-                totalGates +=  skiDay.gates *  skiDay.runs
-                hardConsistency += skiDay.consistency
-            }
-            for discipline in self.disciplineStats {
-                days.append(discipline.numberOfDays)
-            }
-            if !self.skiDays.isEmpty {
-                consistency = hardConsistency / Double(self.skiDays.count)
-            }
-            self.mainStats = MainStats(numberOfDays: self.skiDays.count,
-                                  mostSkiedDiscipline: self.getMostSkiedDiscipline(),
-                                  mostSkiedDisciplineDays: self.getMostSkiedDisciplineDaysCount(),
-                                  mostSkiedContidions: self.getMostSkiedConditions(),
-                                  totalGates: totalGates,
-                                  totalRuns: totalRuns,
-                                  consistency: consistency)
-        }
     }
 
     func getMostSkiedConditions() -> String {

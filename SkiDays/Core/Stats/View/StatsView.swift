@@ -30,7 +30,6 @@ struct StatsView: View {
             }
             .onAppear {
                 viewModel.getStats()
-                viewModel.getMainStats()
             }
             .padding()
             .background(Color.background)

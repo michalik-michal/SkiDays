@@ -4,19 +4,30 @@ class HomeViewModel: ObservableObject {
 
     @Published var skiDays = [SkiDay]()
     @Published var disciplineFilter = ""
+    @Published var state = State.loading
+    @Published var mainStats = MainStats()
 
     let service = SkiDayService()
     let user: User
+    let statsViewModel: StatsViewModel
 
     init(user: User) {
         self.user = user
+        self.statsViewModel = StatsViewModel(user: user)
         self.fetchUserSkidays()
+        self.getMainStats()
+    }
+
+    enum State {
+        case loading
+        case data
     }
 
     func fetchUserSkidays() {
         guard let uid = user.id else {return}
         service.fetchSkiDaysForUid(forUid: uid) { skiDays in
             self.skiDays = skiDays
+            self.state = .data
         }
     }
 
@@ -36,36 +47,44 @@ class HomeViewModel: ObservableObject {
         }
     }
 
-    func getColors() -> [Color] {
-        var circleColors: [Color] = []
-        let sortedDays = skiDays.sorted {
-            $0.discipline < $1.discipline
-        }
-        if skiDays.count < 2 {
-            circleColors.append(.secondayBackground)
-        } else {
-            for day in sortedDays {
-                switch day.discipline {
-                case "SL":
-                    circleColors.append(.pastelGreen)
-                case "GS":
-                    circleColors.append(.pastelBlue)
-                case "SG":
-                    circleColors.append(.pastelYellow)
-                case "DH":
-                    circleColors.append(.pastelOrange)
-                case "PARA":
-                    circleColors.append(.pastelPurple)
-                case "FREE":
-                    circleColors.append(.pastelRed)
-                default:
-                    circleColors.append(.white)
-                }
-            }
-            if let connectingColor = circleColors.first {
-                circleColors.append(connectingColor)
+    func getLastNote() -> String {
+        let sortedDays = skiDays.sorted(by: {$0.date > $1.date})
+        for skiDay in sortedDays {
+            if skiDay.notes != "" {
+                return skiDay.notes
+            } else {
+                continue
             }
         }
-        return circleColors
+        return ""
+    }
+
+    func getMainStats() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            var totalGates = 0
+            var totalRuns = 0
+            var hardConsistency = 0.0
+            var consistency = 0.0
+            var days: [Int] = []
+
+            for skiDay in self.skiDays {
+                totalRuns += skiDay.runs
+                totalGates +=  skiDay.gates *  skiDay.runs
+                hardConsistency += skiDay.consistency
+            }
+            for discipline in self.statsViewModel.disciplineStats {
+                days.append(discipline.numberOfDays)
+            }
+            if !self.skiDays.isEmpty {
+                consistency = hardConsistency / Double(self.skiDays.count)
+            }
+            self.mainStats = MainStats(numberOfDays: self.skiDays.count,
+                                       mostSkiedDiscipline: self.statsViewModel.getMostSkiedDiscipline(),
+                                       mostSkiedDisciplineDays: self.statsViewModel.getMostSkiedDisciplineDaysCount(),
+                                       mostSkiedContidions: self.statsViewModel.getMostSkiedConditions(),
+                                       totalGates: totalGates,
+                                       totalRuns: totalRuns,
+                                       consistency: consistency)
+        }
     }
 }

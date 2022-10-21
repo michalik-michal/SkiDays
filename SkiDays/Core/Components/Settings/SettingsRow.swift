@@ -16,7 +16,6 @@ struct SettingsRow: View {
             .padding(.horizontal)
             Divider()
         }
-
     }
 }
 
