@@ -44,6 +44,7 @@ struct AddTrainingView: View {
                 .padding(.bottom, 20)
                 VStack(alignment: .leading, spacing: 20) {
                     disciplineButtonsGrid
+                        .padding(.horizontal, 1)
                     VStack(spacing: 40) {
                         CustomInputField(imageName: "mappin", placeholderText: "Place", text: $place)
                             .focused($focusedField, equals: .place)
@@ -236,6 +237,10 @@ extension AddTrainingView {
                     .frame(maxWidth: .infinity )
                     .background(Color.secondayBackground)
                     .cornerRadius(12)
+                    .overlay(
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(item.rawValue == discipline ? .blue : .secondayBackground, lineWidth: 2)
+                    )
                 }
             }
         }
