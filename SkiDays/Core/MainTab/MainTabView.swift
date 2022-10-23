@@ -35,6 +35,7 @@ struct MainTabView: View {
             }
             .foregroundColor(.blackWhite)
             .background(Color.secondayBackground)
+            .padding(.bottom, UIDevice.hasNotch ? 0 : 12)
         }
     }
 }

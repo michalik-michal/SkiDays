@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 import SwiftUI
 
 extension Color {
@@ -30,3 +30,30 @@ extension View {
         }
     }
 }
+
+public extension UIDevice {
+
+    static var hasNotch: Bool {
+        guard let window = UIApplication.shared.keyUIWindow else { return false }
+        return window.safeAreaInsets.top >= 44
+    }
+
+    static var isIPad: Bool {
+        UIDevice.current.userInterfaceIdiom == .pad
+    }
+}
+
+public extension UIApplication {
+
+    var keyUIWindow: UIWindow? {
+        UIApplication.shared.connectedScenes.lazy
+            .compactMap({ $0.activationState == .foregroundActive ? ($0 as? UIWindowScene) : nil })
+            .first(where: { $0.keyWindow != nil })?
+            .keyWindow
+    }
+
+    var presentedViewController: UIViewController? {
+        UIApplication.shared.keyUIWindow?.rootViewController?.presentedViewController
+    }
+}
+
