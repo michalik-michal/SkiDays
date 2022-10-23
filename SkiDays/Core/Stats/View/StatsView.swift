@@ -35,7 +35,7 @@ struct StatsView: View {
             .background(Color.background)
         }
     }
-    
+
     private var statsPageView: some View {
         TabView(selection: $selectedDiscipline) {
             DisciplineStatsRow(stats: viewModel.getStatsFor("SL"))
@@ -115,6 +115,7 @@ struct StatsView: View {
         VStack {
             DataView()
                 .frame(width: 150, height: 150)
+                .scaleEffect(1.2)
             Text("Not enough data")
                 .font(.title2.bold())
         }
