@@ -63,12 +63,11 @@ struct LoginView: View {
             .ignoresSafeArea()
             .navigationBarHidden(true)
             .background(Color.background)
-            .overlay {
-                if viewModel.shouldShowMessage {
-                    MessageView(image: viewModel.alertImage, message: viewModel.alertMessage) }
-            }
             .sheet(isPresented: $viewModel.showResetPassword) {
                 resetPasswordSheet
+            }
+            .overlay {
+                MessageView(messageType: viewModel.messageType, message: viewModel.alertMessage, isVisible: $viewModel.shouldShowMessage)
             }
         }
     }

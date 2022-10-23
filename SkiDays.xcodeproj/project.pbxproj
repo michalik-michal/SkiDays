@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20063D712902F4910025C906 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 20063D702902F4910025C906 /* Lottie */; };
+		20063D782902F60A0025C906 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20063D772902F60A0025C906 /* CheckmarkView.swift */; };
+		20063D7D2902FA7E0025C906 /* checkmark.json in Resources */ = {isa = PBXBuildFile; fileRef = 20063D7C2902FA7E0025C906 /* checkmark.json */; };
+		20063D802902FBEF0025C906 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20063D7F2902FBEF0025C906 /* LoadingView.swift */; };
+		20063D822902FBFD0025C906 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 20063D812902FBFD0025C906 /* loading.json */; };
+		20063D85290438ED0025C906 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20063D84290438ED0025C906 /* ErrorView.swift */; };
+		20063D8C29043DCA0025C906 /* DataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20063D8B29043DCA0025C906 /* DataView.swift */; };
+		20063D8E29043DE30025C906 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 20063D8D29043DE30025C906 /* data.json */; };
+		20063D9129045A500025C906 /* AstronautView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20063D9029045A500025C906 /* AstronautView.swift */; };
+		20063D9329045A710025C906 /* astronaut.json in Resources */ = {isa = PBXBuildFile; fileRef = 20063D9229045A710025C906 /* astronaut.json */; };
+		20063D9529046D6D0025C906 /* error.json in Resources */ = {isa = PBXBuildFile; fileRef = 20063D9429046D6D0025C906 /* error.json */; };
 		20075CF428784EA7004743B1 /* SecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20075CF328784EA7004743B1 /* SecureTextField.swift */; };
 		201D56C328DDA36200CB5025 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 201D56C228DDA36200CB5025 /* Assets.xcassets */; };
 		201D56C528DDDB8000CB5025 /* StatsDisciplineFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D56C428DDDB8000CB5025 /* StatsDisciplineFilter.swift */; };
@@ -65,6 +76,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		20063D772902F60A0025C906 /* CheckmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
+		20063D7C2902FA7E0025C906 /* checkmark.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = checkmark.json; path = ../../../../../../../.Trash/checkmark.json; sourceTree = "<group>"; };
+		20063D7F2902FBEF0025C906 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		20063D812902FBFD0025C906 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = loading.json; path = ../../../../../loading.json; sourceTree = "<group>"; };
+		20063D84290438ED0025C906 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		20063D8B29043DCA0025C906 /* DataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataView.swift; sourceTree = "<group>"; };
+		20063D8D29043DE30025C906 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = data.json; path = ../../../../../data.json; sourceTree = "<group>"; };
+		20063D9029045A500025C906 /* AstronautView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronautView.swift; sourceTree = "<group>"; };
+		20063D9229045A710025C906 /* astronaut.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = astronaut.json; path = ../../../../../astronaut.json; sourceTree = "<group>"; };
+		20063D9429046D6D0025C906 /* error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = error.json; path = ../../../../../error.json; sourceTree = "<group>"; };
 		20075CF328784EA7004743B1 /* SecureTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureTextField.swift; sourceTree = "<group>"; };
 		201D56C228DDA36200CB5025 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		201D56C428DDDB8000CB5025 /* StatsDisciplineFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsDisciplineFilter.swift; sourceTree = "<group>"; };
@@ -124,6 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20063D712902F4910025C906 /* Lottie in Frameworks */,
 				22928AF1281FC734000FCEFA /* FirebaseFirestoreSwift-Beta in Frameworks */,
 				22928AF3281FC734000FCEFA /* FirebaseStorage in Frameworks */,
 				22928AED281FC734000FCEFA /* FirebaseAuth in Frameworks */,
@@ -134,6 +156,63 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20063D722902F58B0025C906 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				20063D8F29045A450025C906 /* Astronaut */,
+				20063D8A29043DB90025C906 /* Data */,
+				20063D83290438E10025C906 /* Error */,
+				20063D7E2902FBDA0025C906 /* Loading */,
+				20063D792902FA080025C906 /* Checkmark */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
+		20063D792902FA080025C906 /* Checkmark */ = {
+			isa = PBXGroup;
+			children = (
+				20063D772902F60A0025C906 /* CheckmarkView.swift */,
+				20063D7C2902FA7E0025C906 /* checkmark.json */,
+			);
+			path = Checkmark;
+			sourceTree = "<group>";
+		};
+		20063D7E2902FBDA0025C906 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				20063D7F2902FBEF0025C906 /* LoadingView.swift */,
+				20063D812902FBFD0025C906 /* loading.json */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
+		20063D83290438E10025C906 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				20063D84290438ED0025C906 /* ErrorView.swift */,
+				20063D9429046D6D0025C906 /* error.json */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		20063D8A29043DB90025C906 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				20063D8B29043DCA0025C906 /* DataView.swift */,
+				20063D8D29043DE30025C906 /* data.json */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		20063D8F29045A450025C906 /* Astronaut */ = {
+			isa = PBXGroup;
+			children = (
+				20063D9029045A500025C906 /* AstronautView.swift */,
+				20063D9229045A710025C906 /* astronaut.json */,
+			);
+			path = Astronaut;
+			sourceTree = "<group>";
+		};
 		205004FF28D0CB280006795A /* ErrorMessage */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +396,7 @@
 		22848DC5281BDCC100AF996F /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				20063D722902F58B0025C906 /* Lottie */,
 				225A1EFB28201B3300C2C81E /* Model */,
 				22848DC6281BDCC700AF996F /* Components */,
 				22C7A05F281FF398003A9936 /* Service */,
@@ -550,6 +630,7 @@
 				22928AEE281FC734000FCEFA /* FirebaseFirestore */,
 				22928AF0281FC734000FCEFA /* FirebaseFirestoreSwift-Beta */,
 				22928AF2281FC734000FCEFA /* FirebaseStorage */,
+				20063D702902F4910025C906 /* Lottie */,
 			);
 			productName = SkiDays;
 			productReference = 22848DB4281BDBBD00AF996F /* SkiDays.app */;
@@ -581,6 +662,7 @@
 			mainGroup = 22848DAB281BDBBD00AF996F;
 			packageReferences = (
 				22928AEB281FC734000FCEFA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				20063D6F2902F4900025C906 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 22848DB5281BDBBD00AF996F /* Products */;
 			projectDirPath = "";
@@ -596,9 +678,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20063D8E29043DE30025C906 /* data.json in Resources */,
 				22848DBF281BDBC800AF996F /* Preview Assets.xcassets in Resources */,
 				201D56C328DDA36200CB5025 /* Assets.xcassets in Resources */,
 				22928AEA281FC5BA000FCEFA /* GoogleService-Info.plist in Resources */,
+				20063D9529046D6D0025C906 /* error.json in Resources */,
+				20063D7D2902FA7E0025C906 /* checkmark.json in Resources */,
+				20063D822902FBFD0025C906 /* loading.json in Resources */,
+				20063D9329045A710025C906 /* astronaut.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -634,6 +721,7 @@
 				225A1F12282158C700C2C81E /* FilteredDaysViewModel.swift in Sources */,
 				22848DDB281BEAC700AF996F /* DisciplineButtonView.swift in Sources */,
 				225A1EFA282018F300C2C81E /* TrainingListViewModel.swift in Sources */,
+				20063D85290438ED0025C906 /* ErrorView.swift in Sources */,
 				22775C9B2823CD2800849BE3 /* User.swift in Sources */,
 				22848DD8281BEA4A00AF996F /* HomeView.swift in Sources */,
 				22848DDE281BEF1C00AF996F /* TrainingDetailsView.swift in Sources */,
@@ -663,15 +751,19 @@
 				20755F74287ACE60009E63DB /* SearchBar.swift in Sources */,
 				22928ADF281D1EE7000FCEFA /* DisciplineButtonViewModel.swift in Sources */,
 				22F04E3B284F601300A5F03B /* StatsService.swift in Sources */,
+				20063D8C29043DCA0025C906 /* DataView.swift in Sources */,
 				22848DD5281BE0D700AF996F /* Extentions.swift in Sources */,
 				22848DE0281BEF5900AF996F /* DetailRowView.swift in Sources */,
+				20063D782902F60A0025C906 /* CheckmarkView.swift in Sources */,
 				22928ADB281C0B1D000FCEFA /* StatsView.swift in Sources */,
 				204B031428E59AFA00C845DA /* CircularProgressView.swift in Sources */,
 				22F04E33284F56C100A5F03B /* DisciplineStatsRow.swift in Sources */,
 				2072277128FC0F3A00703811 /* FeedbackService.swift in Sources */,
+				20063D9129045A500025C906 /* AstronautView.swift in Sources */,
 				22848DB8281BDBBD00AF996F /* SkiDaysApp.swift in Sources */,
 				22928AF5281FCD17000FCEFA /* AuthViewModel.swift in Sources */,
 				20075CF428784EA7004743B1 /* SecureTextField.swift in Sources */,
+				20063D802902FBEF0025C906 /* LoadingView.swift in Sources */,
 				22848DD1281BDF7100AF996F /* AuthenticationHeader.swift in Sources */,
 				20B2906A28CBA96E006E6635 /* SettingsRow.swift in Sources */,
 				208A82D128E0A9B4006173EF /* AllStatsView.swift in Sources */,
@@ -718,6 +810,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -779,6 +872,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -807,6 +901,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_ASSET_PATHS = "\"SkiDays/Preview Content\"";
 				DEVELOPMENT_TEAM = 3P5872A6DS;
 				ENABLE_PREVIEWS = YES;
@@ -839,6 +934,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_ASSET_PATHS = "\"SkiDays/Preview Content\"";
 				DEVELOPMENT_TEAM = 3P5872A6DS;
 				ENABLE_PREVIEWS = YES;
@@ -888,6 +984,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		20063D6F2902F4900025C906 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		22928AEB281FC734000FCEFA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -899,6 +1003,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		20063D702902F4910025C906 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 20063D6F2902F4900025C906 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
 		22928AEC281FC734000FCEFA /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 22928AEB281FC734000FCEFA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

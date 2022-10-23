@@ -50,8 +50,9 @@ struct SettingsView: View {
         .background(Color.background)
         .navigationTitle("Settings")
         .overlay {
-            if viewModel.shouldMessageView {
-                MessageView(image: "checkmark", message: "Thank you for giving feedback!") }
+            MessageView(messageType: .succes,
+                        message: "Thank you for giving feedback!",
+                        isVisible: $viewModel.shouldMessageView)
         }
     }
 }

@@ -13,12 +13,14 @@ struct HomeView: View {
             ScrollView {
                 switch viewModel.state {
                 case .loading:
-                        ProgressView()
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    LoadingView()
+                        .frame(width: UIScreen.main.bounds.width,
+                               height: UIScreen.main.bounds.width)
                 case .data:
                     if viewModel.skiDays.isEmpty {
                         VStack {
-                            emptyView
+                            AstronautView()
+                                .frame(width: 200, height: 400)
                             addTrainingWidget
                         }
                     } else {
@@ -62,13 +64,6 @@ struct HomeView: View {
                 }
             }
         }
-    }
-
-    private var emptyView: some View {
-        Image("emptyImage")
-            .resizable()
-            .frame(width: 200, height: 200)
-            .frame(height: 400)
     }
 
     private var addTrainingWidget: some View {

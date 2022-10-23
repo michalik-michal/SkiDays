@@ -61,9 +61,6 @@ class SettingsViewModel: ObservableObject {
                 if succes {
                     self.showFeedbackSheet = false
                     self.shouldMessageView = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        self.shouldMessageView = false
-                    }
                 } else {
                     //
                 }
