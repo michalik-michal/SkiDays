@@ -18,9 +18,10 @@ struct SettingsView: View {
                         VStack(alignment: .leading) {
                             Text("Got some idea? Share it with us!")
                                 .font(.title2).bold()
-                            TextField("Type here: ", text: $feedback, axis: .vertical)
+                            TextEditor(text: $feedback)
                                 .background(Color.background)
-                                .textFieldStyle(.roundedBorder)
+                                .scrollContentBackground(.hidden)
+                                .cornerRadius(12)
                              Spacer()
                             Button {
                                 viewModel.submitFeedback(feedback)
