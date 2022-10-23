@@ -24,7 +24,7 @@ struct StatsView: View {
                         chartView
                     }
                     disciplineStack
-                    DisciplineStatsRow(stats: viewModel.getStatsFor(selectedDiscipline.title))
+                    statsPageView
                 }
                 .navigationBarTitle("Statistics")
             }
@@ -34,6 +34,25 @@ struct StatsView: View {
             .padding()
             .background(Color.background)
         }
+    }
+    
+    private var statsPageView: some View {
+        TabView(selection: $selectedDiscipline) {
+            DisciplineStatsRow(stats: viewModel.getStatsFor("SL"))
+                .tag(StatsDisciplineFilter.sl)
+            DisciplineStatsRow(stats: viewModel.getStatsFor("GS"))
+                .tag(StatsDisciplineFilter.gs)
+            DisciplineStatsRow(stats: viewModel.getStatsFor("SG"))
+                .tag(StatsDisciplineFilter.sg)
+            DisciplineStatsRow(stats: viewModel.getStatsFor("DH"))
+                .tag(StatsDisciplineFilter.dh)
+            DisciplineStatsRow(stats: viewModel.getStatsFor("PARA"))
+                .tag(StatsDisciplineFilter.para)
+            DisciplineStatsRow(stats: viewModel.getStatsFor("FREE"))
+                .tag(StatsDisciplineFilter.free)
+        }
+        .frame(height: 330)
+        .tabViewStyle(.page(indexDisplayMode: .never))
     }
 
     private var chartView: some View {
