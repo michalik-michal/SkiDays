@@ -4,7 +4,9 @@ import Firebase
 struct TrainingsListView: View {
 
     @ObservedObject var viewModel: TrainingListViewModel
+    @ObservedObject var uploadSkiDayViewModel = UploadSkiDayViewModel()
     @State var text: String = ""
+    @State var showMessage: Bool = false
 
     init(user: User) {
         self.viewModel = TrainingListViewModel(user: user)
@@ -22,6 +24,9 @@ struct TrainingsListView: View {
                         .hide(if: viewModel.searchableSkiDays.count != 0)
                 }
             }
+            .onChange(of: viewModel.skiDays, perform: { _ in
+                showMessage = true
+            })
             .onTapGesture {
                 self.endTextEditing()
             }
@@ -38,6 +43,11 @@ struct TrainingsListView: View {
                     }
                 }
             }
+        }
+        .overlay {
+                MessageView(messageType: .succes,
+                            message: "",
+                            isVisible: $showMessage)
         }
     }
     private var addTrainingWidget: some View {

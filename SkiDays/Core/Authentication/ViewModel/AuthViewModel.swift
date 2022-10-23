@@ -9,7 +9,7 @@ class AuthViewModel: ObservableObject {
     @Published var showSplashScreen = false
     @Published var showResetPassword = false
     @Published var alertMessage = ""
-    @Published var alertImage = ""
+    @Published var messageType = MessageType.error
 
     private let service = UserService()
 
@@ -23,12 +23,9 @@ class AuthViewModel: ObservableObject {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if let error = error {
                 print("Failed to sign in user with error: \(error)")
-                self.alertImage = "xmark"
+                self.messageType = .error
                 self.alertMessage = "Unable to Log in"
                 self.shouldShowMessage = true
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    self.shouldShowMessage = false
-                }
             }
             guard let user = result?.user else {return}
             self.userSession = user
@@ -41,11 +38,8 @@ class AuthViewModel: ObservableObject {
             if let error = error {
                 print("Failed to register the user \(error.localizedDescription)")
                 self.alertMessage = "Oops something went wrong"
-                self.alertImage = "xmark"
+                self.messageType = .error
                 self.shouldShowMessage = true
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    self.shouldShowMessage = false
-                }
                 return
             }
 
@@ -82,20 +76,14 @@ class AuthViewModel: ObservableObject {
             if let error = error {
                 print("Unable to reset password \(error)")
                 self.alertMessage = "Unable to reset password"
-                self.alertImage = "xmark"
+                self.messageType = .error
                 self.showResetPassword = false
                 self.shouldShowMessage = true
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    self.shouldShowMessage = false
-                }
             } else {
                 self.alertMessage = "Email sent"
-                self.alertImage = "checkmark"
+                self.messageType = .succes
                 self.showResetPassword = false
                 self.shouldShowMessage = true
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    self.shouldShowMessage = false
-                }
             }
         }
     }

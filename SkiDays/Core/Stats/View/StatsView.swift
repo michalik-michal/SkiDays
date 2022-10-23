@@ -18,7 +18,7 @@ struct StatsView: View {
         NavigationView {
             ScrollView(showsIndicators: false) {
                 LazyVStack {
-                    if viewModel.skiDays.count < 2 {
+                    if viewModel.skiDays.isEmpty {
                         emptyView
                     } else {
                         chartView
@@ -94,8 +94,7 @@ struct StatsView: View {
 
     private var emptyView: some View {
         VStack {
-            Image("emptyImage")
-                .resizable()
+            DataView()
                 .frame(width: 150, height: 150)
             Text("Not enough data")
                 .font(.title2.bold())
