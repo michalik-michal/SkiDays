@@ -9,6 +9,7 @@ struct AddTrainingView: View {
     @ObservedObject var viewModel = UploadSkiDayViewModel()
     @FocusState private var focusedField: Field?
 
+    @State private var shouldShowMessage = false
     @State private var date = Date()
     @State private var conditions: String = "Snow"
     @State private var discipline: String = ""
@@ -82,6 +83,11 @@ struct AddTrainingView: View {
         .fullScreenCover(isPresented: $isShowingVideoPicker, content: {
             VideoPicker(video: $video)
         })
+        .overlay {
+            MessageView(messageType: .error,
+                        message: "Please select discipline",
+                        isVisible: $shouldShowMessage)
+        }
         .onTapGesture {
             self.endTextEditing()
         }
@@ -101,6 +107,14 @@ struct AddTrainingView: View {
         }
     }
 
+    private func manageSubmitActions() {
+        switch focusedField {
+        case .place:
+            focusedField = .runs
+        default:
+            return
+        }
+    }
     private var menu: some View {
         Menu {
             Button {
@@ -161,15 +175,6 @@ struct AddTrainingView: View {
             .cornerRadius(12)
         }
     }
-
-    private func manageSubmitActions() {
-        switch focusedField {
-        case .place:
-            focusedField = .runs
-        default:
-            return
-        }
-    }
 }
 
 struct AddTrainingView_Previews: PreviewProvider {
@@ -189,20 +194,24 @@ extension AddTrainingView {
 
     var doneButton: some View {
             Button {
-                let skiDay = SkiDay(date: fetchDate(date: date),
-                                    discipline: discipline,
-                                    gates: Int(gates) ?? 0,
-                                    notes: notes,
-                                    place: place,
-                                    runs: Int(runs) ?? 0,
-                                    consistency: (runsFinished / (Double(runs) ?? 0.0)),
-                                    conditions: conditions,
-                                    slopeProfile: "",
-                                    skis: "",
-                                    video: "")
-                viewModel.uploadSkiDay(skiDay: skiDay
-                )
-                presentationMode.wrappedValue.dismiss()
+                if discipline != "" {
+                    let skiDay = SkiDay(date: fetchDate(date: date),
+                                        discipline: discipline,
+                                        gates: Int(gates) ?? 0,
+                                        notes: notes,
+                                        place: place,
+                                        runs: Int(runs) ?? 0,
+                                        consistency: (runsFinished / (Double(runs) ?? 0.0)),
+                                        conditions: conditions,
+                                        slopeProfile: "",
+                                        skis: "",
+                                        video: "")
+                    viewModel.uploadSkiDay(skiDay: skiDay
+                    )
+                    presentationMode.wrappedValue.dismiss()
+                } else {
+                    shouldShowMessage = true
+                }
             } label: {
                 Text("Done")
                     .foregroundColor(.darkerBlue)
