@@ -25,7 +25,6 @@ struct SecureTextField: View {
                     Image(systemName: self.isSecure ? "eye.slash" : "eye")
                         .foregroundColor(Color(.darkGray))
                 }
-                .padding(.trailing, 25)
                 .padding(.bottom, 3)
         }
     }
