@@ -12,7 +12,7 @@ struct RegistrationView: View {
 
     var body: some View {
         VStack {
-           AuthenticationHeader(title1: "Welcome.", title2: "Create you account")
+           AuthenticationHeader(title1: "Create your account.", title2: "")
             VStack(spacing: 40) {
                 CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
                 CustomInputField(imageName: "person", placeholderText: "username", text: $username)
@@ -50,7 +50,6 @@ struct RegistrationView: View {
         .background(Color.background)
         .overlay {
             MessageView(messageType: .error, message: "Oops there was some error", isVisible: $viewModel.shouldShowMessage)
-            
         }
     }
 }

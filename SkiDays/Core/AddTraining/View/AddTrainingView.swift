@@ -226,21 +226,19 @@ extension AddTrainingView {
         ForEach(buttons, id: \.self) { row in
             HStack {
                 ForEach(row, id: \.self) { item in
-                    Button {
-                        discipline = item.rawValue
-                    } label: {
-                        Text(item.rawValue)
-                            .foregroundColor(.blackWhite)
-                            .font(.system(size: 20)).bold()
-                    }
-                    .frame(height: 60)
-                    .frame(maxWidth: .infinity )
-                    .background(Color.secondayBackground)
-                    .cornerRadius(12)
-                    .overlay(
+                    Text(item.rawValue)
+                        .foregroundColor(.blackWhite)
+                        .font(.system(size: 20)).bold()
+                        .frame(height: 60)
+                        .frame(maxWidth: .infinity )
+                        .background(Color.secondayBackground)
+                        .cornerRadius(12)
+                        .overlay(
                             RoundedRectangle(cornerRadius: 12)
-                                .stroke(item.rawValue == discipline ? .blue : .secondayBackground, lineWidth: 2)
-                    )
+                                .stroke(item.rawValue == discipline ? .blue : .secondayBackground, lineWidth: 2))
+                        .onTapGesture {
+                            discipline = item.rawValue
+                        }
                 }
             }
         }

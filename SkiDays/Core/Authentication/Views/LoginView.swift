@@ -13,7 +13,7 @@ struct LoginView: View {
     var body: some View {
         NavigationView {
             VStack {
-                AuthenticationHeader(title1: "Hello.", title2: "Great to se you again")
+                AuthenticationHeader(title1: "Hello.", title2: "Great to see you")
                 VStack(spacing: 40) {
                     CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
                     SecureTextField(password: $password)
