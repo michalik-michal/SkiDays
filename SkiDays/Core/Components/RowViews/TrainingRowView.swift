@@ -29,10 +29,11 @@ struct TrainingRowView: View {
             }
             Spacer()
             VStack(spacing: 30) {
-                Image(systemName: "video")
+                Image(systemName: "note")
                     .frame(width: 100)
                     .font(.system(size: 20))
                     .foregroundColor(.blackWhite)
+                    .hide(if: skiDay.notes == "")
                 Text(skiDay.conditions)
                     .frame(width: 100)
                     .font(.system(size: 20))
