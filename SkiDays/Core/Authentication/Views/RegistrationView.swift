@@ -49,7 +49,9 @@ struct RegistrationView: View {
         .foregroundColor(.blackWhite)
         .background(Color.background)
         .overlay {
-            MessageView(messageType: .error, message: "Oops there was some error", isVisible: $viewModel.shouldShowMessage)
+            MessageView(messageType: .error,
+                        message: "Oops there was some error",
+                        isVisible: $viewModel.shouldShowMessage)
         }
     }
 }

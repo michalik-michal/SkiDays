@@ -56,4 +56,3 @@ public extension UIApplication {
         UIApplication.shared.keyUIWindow?.rootViewController?.presentedViewController
     }
 }
-
