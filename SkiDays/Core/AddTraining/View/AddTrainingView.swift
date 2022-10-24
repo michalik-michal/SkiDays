@@ -202,7 +202,7 @@ extension AddTrainingView {
                                         notes: notes,
                                         place: place,
                                         runs: Int(runs) ?? 0,
-                                        consistency: (runsFinished / (Double(runs) ?? 0.0)),
+                                        consistency: (runsFinished / (Double(runs) ?? 1.0)),
                                         conditions: conditions,
                                         slopeProfile: "",
                                         skis: "",
