@@ -87,4 +87,42 @@ class AuthViewModel: ObservableObject {
             }
         }
     }
+
+    func reauthenticateUser(password: String, completion: @escaping (Result<Bool, Error>) -> Void ) {
+        if let user = Auth.auth().currentUser {
+            let credential = EmailAuthProvider.credential(withEmail: user.email ?? "", password: password)
+            user.reauthenticate(with: credential) {_, error in
+                if let error = error {
+                    completion(.failure(error))
+                } else {
+                    completion(.success(true))
+                }
+            }
+        }
+    }
+
+    func deleteUserData(uid: String, completion: @escaping (Result<Bool, Error>) -> Void ) {
+        let reference = Firestore.firestore()
+            .collection("users")
+            .document(uid)
+        reference.delete { error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(true))
+            }
+        }
+    }
+    
+    func deleteUser(completion: @escaping (Result<Bool, Error>) -> Void) {
+        if let user = Auth.auth().currentUser {
+            user.delete { error in
+                if let error = error {
+                    completion(.failure(error))
+                } else {
+                    completion(.success(true))
+                }
+            }
+        }
+    }
 }

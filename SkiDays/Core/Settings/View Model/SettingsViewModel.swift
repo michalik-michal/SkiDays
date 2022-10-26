@@ -10,6 +10,7 @@ class SettingsViewModel: ObservableObject {
     @Published var showFeedbackSheet = false
     @Published var showingConfirmation = false
     @Published var shouldMessageView = false
+    @Published var showDeleteAccount = false
 
     func signOut() {
         service.signOut()
