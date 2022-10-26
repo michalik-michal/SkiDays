@@ -66,17 +66,23 @@ class HomeViewModel: ObservableObject {
             var hardConsistency = 0.0
             var consistency = 0.0
             var days: [Int] = []
+            var daysOnGates: Int = 0
 
             for skiDay in self.skiDays {
                 totalRuns += skiDay.runs
                 totalGates +=  skiDay.gates *  skiDay.runs
-                hardConsistency += skiDay.consistency
+                if skiDay.discipline != "FREE" {
+                    hardConsistency += skiDay.consistency
+                }
             }
             for discipline in self.statsViewModel.disciplineStats {
                 days.append(discipline.numberOfDays)
             }
+            for skiDay in self.skiDays where skiDay.discipline != "FREE"{
+                daysOnGates += 1
+            }
             if !self.skiDays.isEmpty {
-                consistency = hardConsistency / Double(self.skiDays.count)
+                consistency = hardConsistency / Double(daysOnGates)
             }
             self.mainStats = MainStats(numberOfDays: self.skiDays.count,
                                        mostSkiedDiscipline: self.statsViewModel.getMostSkiedDiscipline(),

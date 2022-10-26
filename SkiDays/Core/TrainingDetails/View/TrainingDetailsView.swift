@@ -27,19 +27,23 @@ struct TrainingDetailsView: View {
                     Spacer()
                     DetailRowView(text: skiDay.conditions)
                 }
-                HStack {
-                    DetailRowView(text: "\(skiDay.runs) runs")
-                    DetailRowView(text: "\(skiDay.gates) gates")
-                    DetailRowView(text: "\(skiDay.runs * skiDay.gates) total")
-                }
-                Rectangle()
-                    .fill(Color.secondayBackground)
-                    .frame(height: 200)
-                    .frame(maxWidth: .infinity)
-                    .cornerRadius(20)
-                    .overlay {
-                        CircularProgressView(progress: skiDay.consistency)
+                if skiDay.discipline != "FREE" {
+                    HStack {
+                        DetailRowView(text: "\(skiDay.runs) runs")
+                        DetailRowView(text: "\(skiDay.gates) gates")
+                        DetailRowView(text: "\(skiDay.runs * skiDay.gates) total")
                     }
+                    Rectangle()
+                        .fill(Color.secondayBackground)
+                        .frame(height: 200)
+                        .frame(maxWidth: .infinity)
+                        .cornerRadius(20)
+                        .overlay {
+                            CircularProgressView(progress: skiDay.consistency)
+                        }
+                } else {
+                    DetailRowView(text: "\(skiDay.runs) runs")
+                }
                 noteView
                     .hide(if: skiDay.notes == "")
                 uploadVideoView

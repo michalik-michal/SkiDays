@@ -53,23 +53,26 @@ struct AddTrainingView: View {
                         CustomInputField(imageName: "waveform.path.ecg", placeholderText: "Number of runs", text: $runs)
                             .focused($focusedField, equals: .runs)
                             .keyboardType(.numberPad)
-                        CustomInputField(imageName: "italic", placeholderText: "Number of gates", text: $gates)
-                            .keyboardType(.numberPad)
+                        if discipline != "FREE" {
+                            CustomInputField(imageName: "italic", placeholderText: "Number of gates", text: $gates)
+                                .keyboardType(.numberPad)
+                        }
                         menu
-
                     }
                     .padding(.top, 40)
                     .onSubmit {
                         manageSubmitActions()
                     }
-                    if let runs = Double(runs) {
-                        HStack {
-                            Text("Runs finished: ")
-                                .font(.title).bold()
-                            Text(String(format: "%.0f", runsFinished))
-                                .font(.title.bold())
+                    if discipline != "FREE" {
+                        if let runs = Double(runs) {
+                            HStack {
+                                Text("Runs finished: ")
+                                    .font(.title).bold()
+                                Text(String(format: "%.0f", runsFinished))
+                                    .font(.title.bold())
+                            }
+                            Slider(value: $runsFinished, in: 0...runs, step: 1)
                         }
-                        Slider(value: $runsFinished, in: 0...runs, step: 1)
                     }
                     Text("Notes")
                         .font(.title).bold()

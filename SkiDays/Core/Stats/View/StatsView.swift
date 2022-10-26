@@ -48,8 +48,12 @@ struct StatsView: View {
                 .tag(StatsDisciplineFilter.dh)
             DisciplineStatsRow(stats: viewModel.getStatsFor("PARA"))
                 .tag(StatsDisciplineFilter.para)
-            DisciplineStatsRow(stats: viewModel.getStatsFor("FREE"))
-                .tag(StatsDisciplineFilter.free)
+            VStack {
+                DisciplineStatsRow(stats: viewModel.getStatsFor("FREE"))
+                    .padding(.top, 7)
+                Spacer()
+            }
+            .tag(StatsDisciplineFilter.free)
         }
         .frame(height: 330)
         .tabViewStyle(.page(indexDisplayMode: .never))

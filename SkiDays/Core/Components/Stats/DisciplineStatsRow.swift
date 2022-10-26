@@ -15,25 +15,35 @@ struct DisciplineStatsRow: View {
                     .font(.title2.bold())
                 Spacer()
             }
-            Divider()
-            HStack {
-                VStack(alignment: .leading) {
-                    HStack {
-                        Text("\(stats.totalGates)")
-                            .font(.title2.bold())
-                        Text("gates")
-                            .font(.title2)
-                    }
-                    HStack {
-                        Text("\(stats.totalRuns)")
-                            .font(.title2.bold())
-                        Text("runs")
-                            .font(.title2)
-                    }
+            if stats.discipline == "FREE" {
+                HStack {
+                    Text("\(stats.totalRuns)")
+                        .font(.title2.bold())
+                    Text("runs")
+                        .font(.title2)
+                    Spacer()
                 }
-                Spacer()
-                CircularProgressView(progress: stats.consistency)
-                    .padding(.trailing, 20)
+            } else {
+                Divider()
+                    HStack {
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Text("\(stats.totalGates)")
+                                    .font(.title2.bold())
+                                Text("gates")
+                                    .font(.title2)
+                            }
+                            HStack {
+                                Text("\(stats.totalRuns)")
+                                    .font(.title2.bold())
+                                Text("runs")
+                                    .font(.title2)
+                            }
+                        }
+                        Spacer()
+                        CircularProgressView(progress: stats.consistency)
+                            .padding(.trailing, 20)
+                    }
             }
         }
         .padding()
