@@ -113,7 +113,7 @@ class AuthViewModel: ObservableObject {
             }
         }
     }
-    
+
     func deleteUser(completion: @escaping (Result<Bool, Error>) -> Void) {
         if let user = Auth.auth().currentUser {
             user.delete { error in

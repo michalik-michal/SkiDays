@@ -7,6 +7,6 @@ enum DisciplineButtonViewModel: String, CaseIterable {
     case GS
     case SG
     case DH
-    case FREE
     case PARA
+    case FREE
 }

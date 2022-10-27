@@ -23,7 +23,7 @@ struct AddTrainingView: View {
 
     let buttons: [[DisciplineButtonViewModel]] = [
         [.SL, .GS, .SG ],
-        [.DH, .FREE, .PARA]
+        [.DH, .PARA, .FREE]
     ]
 
     var body: some View {
