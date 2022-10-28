@@ -19,4 +19,17 @@ struct FeedbackService {
                 completion(true)
             }
     }
+
+    func uploadMessage(email: String, _ message: String, completion: @escaping(Bool) -> Void) {
+        let data = ["email": email, "message": message] as [String: Any]
+        Firestore.firestore().collection("message").document()
+            .setData(data) { error in
+                if let error = error {
+                    print("Failed to upload message \(error)")
+                    completion(false)
+                    return
+                }
+                completion(true)
+            }
+    }
 }

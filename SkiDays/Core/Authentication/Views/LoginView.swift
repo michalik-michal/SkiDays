@@ -33,6 +33,19 @@ struct LoginView: View {
                             .padding(.trailing, 24)
                     }
                 }
+                HStack {
+                    Spacer()
+                    NavigationLink {
+                        AuthenticationHelpView()
+                    } label: {
+                        Text("Need help?")
+                            .font(.caption)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.blackWhite)
+                            .padding(.trailing, 24)
+                            .padding(.top, 5)
+                    }
+                }
                 Button {
                     viewModel.login(withEmail: email, password: password)
                 } label: {

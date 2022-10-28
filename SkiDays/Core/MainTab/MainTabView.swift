@@ -36,6 +36,15 @@ struct MainTabView: View {
             .foregroundColor(.blackWhite)
             .background(Color.secondayBackground)
             .padding(.bottom, UIDevice.hasNotch ? 0 : 12)
+        } else {
+            LoadingView()
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        if viewModel.currentUser == nil {
+                            viewModel.userSession = nil
+                        }
+                    }
+                }
         }
     }
 }

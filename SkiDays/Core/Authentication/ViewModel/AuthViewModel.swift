@@ -34,28 +34,22 @@ class AuthViewModel: ObservableObject {
     }
     // MARK: - Register User
     func register(withEmail email: String, password: String, fullname: String, username: String) {
-        Auth.auth().createUser(withEmail: email, password: password) { result, error in
-            if let error = error {
-                print("Failed to register the user \(error.localizedDescription)")
-                self.alertMessage = "Oops something went wrong"
-                self.messageType = .error
-                self.shouldShowMessage = true
-                return
+        Auth.auth().createUser(withEmail: email, password: password) {(authResult, error) in
+            if let user = authResult?.user {
+                self.userSession = user
+                self.fetchUser()
+                let data = ["email": email,
+                            "username": username.lowercased(),
+                            "fullname": fullname,
+                            "uid": user.uid]
+                Firestore.firestore().collection("users")
+                    .document(user.uid)
+                    .setData(data) { _ in
+                        print("Did update user data")
+                    }
+            } else {
+                print("Failed to register user \(error)")
             }
-
-            guard let user = result?.user else {return}
-            self.userSession = user
-            self.fetchUser()
-            let data = ["email": email,
-                        "username": username.lowercased(),
-                        "fullname": fullname,
-                        "uid": user.uid]
-
-            Firestore.firestore().collection("users")
-                .document(user.uid)
-                .setData(data) { _ in
-                    print("Did update user data")
-                }
         }
     }
 
@@ -97,6 +91,20 @@ class AuthViewModel: ObservableObject {
                 } else {
                     completion(.success(true))
                 }
+            }
+        }
+    }
+
+    func reauthenticateUserWithEmail( email: String,
+                                      password: String,
+                                      completion: @escaping (Result<Bool, Error>) -> Void ) {
+        let user = Auth.auth().currentUser
+        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+        user?.reauthenticate(with: credential) {_, error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(true))
             }
         }
     }

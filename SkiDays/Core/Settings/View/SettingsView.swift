@@ -41,50 +41,9 @@ struct SettingsView: View {
                 SettingsRow(image: "trash", title: "Delete Account")
                     .onTapGesture { viewModel.showDeleteAccount = true }
                     .sheet(isPresented: $viewModel.showDeleteAccount) {
-                        VStack(alignment: .leading) {
-                            Text("Enter password to delete account")
-                                .font(.title2).bold()
-                                .padding(.bottom, 20)
-                            SecureTextField(password: $password)
-                            Spacer()
-                            Button {
-                                viewModel.service.reauthenticateUser(password: password) { result in
-                                    switch result {
-                                    case .success:
-                                        if let uid = viewModel.service.currentUser?.uid {
-                                            viewModel.service.deleteUserData(uid: uid) { result in
-                                                switch result {
-                                                case .success:
-                                                    viewModel.service.deleteUser { result in
-                                                        switch result {
-                                                        case .success:
-                                                            print("User deleted")
-                                                            authViewModel.currentUser = nil
-                                                            authViewModel.userSession = nil
-                                                        case .failure:
-                                                            print("Cant delete user")
-                                                        }
-                                                    }
-                                                case .failure:
-                                                    print("Cant delete user data")
-                                                }
-                                            }
-                                        }
-                                    case .failure:
-                                        print("Cant reauthenticate")
-                                    }
-                                }
-                            } label: {
-                                Text("Delete ")
-                                    .font(.title3).bold()
-                                    .frame(height: 50)
-                                    .frame(maxWidth: .infinity)
-                                    .background(Color.red)
-                                    .cornerRadius(12)
-                            }
-                        }
-                        .padding()
-                        .presentationDetents([.height(300)])
+                        DeleteAccountSheetView()
+                            .padding()
+                            .presentationDetents([.height(300)])
                     }
 
                 SettingsRow(image: "figure.walk", title: "Sign Out")
