@@ -31,6 +31,7 @@
 		20AD4897290BEB0900A1113F /* AuthenticationHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AD4896290BEB0900A1113F /* AuthenticationHelpView.swift */; };
 		20AD489A290BF38500A1113F /* DeleteAccountSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AD4899290BF38500A1113F /* DeleteAccountSheetView.swift */; };
 		20AD489C290BFA4900A1113F /* AuthenticationHelpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AD489B290BFA4900A1113F /* AuthenticationHelpViewModel.swift */; };
+		20AD489F290C13D500A1113F /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 20AD489E290C13D500A1113F /* FirebaseCrashlytics */; };
 		20B2906A28CBA96E006E6635 /* SettingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B2906928CBA96E006E6635 /* SettingsRow.swift */; };
 		20B2906C28CBAECE006E6635 /* ThemeSettingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B2906B28CBAECE006E6635 /* ThemeSettingsRow.swift */; };
 		20F7373628EC490F001CF521 /* MainStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7373528EC490F001CF521 /* MainStats.swift */; };
@@ -154,6 +155,7 @@
 				20063D712902F4910025C906 /* Lottie in Frameworks */,
 				22928AF1281FC734000FCEFA /* FirebaseFirestoreSwift-Beta in Frameworks */,
 				22928AF3281FC734000FCEFA /* FirebaseStorage in Frameworks */,
+				20AD489F290C13D500A1113F /* FirebaseCrashlytics in Frameworks */,
 				22928AED281FC734000FCEFA /* FirebaseAuth in Frameworks */,
 				22928AEF281FC734000FCEFA /* FirebaseFirestore in Frameworks */,
 			);
@@ -249,6 +251,13 @@
 				20AD4899290BF38500A1113F /* DeleteAccountSheetView.swift */,
 			);
 			path = Sheets;
+			sourceTree = "<group>";
+		};
+		20AD489D290C13D500A1113F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		20B2906828CBA946006E6635 /* Settings */ = {
@@ -374,6 +383,7 @@
 			children = (
 				22848DB6281BDBBD00AF996F /* SkiDays */,
 				22848DB5281BDBBD00AF996F /* Products */,
+				20AD489D290C13D500A1113F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -636,6 +646,7 @@
 				2072276E28F9920100703811 /* Run SwiftLint */,
 				22848DB1281BDBBD00AF996F /* Frameworks */,
 				22848DB2281BDBBD00AF996F /* Resources */,
+				20AD48A0290C144900A1113F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -648,6 +659,7 @@
 				22928AF0281FC734000FCEFA /* FirebaseFirestoreSwift-Beta */,
 				22928AF2281FC734000FCEFA /* FirebaseStorage */,
 				20063D702902F4910025C906 /* Lottie */,
+				20AD489E290C13D500A1113F /* FirebaseCrashlytics */,
 			);
 			productName = SkiDays;
 			productReference = 22848DB4281BDBBD00AF996F /* SkiDays.app */;
@@ -726,6 +738,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\nexport PATH\n\nif [ -z \"$CI\" ]; then\n    if which swiftlint >/dev/null; then\n        swiftlint autocorrect & swiftlint\n    else\n        echo \"error: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n    fi\nfi\n";
+		};
+		20AD48A0290C144900A1113F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -830,7 +861,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1031,6 +1062,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 20063D6F2902F4900025C906 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		20AD489E290C13D500A1113F /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22928AEB281FC734000FCEFA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
 		};
 		22928AEC281FC734000FCEFA /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
