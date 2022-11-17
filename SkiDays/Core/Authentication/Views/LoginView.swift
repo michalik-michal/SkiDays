@@ -106,7 +106,7 @@ struct LoginView: View {
             }
         }
         .padding()
-        .presentationDetents([.medium])
+        .presentationDetents([.height(300)])
     }
 }
 

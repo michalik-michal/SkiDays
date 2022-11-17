@@ -9,5 +9,4 @@ class AuthenticationHelpViewModel: ObservableObject {
     @Published var showResetAccount = false
     @Published var password = ""
     @Published var emailForAccoundReset = ""
-    
 }
