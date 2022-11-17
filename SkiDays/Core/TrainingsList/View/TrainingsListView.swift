@@ -14,7 +14,7 @@ struct TrainingsListView: View {
 
     var body: some View {
         NavigationView {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 LazyVStack(spacing: 15) {
                     SearchBar(text: $viewModel.searchText)
                     ForEach(viewModel.searchableSkiDays) { skiDay in

@@ -16,7 +16,7 @@ struct CircularProgressView: View {
             VStack {
                 Text("\((progress * 100), specifier: "%.0f")%")
                     .font(.title.bold())
-                Text("Consisntecy")
+                Text("Consistency")
             }
         }
         .frame(width: 150, height: 150)
