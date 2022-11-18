@@ -3,13 +3,18 @@ import SwiftUI
 struct ContentView: View {
 
     @EnvironmentObject var viewModel: AuthViewModel
+    @ObservedObject var networkService = NetworkService()
 
     var body: some View {
         ZStack {
-            if viewModel.userSession == nil {
-                LoginView()
+            if networkService.isConnected {
+                if viewModel.userSession == nil {
+                    LoginView()
+                } else {
+                    MainTabView()
+                }
             } else {
-                MainTabView()
+                NoConnectionView()
             }
             SplashScreen()
                 .ignoresSafeArea()

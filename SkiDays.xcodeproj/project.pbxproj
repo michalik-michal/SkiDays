@@ -14,6 +14,8 @@
 		20063D8C29043DCA0025C906 /* DataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20063D8B29043DCA0025C906 /* DataView.swift */; };
 		20063D9129045A500025C906 /* AstronautView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20063D9029045A500025C906 /* AstronautView.swift */; };
 		20075CF428784EA7004743B1 /* SecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20075CF328784EA7004743B1 /* SecureTextField.swift */; };
+		2008EEAD2927F2C30053BE87 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2008EEAC2927F2C30053BE87 /* NetworkService.swift */; };
+		2008EEB02927F5C50053BE87 /* NoConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2008EEAF2927F5C50053BE87 /* NoConnectionView.swift */; };
 		201D56C328DDA36200CB5025 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 201D56C228DDA36200CB5025 /* Assets.xcassets */; };
 		201D56C528DDDB8000CB5025 /* StatsDisciplineFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D56C428DDDB8000CB5025 /* StatsDisciplineFilter.swift */; };
 		2049A4812906796300D5A6E0 /* astronaut.json in Resources */ = {isa = PBXBuildFile; fileRef = 2049A4802906796300D5A6E0 /* astronaut.json */; };
@@ -86,6 +88,8 @@
 		20063D8B29043DCA0025C906 /* DataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataView.swift; sourceTree = "<group>"; };
 		20063D9029045A500025C906 /* AstronautView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronautView.swift; sourceTree = "<group>"; };
 		20075CF328784EA7004743B1 /* SecureTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureTextField.swift; sourceTree = "<group>"; };
+		2008EEAC2927F2C30053BE87 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		2008EEAF2927F5C50053BE87 /* NoConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoConnectionView.swift; sourceTree = "<group>"; };
 		201D56C228DDA36200CB5025 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		201D56C428DDDB8000CB5025 /* StatsDisciplineFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsDisciplineFilter.swift; sourceTree = "<group>"; };
 		2049A4802906796300D5A6E0 /* astronaut.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = astronaut.json; sourceTree = "<group>"; };
@@ -219,6 +223,15 @@
 				2049A4802906796300D5A6E0 /* astronaut.json */,
 			);
 			path = Astronaut;
+			sourceTree = "<group>";
+		};
+		2008EEAE2927F5AA0053BE87 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				2008EEAC2927F2C30053BE87 /* NetworkService.swift */,
+				2008EEAF2927F5C50053BE87 /* NoConnectionView.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		205004FF28D0CB280006795A /* ErrorMessage */ = {
@@ -434,6 +447,7 @@
 				22848DDC281BEEFE00AF996F /* TrainingDetails */,
 				22848DC7281BDCDB00AF996F /* Authentication */,
 				20704BB328D612A70058CDB6 /* SplashScreen */,
+				2008EEAE2927F5AA0053BE87 /* Network */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -791,6 +805,7 @@
 				22928AE1281D2291000FCEFA /* PickDisciplineButton.swift in Sources */,
 				22848DCF281BDF5E00AF996F /* CustomInputField.swift in Sources */,
 				22F04E37284F5E6B00A5F03B /* StatsViewModel.swift in Sources */,
+				2008EEB02927F5C50053BE87 /* NoConnectionView.swift in Sources */,
 				225A1F192822903700C2C81E /* SettingsViewModel.swift in Sources */,
 				20704BB528D612F80058CDB6 /* SplashScreen.swift in Sources */,
 				22848DCB281BDD0600AF996F /* LoginView.swift in Sources */,
@@ -799,6 +814,7 @@
 				22848DBA281BDBBD00AF996F /* ContentView.swift in Sources */,
 				20755F74287ACE60009E63DB /* SearchBar.swift in Sources */,
 				22928ADF281D1EE7000FCEFA /* DisciplineButtonViewModel.swift in Sources */,
+				2008EEAD2927F2C30053BE87 /* NetworkService.swift in Sources */,
 				22F04E3B284F601300A5F03B /* StatsService.swift in Sources */,
 				20063D8C29043DCA0025C906 /* DataView.swift in Sources */,
 				22848DD5281BE0D700AF996F /* Extentions.swift in Sources */,
