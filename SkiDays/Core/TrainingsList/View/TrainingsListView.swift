@@ -5,8 +5,9 @@ struct TrainingsListView: View {
 
     @ObservedObject var viewModel: TrainingListViewModel
     @ObservedObject var uploadSkiDayViewModel = UploadSkiDayViewModel()
-    @State var text: String = ""
-    @State var showMessage: Bool = false
+    @State private var text: String = ""
+    @State private var showMessage: Bool = false
+    @State private var showAddTrainingView: Bool = false
 
     init(user: User) {
         self.viewModel = TrainingListViewModel(user: user)
@@ -35,14 +36,17 @@ struct TrainingsListView: View {
             .navigationTitle("Ski Days")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink {
-                        AddTrainingView()
+                    Button {
+                        showAddTrainingView.toggle()
                     } label: {
                         Image(systemName: "plus")
                             .foregroundColor(.darkerBlue)
                     }
                 }
             }
+        }
+        .fullScreenCover(isPresented: $showAddTrainingView) {
+            ModalNavigationView(showModal: $showAddTrainingView, content: AddTrainingView())
         }
         .overlay {
                 MessageView(messageType: .succes,

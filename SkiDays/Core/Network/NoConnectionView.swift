@@ -13,10 +13,8 @@ struct NoConnectionView: View {
                 .padding(.horizontal)
                 .multilineTextAlignment(.center)
         }
-        //.frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(30)
         .background(Color.background)
-
     }
 }
 
