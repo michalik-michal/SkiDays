@@ -60,9 +60,9 @@ struct SettingsView: View {
         .background(Color.background)
         .navigationTitle("Settings")
         .overlay {
-            MessageView(messageType: .succes,
-                        message: "Thank you for giving feedback!",
-                        isVisible: $viewModel.shouldMessageView)
+            MessageView(isVisible: $viewModel.shouldMessageView,
+                        messageType: .succes,
+                        message: "Thank you for giving feedback!")
         }
     }
 }

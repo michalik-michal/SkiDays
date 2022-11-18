@@ -88,9 +88,9 @@ struct AddTrainingView: View {
             VideoPicker(video: $video)
         })
         .overlay {
-            MessageView(messageType: .error,
-                        message: "Please select discipline",
-                        isVisible: $shouldShowMessage)
+            MessageView(isVisible: $shouldShowMessage,
+                        messageType: .error,
+                        message: "Please select discipline")
         }
         .onTapGesture {
             self.endTextEditing()

@@ -32,9 +32,9 @@ struct AuthenticationHelpView: View {
             .navigationBarTitleDisplayMode(.inline)
             .padding()
             .overlay {
-                MessageView(messageType: .succes,
-                            message: "Message sent.",
-                            isVisible: $viewModel.showConfirmation)
+                MessageView(isVisible: $viewModel.showConfirmation,
+                            messageType: .succes,
+                            message: "Message sent.")
             }
             .sheet(isPresented: $viewModel.showResetAccount) {
                 VStack(alignment: .leading) {

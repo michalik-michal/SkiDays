@@ -3,6 +3,7 @@ import SwiftUI
 struct HomeView: View {
 
     @ObservedObject var viewModel: HomeViewModel
+    @State private var showAddTrainingView: Bool = false
 
     init(user: User) {
         self.viewModel = HomeViewModel(user: user)
@@ -41,6 +42,14 @@ struct HomeView: View {
             .onAppear {
                 viewModel.getMainStats()
             }
+            .fullScreenCover(isPresented: $showAddTrainingView) {
+                ModalNavigationView(showModal: $showAddTrainingView, content: AddTrainingView())
+            }
+            .onChange(of: showAddTrainingView, perform: { newValue in
+                if newValue == false {
+                    viewModel.getMainStats()
+                }
+            })
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink {
@@ -67,11 +76,8 @@ struct HomeView: View {
     }
 
     private var addTrainingWidget: some View {
-        NavigationLink {
-            AddTrainingView()
-                .onDisappear {
-                    viewModel.getMainStats()
-                }
+        Button {
+            showAddTrainingView.toggle()
         } label: {
             VStack {
                 Image(systemName: "plus")

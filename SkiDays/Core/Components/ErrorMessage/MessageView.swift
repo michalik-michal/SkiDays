@@ -7,9 +7,16 @@ enum MessageType {
 
 struct MessageView: View {
 
+    @Binding var isVisible: Bool
     var messageType: MessageType
     var message: String
-    @Binding var isVisible: Bool
+    var time: Double {
+        if messageType == .succes {
+            return 1.2
+        } else {
+            return 1.8
+        }
+    }
 
     var body: some View {
         VStack(spacing: 40) {
@@ -19,7 +26,10 @@ struct MessageView: View {
                     .frame(width: 150, height: 150)
                     .scaleEffect(2)
             case .error:
-                ErrorView()
+                // ErrorView()
+                Image(systemName: "exclamationmark.bubble")
+                    .resizable()
+                    .foregroundColor(.gray)
                     .frame(width: 100, height: 100)
             }
             Text(message)
@@ -37,7 +47,7 @@ struct MessageView: View {
                 .stroke(Color.background, lineWidth: 4)
         )
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + time) {
                 isVisible = false
             }
         }
@@ -47,6 +57,6 @@ struct MessageView: View {
 
 struct MessageView_Previews: PreviewProvider {
     static var previews: some View {
-        MessageView(messageType: .succes, message: "Oops, there was some error", isVisible: .constant(true))
+        MessageView(isVisible: .constant(true), messageType: .succes, message: "Oops, there was some error")
     }
 }

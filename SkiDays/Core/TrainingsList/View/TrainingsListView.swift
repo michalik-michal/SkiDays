@@ -49,9 +49,9 @@ struct TrainingsListView: View {
             ModalNavigationView(showModal: $showAddTrainingView, content: AddTrainingView())
         }
         .overlay {
-                MessageView(messageType: .succes,
-                            message: "",
-                            isVisible: $showMessage)
+            MessageView(isVisible: $showMessage,
+                        messageType: .succes,
+                        message: "")
         }
     }
     private var addTrainingWidget: some View {

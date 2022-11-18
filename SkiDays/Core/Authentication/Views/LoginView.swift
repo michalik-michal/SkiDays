@@ -80,9 +80,9 @@ struct LoginView: View {
                 resetPasswordSheet
             }
             .overlay {
-                MessageView(messageType: viewModel.messageType,
-                            message: viewModel.alertMessage,
-                            isVisible: $viewModel.shouldShowMessage)
+                MessageView(isVisible: $viewModel.shouldShowMessage,
+                            messageType: viewModel.messageType,
+                            message: viewModel.alertMessage)
             }
         }
     }
