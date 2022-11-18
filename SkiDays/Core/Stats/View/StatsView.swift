@@ -8,14 +8,16 @@ struct StatsView: View {
     @Namespace var animation
 
     @State private var selectedDiscipline: StatsDisciplineFilter = .sl
+    var user: User
 
     init(user: User) {
         self.viewModel = StatsViewModel(user: user)
+        self.user = user
     }
     let chartColors: [Color] = [.pastelGreen, .pastelBlue, .pastelYellow, .pastelOrange, .pastelPurple, .pastelRed]
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ScrollView(showsIndicators: false) {
                 LazyVStack {
                     if viewModel.skiDays.isEmpty {
@@ -38,18 +40,18 @@ struct StatsView: View {
 
     private var statsPageView: some View {
         TabView(selection: $selectedDiscipline) {
-            DisciplineStatsRow(stats: viewModel.getStatsFor("SL"))
+            DisciplineStatsRow(stats: viewModel.getStatsFor("SL"), user: user)
                 .tag(StatsDisciplineFilter.sl)
-            DisciplineStatsRow(stats: viewModel.getStatsFor("GS"))
+            DisciplineStatsRow(stats: viewModel.getStatsFor("GS"), user: user)
                 .tag(StatsDisciplineFilter.gs)
-            DisciplineStatsRow(stats: viewModel.getStatsFor("SG"))
+            DisciplineStatsRow(stats: viewModel.getStatsFor("SG"), user: user)
                 .tag(StatsDisciplineFilter.sg)
-            DisciplineStatsRow(stats: viewModel.getStatsFor("DH"))
+            DisciplineStatsRow(stats: viewModel.getStatsFor("DH"), user: user)
                 .tag(StatsDisciplineFilter.dh)
-            DisciplineStatsRow(stats: viewModel.getStatsFor("PARA"))
+            DisciplineStatsRow(stats: viewModel.getStatsFor("PARA"), user: user)
                 .tag(StatsDisciplineFilter.para)
             VStack {
-                DisciplineStatsRow(stats: viewModel.getStatsFor("FREE"))
+                DisciplineStatsRow(stats: viewModel.getStatsFor("FREE"), user: user)
                     .padding(.top, 7)
                 Spacer()
             }
