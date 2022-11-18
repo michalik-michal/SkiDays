@@ -37,15 +37,20 @@ struct SkiDayService {
                 completion(skiDays)
             }
     }
+    // swiftlint:disable: line_length
     func fetchSkiDaysForUid(forUid uid: String, completion: @escaping([SkiDay]) -> Void) {
         Firestore.firestore().collection("skidays")
             .whereField("uid", isEqualTo: uid)
             .addSnapshotListener { snapshot, _ in
                 guard let documents = snapshot?.documents else {return}
                 let skiDays = documents.compactMap({try? $0.data(as: SkiDay.self)})
-                completion(skiDays.sorted(by: {$0.date > $1.date}))
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "dd/MM/yyyy"
+
+                completion(skiDays.sorted(by: {dateFormatter.date(from: $0.date)! > dateFormatter.date(from: $1.date)!}))
             }
     }
+    // swiftlint:enable: line_length
 
     func deleteSkiDay(_ skiDay: SkiDay) {
         Firestore.firestore().collection("skidays").document(skiDay.id!).delete { error in
