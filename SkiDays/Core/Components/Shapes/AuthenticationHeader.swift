@@ -16,7 +16,7 @@ struct AuthenticationHeader: View {
                 .font(.largeTitle)
                 .fontWeight(.semibold)
         }
-        .frame(height: 260)
+        .frame(height: 220)
         .padding(.leading)
         .background(Color.background)
         .foregroundColor(.blackWhite)
