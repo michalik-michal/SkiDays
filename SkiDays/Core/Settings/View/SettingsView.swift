@@ -16,27 +16,7 @@ struct SettingsView: View {
                 SettingsRow(image: "heart", title: "Give Feedback")
                     .onTapGesture { viewModel.showFeedbackSheet = true }
                     .sheet(isPresented: $viewModel.showFeedbackSheet) {
-                        VStack(alignment: .leading) {
-                            Text("Got some idea? Share it with us!")
-                                .font(.title2).bold()
-                            TextEditor(text: $feedback)
-                                .background(Color.background)
-                                .scrollContentBackground(.hidden)
-                                .cornerRadius(12)
-                             Spacer()
-                            Button {
-                                viewModel.submitFeedback(feedback)
-                            } label: {
-                                Text("Submmit")
-                                    .font(.title3).bold()
-                                    .frame(height: 50)
-                                    .frame(maxWidth: .infinity)
-                                    .background(Color.background)
-                                    .cornerRadius(12)
-                            }
-                        }
-                        .padding()
-                        .presentationDetents([.medium])
+                        feedbackSheet
                     }
                 SettingsRow(image: "trash", title: "Delete Account")
                     .onTapGesture { viewModel.showDeleteAccount = true }
@@ -45,7 +25,6 @@ struct SettingsView: View {
                             .padding()
                             .presentationDetents([.height(300)])
                     }
-
                 SettingsRow(image: "figure.walk", title: "Sign Out")
                     .onTapGesture { viewModel.showingConfirmation = true }
                     .alert(isPresented: $viewModel.showingConfirmation) {
@@ -54,7 +33,11 @@ struct SettingsView: View {
                             primaryButton: .destructive(Text("Sign Out")) { authViewModel.signOut() },
                             secondaryButton: .cancel())
                     }
+                Spacer()
+                Divider()
+                versionText
             }
+            .frame(height: UIScreen.main.bounds.height)
         }
         .foregroundColor(.blackWhite)
         .background(Color.background)
@@ -64,6 +47,35 @@ struct SettingsView: View {
                         messageType: .succes,
                         message: "Thank you for giving feedback!")
         }
+    }
+    private var feedbackSheet: some View {
+        VStack(alignment: .leading) {
+            Text("Got some idea? Share it with us!")
+                .font(.title2).bold()
+            TextEditor(text: $feedback)
+                .background(Color.background)
+                .scrollContentBackground(.hidden)
+                .cornerRadius(12)
+             Spacer()
+            Button {
+                viewModel.submitFeedback(feedback)
+            } label: {
+                Text("Submmit")
+                    .font(.title3).bold()
+                    .frame(height: 50)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.background)
+                    .cornerRadius(12)
+            }
+        }
+        .padding()
+        .presentationDetents([.medium])
+    }
+    
+    private var versionText: some View {
+        Text("v \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")")
+            .font(.footnote)
+            .foregroundColor(.gray)
     }
 }
 
