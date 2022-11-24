@@ -16,6 +16,7 @@ struct LoginView: View {
                 AuthenticationHeader(title1: "Hello.", title2: "Great to see you")
                 VStack(spacing: 40) {
                     CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
+                        .autocapitalization(.none)
                     SecureTextField(password: $password)
                 }
                 .padding(.horizontal, 32)

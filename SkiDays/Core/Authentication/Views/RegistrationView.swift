@@ -15,7 +15,9 @@ struct RegistrationView: View {
            AuthenticationHeader(title1: "Create your account.", title2: "")
             VStack(spacing: 40) {
                 CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
+                    .autocapitalization(.none)
                 CustomInputField(imageName: "person", placeholderText: "username", text: $username)
+                    .autocapitalization(.none)
                 CustomInputField(imageName: "person", placeholderText: "Full Name", text: $fullname)
                 SecureTextField(password: $password)
             }

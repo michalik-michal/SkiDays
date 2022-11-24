@@ -4,6 +4,7 @@ struct HomeView: View {
 
     @ObservedObject var viewModel: HomeViewModel
     @State private var showAddTrainingView: Bool = false
+    @State private var showSettingsView: Bool = false
 
     init(user: User) {
         self.viewModel = HomeViewModel(user: user)
@@ -45,6 +46,9 @@ struct HomeView: View {
             .fullScreenCover(isPresented: $showAddTrainingView) {
                 ModalNavigationView(showModal: $showAddTrainingView, content: AddTrainingView())
             }
+            .fullScreenCover(isPresented: $showSettingsView) {
+                ModalNavigationView(showModal: $showSettingsView, content: SettingsView())
+            }
             .onChange(of: showAddTrainingView, perform: { newValue in
                 if newValue == false {
                     viewModel.getMainStats()
@@ -52,8 +56,8 @@ struct HomeView: View {
             })
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink {
-                        SettingsView()
+                    Button {
+                        showSettingsView.toggle()
                     } label: {
                         Image(systemName: "gearshape")
                             .foregroundColor(.darkerBlue)
