@@ -67,6 +67,7 @@ struct DisciplineStatsRow: View {
         }
         .navigationDestination(for: String.self) { discipline in
             FilteredDaysView(user: user, discipline: discipline)
+                .toolbar(.hidden, for: .tabBar)
         }
         .padding(.bottom)
     }
