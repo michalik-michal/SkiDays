@@ -11,7 +11,7 @@ struct HomeView: View {
     }
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ScrollView {
                 switch viewModel.state {
                 case .loading:
@@ -108,13 +108,20 @@ struct HomeView: View {
             }
             .foregroundColor(.blackWhite)
             Divider()
-            Text(viewModel.getLastNote())
+            NavigationLink(viewModel.getLastSkiDayWithNote()?.notes ?? "",
+                           value: viewModel.getLastSkiDayWithNote()?.notes ?? "")
                 .font(.title3)
+        }
+        .navigationDestination(for: String.self) { _ in
+            if let skiDay = viewModel.getLastSkiDayWithNote() {
+                TrainingDetailsView(skiDay: skiDay)
+                    .toolbar(.hidden, for: .tabBar)
+            }
         }
         .padding()
         .frame(maxWidth: .infinity)
         .background(Color.secondayBackground)
         .cornerRadius(20)
-        .hide(if: viewModel.getLastNote() == "")
+        .hide(if: viewModel.getLastSkiDayWithNote()?.notes ?? "" == "")
     }
 }
