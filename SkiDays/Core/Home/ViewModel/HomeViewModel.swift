@@ -48,7 +48,10 @@ class HomeViewModel: ObservableObject {
     }
 
     func getLastNote() -> String {
-        let sortedDays = skiDays.sorted(by: {$0.date > $1.date})
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        let sortedDays = skiDays.sorted(by: {dateFormatter.date(from: $0.date)! > dateFormatter.date(from: $1.date)!})
+
         for skiDay in sortedDays {
             if skiDay.notes != "" {
                 return skiDay.notes
