@@ -23,7 +23,7 @@ struct ContentView: View {
         .onAppear {
             withAnimation {
                 viewModel.showSplashScreen = true
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     viewModel.showSplashScreen = false
                 }
             }
