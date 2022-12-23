@@ -10,7 +10,7 @@ struct SettingsView: View {
     @State private var password = ""
 
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             VStack {
                 ThemeSettingsRow()
                 SettingsRow(image: "heart", title: "Give Feedback")
