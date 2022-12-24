@@ -37,6 +37,7 @@
 		20AD489F290C13D500A1113F /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 20AD489E290C13D500A1113F /* FirebaseCrashlytics */; };
 		20B2906A28CBA96E006E6635 /* SettingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B2906928CBA96E006E6635 /* SettingsRow.swift */; };
 		20B2906C28CBAECE006E6635 /* ThemeSettingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B2906B28CBAECE006E6635 /* ThemeSettingsRow.swift */; };
+		20E210B32957289D007BE7DA /* RaceDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E210B22957289D007BE7DA /* RaceDay.swift */; };
 		20F7373628EC490F001CF521 /* MainStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7373528EC490F001CF521 /* MainStats.swift */; };
 		225A1EFA282018F300C2C81E /* TrainingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A1EF9282018F300C2C81E /* TrainingListViewModel.swift */; };
 		225A1EFD28201B4300C2C81E /* SkiDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A1EFC28201B4300C2C81E /* SkiDay.swift */; };
@@ -111,6 +112,7 @@
 		20AD489B290BFA4900A1113F /* AuthenticationHelpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationHelpViewModel.swift; sourceTree = "<group>"; };
 		20B2906928CBA96E006E6635 /* SettingsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRow.swift; sourceTree = "<group>"; };
 		20B2906B28CBAECE006E6635 /* ThemeSettingsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettingsRow.swift; sourceTree = "<group>"; };
+		20E210B22957289D007BE7DA /* RaceDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceDay.swift; sourceTree = "<group>"; };
 		20F7373528EC490F001CF521 /* MainStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStats.swift; sourceTree = "<group>"; };
 		225A1EF9282018F300C2C81E /* TrainingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingListViewModel.swift; sourceTree = "<group>"; };
 		225A1EFC28201B4300C2C81E /* SkiDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiDay.swift; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				225A1EFC28201B4300C2C81E /* SkiDay.swift */,
+				20E210B22957289D007BE7DA /* RaceDay.swift */,
 				22775C9A2823CD2800849BE3 /* User.swift */,
 				22F04E38284F5EC000A5F03B /* DisciplineStats.swift */,
 				20F7373528EC490F001CF521 /* MainStats.swift */,
@@ -831,6 +834,7 @@
 				20063D8C29043DCA0025C906 /* DataView.swift in Sources */,
 				22848DD5281BE0D700AF996F /* Extentions.swift in Sources */,
 				20AD489A290BF38500A1113F /* DeleteAccountSheetView.swift in Sources */,
+				20E210B32957289D007BE7DA /* RaceDay.swift in Sources */,
 				22848DE0281BEF5900AF996F /* DetailRowView.swift in Sources */,
 				20063D782902F60A0025C906 /* CheckmarkView.swift in Sources */,
 				22928ADB281C0B1D000FCEFA /* StatsView.swift in Sources */,
