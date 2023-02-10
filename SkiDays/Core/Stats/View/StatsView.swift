@@ -118,14 +118,8 @@ struct StatsView: View {
     }
 
     private var emptyView: some View {
-        VStack {
-            DataView()
-                .frame(width: 150, height: 150)
-                .scaleEffect(1.2)
-            Text("Not enough data")
-                .font(.title2.bold())
-        }
-        .frame(height: 250)
+        AstronautView()
+            .frame(width: 200, height: 200)
     }
 }
 
