@@ -2,7 +2,6 @@ import Foundation
 import Firebase
 
 struct StatsService {
-
     func fetchSkiDaysForUid(forUid uid: String, completion: @escaping([SkiDay]) -> Void) {
         Firestore.firestore().collection("skidays")
             .whereField("uid", isEqualTo: uid)

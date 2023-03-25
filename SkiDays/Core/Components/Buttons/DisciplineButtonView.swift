@@ -2,9 +2,9 @@ import SwiftUI
 
 struct DisciplineButtonView: View {
 
+    @ObservedObject var viewModel = AuthViewModel()
     var discipline: String
     var days: Int
-    @ObservedObject var viewModel = AuthViewModel()
 
     var body: some View {
         NavigationLink {

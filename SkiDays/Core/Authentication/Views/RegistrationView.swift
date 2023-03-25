@@ -12,7 +12,7 @@ struct RegistrationView: View {
 
     var body: some View {
         VStack {
-           AuthenticationHeader(title1: "Create your account.", title2: "")
+            AuthenticationHeader(title1: "Create your account.", title2: "")
             VStack(spacing: 40) {
                 CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
                     .autocapitalization(.none)

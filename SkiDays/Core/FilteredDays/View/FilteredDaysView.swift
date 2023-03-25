@@ -23,9 +23,3 @@ struct FilteredDaysView: View {
         .background(Color.background)
     }
 }
-
-// struct FilteredDaysView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        FilteredDaysView(discipline: "SL")
-//    }
-// }

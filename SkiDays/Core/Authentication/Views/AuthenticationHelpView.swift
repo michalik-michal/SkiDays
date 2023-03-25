@@ -44,7 +44,7 @@ struct AuthenticationHelpView: View {
                     CustomInputField(imageName: "envelope",
                                      placeholderText: "Email",
                                      text: $viewModel.emailForAccoundReset)
-                        .padding(.bottom, 30)
+                    .padding(.bottom, 30)
                     SecureTextField(password: $viewModel.password)
                     Spacer()
                     Button {

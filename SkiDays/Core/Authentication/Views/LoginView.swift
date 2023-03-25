@@ -1,7 +1,5 @@
 import SwiftUI
 
-// ADD PITCURE AS HEADER BACKGROUND (?)
-
 struct LoginView: View {
 
     @State private var email = ""
@@ -87,6 +85,7 @@ struct LoginView: View {
             }
         }
     }
+
     private var resetPasswordSheet: some View {
         VStack(alignment: .leading) {
             Text("Reset password")

@@ -119,6 +119,7 @@ struct AddTrainingView: View {
             return
         }
     }
+
     private var menu: some View {
         Menu {
             Button {
@@ -246,6 +247,7 @@ extension AddTrainingView {
             }
         }
     }
+
     var notesView: some View {
         TextEditor(text: $notes)
             .frame(height: 200)
@@ -253,6 +255,7 @@ extension AddTrainingView {
             .background(Color.secondayBackground)
             .cornerRadius(20)
     }
+
 //    var addVideoView: some View {
 //        Image(systemName: "plus")
 //            .foregroundColor(.darkerBlue)

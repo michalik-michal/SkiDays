@@ -26,7 +26,6 @@ struct MessageView: View {
                     .frame(width: 150, height: 150)
                     .scaleEffect(2)
             case .error:
-                // ErrorView()
                 Image(systemName: "exclamationmark.bubble")
                     .resizable()
                     .foregroundColor(.gray)

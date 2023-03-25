@@ -27,25 +27,25 @@ struct DisciplineStatsRow: View {
                     }
                 } else {
                     Divider()
-                        HStack {
-                            VStack(alignment: .leading) {
-                                HStack {
-                                    Text("\(stats.totalGates)")
-                                        .font(.title2.bold())
-                                    Text("gates")
-                                        .font(.title2)
-                                }
-                                HStack {
-                                    Text("\(stats.totalRuns)")
-                                        .font(.title2.bold())
-                                    Text("runs")
-                                        .font(.title2)
-                                }
+                    HStack {
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Text("\(stats.totalGates)")
+                                    .font(.title2.bold())
+                                Text("gates")
+                                    .font(.title2)
                             }
-                            Spacer()
-                            CircularProgressView(progress: stats.consistency)
-                                .padding(.trailing, 20)
+                            HStack {
+                                Text("\(stats.totalRuns)")
+                                    .font(.title2.bold())
+                                Text("runs")
+                                    .font(.title2)
+                            }
                         }
+                        Spacer()
+                        CircularProgressView(progress: stats.consistency)
+                            .padding(.trailing, 20)
+                    }
                 }
             }
             .padding()
@@ -71,6 +71,7 @@ struct DisciplineStatsRow: View {
         }
         .padding(.bottom)
     }
+
     private func getDayTitle() -> String {
         switch stats.numberOfDays {
         case 1:

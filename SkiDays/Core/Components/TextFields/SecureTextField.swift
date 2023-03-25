@@ -19,13 +19,13 @@ struct SecureTextField: View {
             } else {
                 CustomInputField(imageName: "lock", placeholderText: "Password", isSecureField: false, text: $password)
             }
-                Button {
-                    isSecure.toggle()
-                } label: {
-                    Image(systemName: self.isSecure ? "eye.slash" : "eye")
-                        .foregroundColor(Color(.darkGray))
-                }
-                .padding(.bottom, 3)
+            Button {
+                isSecure.toggle()
+            } label: {
+                Image(systemName: self.isSecure ? "eye.slash" : "eye")
+                    .foregroundColor(Color(.darkGray))
+            }
+            .padding(.bottom, 3)
         }
     }
 }

@@ -16,6 +16,7 @@ class UploadSkiDayViewModel: ObservableObject {
             }
         }
     }
+
     func provideTitle(_ discipline: String) -> String {
         switch discipline {
         case "SL":

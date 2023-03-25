@@ -48,6 +48,7 @@ struct SettingsView: View {
                         message: "Thank you for giving feedback!")
         }
     }
+
     private var feedbackSheet: some View {
         VStack(alignment: .leading) {
             Text("Got some idea? Share it with us!")

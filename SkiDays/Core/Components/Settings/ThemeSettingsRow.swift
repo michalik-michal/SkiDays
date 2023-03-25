@@ -28,6 +28,7 @@ struct ThemeSettingsRow: View {
                 .padding(.trailing)
             }
     }
+
     private func themeButtom(image: String, tag: Int, animation: Namespace.ID) -> some View {
         ZStack {
             if selectedIndex == tag {
@@ -37,14 +38,14 @@ struct ThemeSettingsRow: View {
                     .cornerRadius(90)
                     .matchedGeometryEffect(id: "underline_animation", in: animation)
             }
-                Image(systemName: image)
-                    .font(selectedIndex == tag ? Font.body.weight(.bold) : Font.body.weight(.regular))
-                    .padding(10)
-                    .onTapGesture {
-                        selectedIndex = tag
-                        impactMedium.impactOccurred()
-                        model.setAppTheme(tag: tag)
-                    }
+            Image(systemName: image)
+                .font(selectedIndex == tag ? Font.body.weight(.bold) : Font.body.weight(.regular))
+                .padding(10)
+                .onTapGesture {
+                    selectedIndex = tag
+                    impactMedium.impactOccurred()
+                    model.setAppTheme(tag: tag)
+                }
         }
     }
 }

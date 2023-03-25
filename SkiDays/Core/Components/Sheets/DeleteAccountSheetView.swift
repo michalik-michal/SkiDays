@@ -28,18 +28,18 @@ struct DeleteAccountSheetView: View {
                                             authViewModel.currentUser = nil
                                             authViewModel.userSession = nil
                                         case .failure:
-                                            print("Cant delete user")
+                                            print("Can't delete user")
                                         }
                                     }
                                 case .failure:
-                                    print("Cant delete user data")
+                                    print("Can't delete user data")
                                 }
                             }
                         } else {
-                            print("CANT DELEte")
+                            print("Can't delete")
                         }
                     case .failure:
-                        print("Cant reauthenticate")
+                        print("Can't reauthenticate")
                     }
                 }
             } label: {

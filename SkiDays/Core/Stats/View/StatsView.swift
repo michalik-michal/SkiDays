@@ -14,7 +14,6 @@ struct StatsView: View {
         self.viewModel = StatsViewModel(user: user)
         self.user = user
     }
-    let chartColors: [Color] = [.pastelGreen, .pastelBlue, .pastelYellow, .pastelOrange, .pastelPurple, .pastelRed]
 
     var body: some View {
         NavigationStack {

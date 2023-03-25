@@ -54,6 +54,7 @@ struct TrainingsListView: View {
                         message: "")
         }
     }
+
     private var addTrainingWidget: some View {
         NavigationLink {
             AddTrainingView()

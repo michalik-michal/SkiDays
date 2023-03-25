@@ -48,7 +48,7 @@ class AuthViewModel: ObservableObject {
                         print("Did update user data")
                     }
             } else {
-                print("Failed to register user \(error)")
+                print("Failed to register user \(String(describing: error))")
             }
         }
     }

@@ -30,6 +30,9 @@ struct CustomInputField: View {
 
 struct CustomInputField_Previews: PreviewProvider {
     static var previews: some View {
-        CustomInputField(imageName: "envelope", placeholderText: "Email", isSecureField: false, text: .constant(""))
+        CustomInputField(imageName: "envelope",
+                         placeholderText: "Email",
+                         isSecureField: false,
+                         text: .constant(""))
     }
 }
