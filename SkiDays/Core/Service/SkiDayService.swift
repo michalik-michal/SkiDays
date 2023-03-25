@@ -38,7 +38,7 @@ struct SkiDayService {
                 completion(skiDays)
             }
     }
-    
+
     // swiftlint:disable: line_length
     func fetchSkiDaysForUid(forUid uid: String, completion: @escaping([SkiDay]) -> Void) {
         Firestore.firestore().collection("skidays")
@@ -48,7 +48,7 @@ struct SkiDayService {
                 let skiDays = documents.compactMap({try? $0.data(as: SkiDay.self)})
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "dd/MM/yyyy"
-                
+
                 completion(skiDays.sorted(by: {dateFormatter.date(from: $0.date)! > dateFormatter.date(from: $1.date)!}))
             }
     }

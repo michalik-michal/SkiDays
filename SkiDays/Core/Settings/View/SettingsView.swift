@@ -72,7 +72,7 @@ struct SettingsView: View {
         .padding()
         .presentationDetents([.medium])
     }
-    
+
     private var versionText: some View {
         Text("v \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")")
             .font(.footnote)
