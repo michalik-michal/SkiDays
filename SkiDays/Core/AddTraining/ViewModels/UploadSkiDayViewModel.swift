@@ -5,21 +5,30 @@ import PhotosUI
 class UploadSkiDayViewModel: ObservableObject {
 
     @Published var didUploadSkiDay = false
-    @Published var selectedVideo: PhotosPickerItem? {
-        didSet {
-            Task { try await uploadVideo(selectedVideo) }
-        }
-    }
+    @Published var selectedVideo: PhotosPickerItem?
 
     let service = SkiDayService()
 
     func uploadSkiDay(skiDay: SkiDay) {
-        service.uploadSkiDay(skiDay: skiDay
-        ) { succes in
-            if succes {
-                self.didUploadSkiDay = true
-            } else {
-                // show error message
+        if selectedVideo != nil {
+            Task { if let videoURL = try await uploadVideo(selectedVideo) {
+                var skiDayData = skiDay
+                skiDayData.video = videoURL
+                service.uploadSkiDay(skiDay: skiDayData) { succes in
+                    if succes {
+                        self.didUploadSkiDay = true
+                    } else {
+                        // show error message
+                    }
+                }
+            } }
+        } else {
+            service.uploadSkiDay(skiDay: skiDay) { succes in
+                if succes {
+                    self.didUploadSkiDay = true
+                } else {
+                    // show error message
+                }
             }
         }
     }
@@ -43,11 +52,10 @@ class UploadSkiDayViewModel: ObservableObject {
         }
     }
 
-    func uploadVideo(_ video: PhotosPickerItem?) async throws {
-        guard let item = video else { return }
-        guard let videoData = try await item.loadTransferable(type: Data.self) else { return }
-        guard let videoURL = try await service.uploadVideo(videoData) else { return }
-        print(videoURL)
-        print("----")
+    func uploadVideo(_ video: PhotosPickerItem?) async throws -> String? {
+        guard let item = video else { return nil }
+        guard let videoData = try await item.loadTransferable(type: Data.self) else { return nil }
+        guard let videoURL = try await service.uploadVideo(videoData) else { return nil }
+        return videoURL
     }
 }
