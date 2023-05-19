@@ -1,12 +1,13 @@
 import SwiftUI
 import AVKit
+import PhotosUI
 
 struct AddTrainingView: View {
 
     private enum Field { case place, runs }
 
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var viewModel = UploadSkiDayViewModel()
+    @StateObject var viewModel = UploadSkiDayViewModel()
     @FocusState private var focusedField: Field?
 
     @State private var shouldShowMessage = false
@@ -17,9 +18,8 @@ struct AddTrainingView: View {
     @State private var runs: String = ""
     @State private var gates: String = ""
     @State private var notes: String = ""
-    @State private var isShowingVideoPicker: Bool = false
     @State private var runsFinished = 0.0
-    @State private var video = UIImage()
+    
 
     let buttons: [[DisciplineButtonViewModel]] = [
         [.SL, .GS, .SG ],
@@ -77,16 +77,12 @@ struct AddTrainingView: View {
                     Text("Notes")
                         .font(.title).bold()
                     notesView
-                    // Don't add video for now
-                    // Text("Add video")
-                    //  .font(.title).bold()
-                    // addVideoView
+                     Text("Add video")
+                        .font(.title).bold()
+                     addVideoView
                 }
             }
         }
-        .fullScreenCover(isPresented: $isShowingVideoPicker, content: {
-            VideoPicker(video: $video)
-        })
         .overlay {
             MessageView(isVisible: $shouldShowMessage,
                         messageType: .error,
@@ -256,17 +252,18 @@ extension AddTrainingView {
             .cornerRadius(20)
     }
 
-//    var addVideoView: some View {
-//        Image(systemName: "plus")
-//            .foregroundColor(.darkerBlue)
-//            .frame(height: 200)
-//            .frame(maxWidth: .infinity)
-//            .font(.system(size: 40))
-//            .overlay(RoundedRectangle(cornerRadius: 16)
-//                .stroke(.gray.opacity(0.2), lineWidth: 2)
-//                .background(Color.secondayBackground))
-//            .onTapGesture {
-//                isShowingVideoPicker.toggle()
-//            }
-//    }
+    var addVideoView: some View {
+        PhotosPicker(selection: $viewModel.selectedVideo, matching: .any(of: [.videos, .not(.images)])) {
+            ZStack {
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(.gray.opacity(0.2), lineWidth: 2)
+                    .background(Color.secondayBackground.cornerRadius(16))
+                Image(systemName: "plus")
+                    .foregroundColor(.darkerBlue)
+                    .frame(height: 200)
+                    .frame(maxWidth: .infinity)
+                    .font(.system(size: 40))
+            }
+        }
+    }
 }

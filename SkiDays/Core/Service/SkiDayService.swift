@@ -1,5 +1,5 @@
 import Firebase
-import MobileCoreServices
+import FirebaseStorage
 
 struct SkiDayService {
 
@@ -59,6 +59,23 @@ struct SkiDayService {
             if let error = error {
                 print("Error removing document: \(error)")
             }
+        }
+    }
+
+    func uploadVideo(_ videoData: Data)  async throws -> String? {
+        let filename = NSUUID().uuidString
+        let ref = Storage.storage().reference().child("/videos/\(filename)")
+
+        let metadata = StorageMetadata()
+        metadata.contentType = "video/quicktime"
+
+        do {
+            _ = try await ref.putDataAsync(videoData, metadata: metadata)
+            let url = try await ref.downloadURL()
+            return url.absoluteString
+        } catch {
+            print("Failed to upload video \(error.localizedDescription)")
+            return nil
         }
     }
 }
