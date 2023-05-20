@@ -207,9 +207,8 @@ extension AddTrainingView {
                                         slopeProfile: "",
                                         skis: "",
                                         video: "")
-                    viewModel.uploadSkiDay(skiDay: skiDay
-                    )
-                    presentationMode.wrappedValue.dismiss()
+                    viewModel.uploadSkiDay(skiDay: skiDay)
+                  //  presentationMode.wrappedValue.dismiss()
                 } else {
                     shouldShowMessage = true
                 }
