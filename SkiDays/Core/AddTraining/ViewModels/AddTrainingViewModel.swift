@@ -2,15 +2,23 @@ import Foundation
 import SwiftUI
 import PhotosUI
 
-class UploadSkiDayViewModel: ObservableObject {
+class AddTrainingViewModel: ObservableObject {
 
     @Published var didUploadSkiDay = false
+    @Published var state = State.data
     @Published var selectedVideo: PhotosPickerItem?
 
     let service = SkiDayService()
+    let conditions = ["-", "Soft", "Grippy", "Bumpy", "Bumpy", "Hard", "Compact", "Ice", "Rats", "Salt"]
+
+    enum State {
+        case loading
+        case data
+    }
 
     func uploadSkiDay(skiDay: SkiDay) {
         if selectedVideo != nil {
+            state = .loading
             Task { if let videoURL = try await uploadVideo(selectedVideo) {
                 var skiDayData = skiDay
                 skiDayData.video = videoURL

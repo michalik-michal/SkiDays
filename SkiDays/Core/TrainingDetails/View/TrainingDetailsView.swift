@@ -45,8 +45,9 @@ struct TrainingDetailsView: View {
                 } else {
                     DetailRowView(text: "\(skiDay.runs) runs")
                 }
-                noteView
-                    .hide(if: skiDay.notes == "")
+                if !skiDay.notes.isEmpty {
+                    noteView
+                }
                 if !skiDay.video.isEmpty {
                     VideoPlayer(player: AVPlayer(url: URL(string: skiDay.video)!))
                         .frame(height: 200)

@@ -64,9 +64,8 @@
 		22928ADF281D1EE7000FCEFA /* DisciplineButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928ADE281D1EE7000FCEFA /* DisciplineButtonViewModel.swift */; };
 		22928AE1281D2291000FCEFA /* PickDisciplineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AE0281D2291000FCEFA /* PickDisciplineButton.swift */; };
 		22928AF5281FCD17000FCEFA /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AF4281FCD16000FCEFA /* AuthViewModel.swift */; };
-		2297F094284CA5AD00ACDBDF /* VideoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297F093284CA5AC00ACDBDF /* VideoPicker.swift */; };
 		22C7A061281FF3C1003A9936 /* SkiDayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C7A060281FF3C1003A9936 /* SkiDayService.swift */; };
-		22C7A063281FF67A003A9936 /* UploadSkiDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C7A062281FF67A003A9936 /* UploadSkiDayViewModel.swift */; };
+		22C7A063281FF67A003A9936 /* AddTrainingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C7A062281FF67A003A9936 /* AddTrainingViewModel.swift */; };
 		22F04E33284F56C100A5F03B /* DisciplineStatsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F04E32284F56C100A5F03B /* DisciplineStatsRow.swift */; };
 		22F04E37284F5E6B00A5F03B /* StatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F04E36284F5E6B00A5F03B /* StatsViewModel.swift */; };
 		22F04E39284F5EC000A5F03B /* DisciplineStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F04E38284F5EC000A5F03B /* DisciplineStats.swift */; };
@@ -141,9 +140,8 @@
 		22928ADE281D1EE7000FCEFA /* DisciplineButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisciplineButtonViewModel.swift; sourceTree = "<group>"; };
 		22928AE0281D2291000FCEFA /* PickDisciplineButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickDisciplineButton.swift; sourceTree = "<group>"; };
 		22928AF4281FCD16000FCEFA /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
-		2297F093284CA5AC00ACDBDF /* VideoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPicker.swift; sourceTree = "<group>"; };
 		22C7A060281FF3C1003A9936 /* SkiDayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiDayService.swift; sourceTree = "<group>"; };
-		22C7A062281FF67A003A9936 /* UploadSkiDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadSkiDayViewModel.swift; sourceTree = "<group>"; };
+		22C7A062281FF67A003A9936 /* AddTrainingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrainingViewModel.swift; sourceTree = "<group>"; };
 		22F04E32284F56C100A5F03B /* DisciplineStatsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisciplineStatsRow.swift; sourceTree = "<group>"; };
 		22F04E36284F5E6B00A5F03B /* StatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewModel.swift; sourceTree = "<group>"; };
 		22F04E38284F5EC000A5F03B /* DisciplineStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisciplineStats.swift; sourceTree = "<group>"; };
@@ -467,7 +465,6 @@
 				22928AE6281D3027000FCEFA /* TextFields */,
 				22848DE4281BF75A00AF996F /* RowViews */,
 				22848DD9281BEAA900AF996F /* Buttons */,
-				229D3AB8284E207E00B52B9D /* VideoPicker */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -583,7 +580,7 @@
 			isa = PBXGroup;
 			children = (
 				22928ADE281D1EE7000FCEFA /* DisciplineButtonViewModel.swift */,
-				22C7A062281FF67A003A9936 /* UploadSkiDayViewModel.swift */,
+				22C7A062281FF67A003A9936 /* AddTrainingViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -604,14 +601,6 @@
 				22848DD0281BDF7100AF996F /* AuthenticationHeader.swift */,
 			);
 			path = Shapes;
-			sourceTree = "<group>";
-		};
-		229D3AB8284E207E00B52B9D /* VideoPicker */ = {
-			isa = PBXGroup;
-			children = (
-				2297F093284CA5AC00ACDBDF /* VideoPicker.swift */,
-			);
-			path = VideoPicker;
 			sourceTree = "<group>";
 		};
 		22C7A05F281FF398003A9936 /* Service */ = {
@@ -802,7 +791,6 @@
 				22775C9B2823CD2800849BE3 /* User.swift in Sources */,
 				22848DD8281BEA4A00AF996F /* HomeView.swift in Sources */,
 				22848DDE281BEF1C00AF996F /* TrainingDetailsView.swift in Sources */,
-				2297F094284CA5AD00ACDBDF /* VideoPicker.swift in Sources */,
 				225A1EFD28201B4300C2C81E /* SkiDay.swift in Sources */,
 				22C7A061281FF3C1003A9936 /* SkiDayService.swift in Sources */,
 				20B2906C28CBAECE006E6635 /* ThemeSettingsRow.swift in Sources */,
@@ -825,7 +813,7 @@
 				22848DCB281BDD0600AF996F /* LoginView.swift in Sources */,
 				6B65521E29CEFEE6009E3B07 /* View+Extension.swift in Sources */,
 				2050050128D0CB400006795A /* MessageView.swift in Sources */,
-				22C7A063281FF67A003A9936 /* UploadSkiDayViewModel.swift in Sources */,
+				22C7A063281FF67A003A9936 /* AddTrainingViewModel.swift in Sources */,
 				22848DBA281BDBBD00AF996F /* ContentView.swift in Sources */,
 				6B65521A29CEFDB7009E3B07 /* Color+Extension.swift in Sources */,
 				20755F74287ACE60009E63DB /* SearchBar.swift in Sources */,
