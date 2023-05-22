@@ -31,12 +31,13 @@ struct MessageView: View {
                     .foregroundColor(.gray)
                     .frame(width: 100, height: 100)
             }
-            Text(message)
-                .font(.title3.bold())
-                .foregroundColor(.gray.opacity(0.5))
-                .padding(.horizontal)
-                .multilineTextAlignment(.center)
-                .hide(if: message == "")
+            if message != "" {
+                Text(message)
+                    .font(.title3.bold())
+                    .foregroundColor(.gray.opacity(0.5))
+                    .padding(.horizontal)
+                    .multilineTextAlignment(.center)
+            }
         }
         .frame(width: 280, height: 280)
         .background(.ultraThinMaterial)

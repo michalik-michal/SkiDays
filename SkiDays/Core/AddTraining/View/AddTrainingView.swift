@@ -28,9 +28,7 @@ struct AddTrainingView: View {
     var body: some View {
         switch viewModel.state {
         case .loading:
-            LoadingView()
-                .frame(width: UIScreen.main.bounds.width,
-                       height: UIScreen.main.bounds.width)
+            LoadingMessageView(message: "Uploading...")
                 .onReceive(viewModel.$didUploadSkiDay, perform: { succes in
                     if succes {
                         presentationMode.wrappedValue.dismiss()
@@ -88,8 +86,22 @@ struct AddTrainingView: View {
                         Text("Notes")
                             .font(.title).bold()
                         notesView
-                        Text("Add video")
-                            .font(.title).bold()
+                        if viewModel.selectedVideo == nil {
+                            Text("Add video")
+                                .font(.title).bold()
+                        } else {
+                            HStack {
+                                Text("Video added")
+                                    .font(.title).bold()
+                                Spacer()
+                                Image(systemName: "trash")
+                                    .resizable()
+                                    .frame(width: 20, height: 23)
+                                    .onTapGesture {
+                                        viewModel.selectedVideo = nil
+                                    }
+                            }
+                        }
                         addVideoView
                     }
                 }
@@ -227,15 +239,24 @@ extension AddTrainingView {
 
     var addVideoView: some View {
         PhotosPicker(selection: $viewModel.selectedVideo, matching: .any(of: [.videos, .not(.images)])) {
-            ZStack {
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(.gray.opacity(0.2), lineWidth: 2)
-                    .background(Color.secondayBackground.cornerRadius(16))
-                Image(systemName: "plus")
-                    .foregroundColor(.darkerBlue)
+            if viewModel.selectedVideo == nil {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(.gray.opacity(0.2), lineWidth: 2)
+                        .background(Color.secondayBackground.cornerRadius(16))
+                    Image(systemName: "plus")
+                        .foregroundColor(.darkerBlue)
+                        .frame(height: 200)
+                        .frame(maxWidth: .infinity)
+                        .font(.system(size: 40))
+                }
+            } else {
+                Image(systemName: "checkmark")
+                    .foregroundColor(.green)
                     .frame(height: 200)
                     .frame(maxWidth: .infinity)
                     .font(.system(size: 40))
+                    .fontWeight(.semibold)
             }
         }
     }

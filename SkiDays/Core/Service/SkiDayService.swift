@@ -78,4 +78,13 @@ struct SkiDayService {
             return nil
         }
     }
+
+    func deleteVideo(_ url: String) {
+        let ref = Storage.storage().reference().storage.reference(forURL: url)
+        ref.delete { error in
+            if let error = error {
+                print("Error deleting video, \(error)")
+            }
+        }
+    }
 }
