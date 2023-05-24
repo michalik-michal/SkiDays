@@ -15,5 +15,5 @@ struct SkiDay: Identifiable, Decodable, Equatable {
     let conditions: String
     let slopeProfile: String
     let skis: String
-    let video: String // Should it be string ?
+    var video: String
 }

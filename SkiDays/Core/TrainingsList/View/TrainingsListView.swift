@@ -4,7 +4,7 @@ import Firebase
 struct TrainingsListView: View {
 
     @ObservedObject var viewModel: TrainingListViewModel
-    @ObservedObject var uploadSkiDayViewModel = UploadSkiDayViewModel()
+    @ObservedObject var uploadSkiDayViewModel = AddTrainingViewModel()
     @State private var text: String = ""
     @State private var showMessage: Bool = false
     @State private var showAddTrainingView: Bool = false

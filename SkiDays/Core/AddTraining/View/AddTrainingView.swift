@@ -1,12 +1,13 @@
 import SwiftUI
 import AVKit
+import PhotosUI
 
 struct AddTrainingView: View {
 
     private enum Field { case place, runs }
 
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var viewModel = UploadSkiDayViewModel()
+    @StateObject var viewModel = AddTrainingViewModel()
     @FocusState private var focusedField: Field?
 
     @State private var shouldShowMessage = false
@@ -17,9 +18,7 @@ struct AddTrainingView: View {
     @State private var runs: String = ""
     @State private var gates: String = ""
     @State private var notes: String = ""
-    @State private var isShowingVideoPicker: Bool = false
     @State private var runsFinished = 0.0
-    @State private var video = UIImage()
 
     let buttons: [[DisciplineButtonViewModel]] = [
         [.SL, .GS, .SG ],
@@ -27,86 +26,107 @@ struct AddTrainingView: View {
     ]
 
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            VStack {
-                // UGLY - find better solution
-                HStack {
-                    Text(viewModel.provideTitle(discipline))
-                        .font(.largeTitle).bold()
-                    Spacer()
-                }
-                .overlay {
+        switch viewModel.state {
+        case .loading:
+            LoadingMessageView(message: "Uploading...")
+                .onReceive(viewModel.$didUploadSkiDay, perform: { succes in
+                    if succes {
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                })
+        case .data:
+            ScrollView(showsIndicators: false) {
+                VStack {
+                    // UGLY - find better solution
                     HStack {
+                        Text(viewModel.provideTitle(discipline))
+                            .font(.largeTitle).bold()
                         Spacer()
-                        DatePicker("", selection: $date, displayedComponents: .date)
                     }
-                }
-                .padding(.bottom, 20)
-                VStack(alignment: .leading, spacing: 20) {
-                    disciplineButtonsGrid
-                        .padding(.horizontal, 1)
-                    VStack(spacing: 40) {
-                        CustomInputField(imageName: "mappin", placeholderText: "Place", text: $place)
-                            .focused($focusedField, equals: .place)
-                            .submitLabel(.next)
-
-                        CustomInputField(imageName: "waveform.path.ecg", placeholderText: "Number of runs", text: $runs)
-                            .focused($focusedField, equals: .runs)
-                            .keyboardType(.numberPad)
-                        if discipline != "FREE" {
-                            CustomInputField(imageName: "italic", placeholderText: "Number of gates", text: $gates)
+                    .overlay {
+                        HStack {
+                            Spacer()
+                            DatePicker("", selection: $date, displayedComponents: .date)
+                        }
+                    }
+                    .padding(.bottom, 20)
+                    VStack(alignment: .leading, spacing: 20) {
+                        disciplineButtonsGrid
+                            .padding(.horizontal, 1)
+                        VStack(spacing: 40) {
+                            CustomInputField(imageName: "mappin", placeholderText: "Place", text: $place)
+                                .focused($focusedField, equals: .place)
+                                .submitLabel(.next)
+                            CustomInputField(imageName: "waveform.path.ecg",
+                                             placeholderText: "Number of runs",
+                                             text: $runs)
+                                .focused($focusedField, equals: .runs)
                                 .keyboardType(.numberPad)
-                        }
-                        menu
-                    }
-                    .padding(.top, 40)
-                    .onSubmit {
-                        manageSubmitActions()
-                    }
-                    if discipline != "FREE" {
-                        if let runs = Double(runs) {
-                            HStack {
-                                Text("Runs finished: ")
-                                    .font(.title).bold()
-                                Text(String(format: "%.0f", runsFinished))
-                                    .font(.title.bold())
+                            if discipline != "FREE" {
+                                CustomInputField(imageName: "italic", placeholderText: "Number of gates", text: $gates)
+                                    .keyboardType(.numberPad)
                             }
-                            Slider(value: $runsFinished, in: 0...runs, step: 1)
+                            menu
                         }
+                        .padding(.top, 40)
+                        .onSubmit {
+                            manageSubmitActions()
+                        }
+                        if discipline != "FREE" {
+                            if let runs = Double(runs) {
+                                HStack {
+                                    Text("Runs finished: ")
+                                        .font(.title).bold()
+                                    Text(String(format: "%.0f", runsFinished))
+                                        .font(.title.bold())
+                                }
+                                Slider(value: $runsFinished, in: 0...runs, step: 1)
+                            }
+                        }
+                        Text("Notes")
+                            .font(.title).bold()
+                        notesView
+                        if viewModel.selectedVideo == nil {
+                            Text("Add video")
+                                .font(.title).bold()
+                        } else {
+                            HStack {
+                                Text("Video added")
+                                    .font(.title).bold()
+                                Spacer()
+                                Image(systemName: "trash")
+                                    .resizable()
+                                    .frame(width: 20, height: 23)
+                                    .onTapGesture {
+                                        viewModel.selectedVideo = nil
+                                    }
+                            }
+                        }
+                        addVideoView
                     }
-                    Text("Notes")
-                        .font(.title).bold()
-                    notesView
-                    // Don't add video for now
-                    // Text("Add video")
-                    //  .font(.title).bold()
-                    // addVideoView
                 }
             }
-        }
-        .fullScreenCover(isPresented: $isShowingVideoPicker, content: {
-            VideoPicker(video: $video)
-        })
-        .overlay {
-            MessageView(isVisible: $shouldShowMessage,
-                        messageType: .error,
-                        message: "Please select discipline")
-        }
-        .onTapGesture {
-            self.endTextEditing()
-        }
-        .onReceive(viewModel.$didUploadSkiDay, perform: { succes in
-            if succes {
-                presentationMode.wrappedValue.dismiss()
+            .overlay {
+                MessageView(isVisible: $shouldShowMessage,
+                            messageType: .error,
+                            message: "Please select discipline")
             }
-        })
-        .padding()
-        .background(Color.background)
-        .foregroundColor(.blackWhite)
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                doneButton
+            .onTapGesture {
+                self.endTextEditing()
+            }
+            .onReceive(viewModel.$didUploadSkiDay, perform: { succes in
+                if succes {
+                    presentationMode.wrappedValue.dismiss()
+                }
+            })
+            .padding()
+            .background(Color.background)
+            .foregroundColor(.blackWhite)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    doneButton
+                }
             }
         }
     }
@@ -122,50 +142,12 @@ struct AddTrainingView: View {
 
     private var menu: some View {
         Menu {
-            Button {
-                conditions = "-"
-            } label: {
-                Text("-")
-            }
-            Button {
-                conditions = "Soft"
-            } label: {
-                Text("Soft")
-            }
-            Button {
-                conditions = "Grippy"
-            } label: {
-                Text("Grippy")
-            }
-            Button {
-                conditions = "Bumpy"
-            } label: {
-                Text("Bumpy")
-            }
-            Button {
-                conditions = "Hard"
-            } label: {
-                Text("Hard")
-            }
-            Button {
-                conditions = "Compact"
-            } label: {
-                Text("Compact")
-            }
-            Button {
-                conditions = "Ice"
-            } label: {
-                Text("Ice")
-            }
-            Button {
-                conditions = "Rats"
-            } label: {
-                Text("Rats")
-            }
-            Button {
-                conditions = "Salt"
-            } label: {
-                Text("Salt")
+            ForEach(viewModel.conditions, id: \.self) { menuItem in
+                Button {
+                    conditions = menuItem
+                } label: {
+                    Text(menuItem)
+                }
             }
         } label: {
             HStack {
@@ -211,9 +193,8 @@ extension AddTrainingView {
                                         slopeProfile: "",
                                         skis: "",
                                         video: "")
-                    viewModel.uploadSkiDay(skiDay: skiDay
-                    )
-                    presentationMode.wrappedValue.dismiss()
+                    viewModel.uploadSkiDay(skiDay: skiDay)
+                  //  presentationMode.wrappedValue.dismiss()
                 } else {
                     shouldShowMessage = true
                 }
@@ -256,17 +237,27 @@ extension AddTrainingView {
             .cornerRadius(20)
     }
 
-//    var addVideoView: some View {
-//        Image(systemName: "plus")
-//            .foregroundColor(.darkerBlue)
-//            .frame(height: 200)
-//            .frame(maxWidth: .infinity)
-//            .font(.system(size: 40))
-//            .overlay(RoundedRectangle(cornerRadius: 16)
-//                .stroke(.gray.opacity(0.2), lineWidth: 2)
-//                .background(Color.secondayBackground))
-//            .onTapGesture {
-//                isShowingVideoPicker.toggle()
-//            }
-//    }
+    var addVideoView: some View {
+        PhotosPicker(selection: $viewModel.selectedVideo, matching: .any(of: [.videos, .not(.images)])) {
+            if viewModel.selectedVideo == nil {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(.gray.opacity(0.2), lineWidth: 2)
+                        .background(Color.secondayBackground.cornerRadius(16))
+                    Image(systemName: "plus")
+                        .foregroundColor(.darkerBlue)
+                        .frame(height: 200)
+                        .frame(maxWidth: .infinity)
+                        .font(.system(size: 40))
+                }
+            } else {
+                Image(systemName: "checkmark")
+                    .foregroundColor(.green)
+                    .frame(height: 200)
+                    .frame(maxWidth: .infinity)
+                    .font(.system(size: 40))
+                    .fontWeight(.semibold)
+            }
+        }
+    }
 }
