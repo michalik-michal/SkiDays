@@ -16,7 +16,7 @@ struct ModalNavigationView<Content>: View where Content: View {
                         }, label: {
                             Image(systemName: "xmark")
                                 .frame(width: 24, height: 24, alignment: .center)
-                                .foregroundColor(Color.darkerBlue)
+                                .foregroundColor(.blackWhite)
                         })
                     }
                 })

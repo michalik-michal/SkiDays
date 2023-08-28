@@ -52,6 +52,7 @@ struct TrainingDetailsView: View {
                     VideoPlayer(player: AVPlayer(url: URL(string: skiDay.video)!))
                         .frame(height: 200)
                         .cornerRadius(20)
+                    
                 }
                 uploadVideoView
                     .hide(if: true)

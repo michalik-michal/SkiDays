@@ -60,7 +60,7 @@ struct HomeView: View {
                         showSettingsView.toggle()
                     } label: {
                         Image(systemName: "gearshape")
-                            .foregroundColor(.darkerBlue)
+                            .foregroundColor(.blackWhite)
                     }
                 }
             }

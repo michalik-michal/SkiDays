@@ -40,7 +40,7 @@ struct TrainingsListView: View {
                         showAddTrainingView.toggle()
                     } label: {
                         Image(systemName: "plus")
-                            .foregroundColor(.darkerBlue)
+                            .foregroundColor(.blackWhite)
                     }
                 }
             }

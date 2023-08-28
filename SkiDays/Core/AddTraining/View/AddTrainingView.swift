@@ -194,13 +194,12 @@ extension AddTrainingView {
                                         skis: "",
                                         video: "")
                     viewModel.uploadSkiDay(skiDay: skiDay)
-                  //  presentationMode.wrappedValue.dismiss()
                 } else {
                     shouldShowMessage = true
                 }
             } label: {
                 Text("Done")
-                    .foregroundColor(.darkerBlue)
+                    .foregroundColor(.blackWhite)
                     .font(.system(size: 20))
                     .padding(.top, 15)
                     .padding(.bottom, 5)

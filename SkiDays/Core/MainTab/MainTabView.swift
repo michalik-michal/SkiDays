@@ -33,7 +33,7 @@ struct MainTabView: View {
                         Text("Stats")
                     }.tag(2)
             }
-            .foregroundColor(.blackWhite)
+            .tint(.blackWhite)
             .background(Color.secondayBackground)
             .padding(.bottom, UIDevice.hasNotch ? 0 : 12)
         } else {
