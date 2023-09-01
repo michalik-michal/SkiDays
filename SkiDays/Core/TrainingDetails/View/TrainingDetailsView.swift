@@ -8,6 +8,7 @@ struct TrainingDetailsView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel = TrainingDetailsViewModel()
     @State private var showingConfirmation = false
+    @State private var showVideo = false
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -49,10 +50,18 @@ struct TrainingDetailsView: View {
                     noteView
                 }
                 if !skiDay.video.isEmpty {
-                    VideoPlayer(player: AVPlayer(url: URL(string: skiDay.video)!))
-                        .frame(height: 200)
-                        .cornerRadius(20)
-                    
+                    if let url = URL(string: skiDay.video) {
+                        VStack(alignment: .trailing) {
+                            Text("Full screen")
+                                .bold()
+                                .onTapGesture {
+                                    showVideo.toggle()
+                                }
+                            VideoPlayer(player: AVPlayer(url: url))
+                                .frame(height: 200)
+                                .cornerRadius(20)
+                        }
+                    }
                 }
                 uploadVideoView
                     .hide(if: true)
@@ -64,6 +73,13 @@ struct TrainingDetailsView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 deleteButton
+            }
+        }
+        .sheet(isPresented: $showVideo) {
+            if let url = URL(string: skiDay.video) {
+                CustomVideoPlayer(url: url)
+                    .frame(maxHeight: .infinity)
+                    .background(.black)
             }
         }
     }
