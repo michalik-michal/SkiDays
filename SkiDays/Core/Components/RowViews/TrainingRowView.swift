@@ -29,11 +29,18 @@ struct TrainingRowView: View {
             }
             Spacer()
             VStack(spacing: 30) {
-                Image(systemName: "note")
-                    .frame(width: 100)
-                    .font(.system(size: 20))
-                    .foregroundColor(.blackWhite)
-                    .hide(if: skiDay.notes == "")
+                HStack {
+                    if skiDay.notes != "" {
+                        Image(systemName: "note")
+                            .font(.system(size: 20))
+                            .foregroundColor(.blackWhite)
+                    }
+                    if skiDay.video != "" {
+                        Image(systemName: "camera")
+                            .font(.system(size: 20))
+                            .foregroundColor(.blackWhite)
+                    }
+                }
                 Text(skiDay.conditions)
                     .frame(width: 100)
                     .font(.system(size: 20))

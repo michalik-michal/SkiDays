@@ -109,7 +109,7 @@ extension TrainingDetailsView {
             showingConfirmation = true
         } label: {
             Image(systemName: "trash")
-                .foregroundColor(.darkerBlue)
+                .foregroundColor(.blackWhite)
         }
         .alert(isPresented: $showingConfirmation) {
             Alert(
