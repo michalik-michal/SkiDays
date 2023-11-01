@@ -39,7 +39,6 @@ struct SkiDayService {
             }
     }
 
-    // swiftlint:disable: line_length
     func fetchSkiDaysForUid(forUid uid: String, completion: @escaping([SkiDay]) -> Void) {
         Firestore.firestore().collection("skidays")
             .whereField("uid", isEqualTo: uid)
@@ -52,7 +51,6 @@ struct SkiDayService {
                 completion(skiDays.sorted(by: {dateFormatter.date(from: $0.date)! > dateFormatter.date(from: $1.date)!}))
             }
     }
-    // swiftlint:enable: line_length
 
     func deleteSkiDay(_ skiDay: SkiDay) {
         Firestore.firestore().collection("skidays").document(skiDay.id!).delete { error in
