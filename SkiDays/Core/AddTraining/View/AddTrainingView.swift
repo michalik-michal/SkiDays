@@ -86,23 +86,23 @@ struct AddTrainingView: View {
                         Text("Notes")
                             .font(.title).bold()
                         notesView
-                        if viewModel.selectedVideo == nil {
-                            Text("Add video")
-                                .font(.title).bold()
-                        } else {
-                            HStack {
-                                Text("Video added")
-                                    .font(.title).bold()
-                                Spacer()
-                                Image(systemName: "trash")
-                                    .resizable()
-                                    .frame(width: 20, height: 23)
-                                    .onTapGesture {
-                                        viewModel.selectedVideo = nil
-                                    }
-                            }
-                        }
-                        addVideoView
+//                        if viewModel.selectedVideo == nil {
+//                            Text("Add video")
+//                                .font(.title).bold()
+//                        } else {
+//                            HStack {
+//                                Text("Video added")
+//                                    .font(.title).bold()
+//                                Spacer()
+//                                Image(systemName: "trash")
+//                                    .resizable()
+//                                    .frame(width: 20, height: 23)
+//                                    .onTapGesture {
+//                                        viewModel.selectedVideo = nil
+//                                    }
+//                            }
+//                        }
+                        //addVideoView
                     }
                 }
             }
